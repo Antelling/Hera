@@ -1,0 +1,170 @@
+[
+  {
+    "married": false,
+    "male": "Neil Thomas",
+    "length": 24,
+    "orientation": "straight",
+    "female": "Gwen Scott",
+    "still_dating": true
+  },
+  {
+    "married": false,
+    "male": "Caleb Lawrence",
+    "length": 2,
+    "orientation": "straight",
+    "female": "Avery Lamason",
+    "still_dating": true
+  },
+  {
+    "married": false,
+    "male": "Liam Slaybaugh",
+    "length": 4,
+    "orientation": "straight",
+    "female": "Erin Gilbert",
+    "still_dating": false
+  },
+  {
+    "married": false,
+    "male": "Alex Pederson",
+    "length": 2,
+    "orientation": "straight",
+    "female": "Ash Iwanowicz",
+    "still_dating": true
+  },
+  {
+    "married": false,
+    "male": "Nicholas Adams",
+    "length": 12,
+    "orientation": "straight",
+    "female": "Rachel Gobin",
+    "still_dating": true
+  },
+  {
+    "married": false,
+    "male": "Alex Palmer",
+    "length": 4,
+    "orientation": "straight",
+    "female": "Steph Szabo",
+    "still_dating": true
+  },
+  {
+    "married": false,
+    "male": "Brady Swindler",
+    "length": 24,
+    "orientation": "straight",
+    "female": "Brittany Graham",
+    "still_dating": true
+  },
+  {
+    "married": false,
+    "male": "Jack Still",
+    "length": 8,
+    "orientation": "straight",
+    "female": "Lyndsey Turner",
+    "still_dating": true
+  },
+  {
+    "married": false,
+    "male": "Sam Niles",
+    "length": 5,
+    "orientation": "straight",
+    "female": "Rebecca Ward-Diorio",
+    "still_dating": true
+  },
+  {
+    "married": false,
+    "male": "Caleb Deustch",
+    "length": 4,
+    "orientation": "straight",
+    "female": "Miranda Chaplinski",
+    "still_dating": true
+  },
+  {
+    "married": false,
+    "male": "Ryan Fisher",
+    "length": 4,
+    "orientation": "straight",
+    "female": "Sydney Hemler",
+    "still_dating": true
+  },
+  {
+    "married": false,
+    "male": "Jonathan Cook",
+    "length": 5,
+    "orientation": "straight",
+    "female": "Savannah Harvey",
+    "still_dating": false
+  },
+  {
+    "married": false,
+    "male": "Devon Greenwood",
+    "length": 5,
+    "orientation": "straight",
+    "female": "Emily Ramond",
+    "still_dating": true
+  },
+  {
+    "married": false,
+    "male": "Blake Yingst",
+    "length": 5,
+    "orientation": "straight",
+    "female": "Jessica Ryan",
+    "still_dating": true
+  },
+  {
+    "married": false,
+    "male": "Matt Cawley",
+    "length": 2,
+    "orientation": "straight",
+    "female": "Abby Ference",
+    "still_dating": false
+  },
+  {
+    "married": false,
+    "male": "Drew Boley",
+    "length": 5,
+    "orientation": "straight",
+    "female": "Jada Hambrook",
+    "still_dating": true
+  },
+  {
+    "married": false,
+    "male": "Peyton Smiley",
+    "length": 16,
+    "orientation": "straight",
+    "female": "Callie Garcia",
+    "still_dating": true
+  },
+  {
+    "married": false,
+    "male": "Ben Papa",
+    "length": 2,
+    "orientation": "straight",
+    "female": "Kayla Lohman",
+    "still_dating": true
+  },
+  {
+    "married": false,
+    "male": "Keenan McClain",
+    "length": 5,
+    "orientation": "straight",
+    "female": "Jess Noll",
+    "still_dating": false
+  },
+  {
+    "married": false,
+    "male": "Jordan Morret",
+    "length": 3,
+    "orientation": "straight",
+    "female": "Maddi Grimm",
+    "still_dating": false
+  },
+  {
+    "married": false,
+    "male": "Joshua Freedman",
+    "length": 12,
+    "orientation": "gay",
+    "female": "mmm lll",
+    "still_dating": true
+  }
+]
