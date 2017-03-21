@@ -4,3 +4,5 @@ from .linear_sklearn import gen_sklearn_linear as sk_linear
 from .powerful_sklearn import gen_sklearn_powerful as sk_powerful
 
 from .keras_models import gen_keras as keras
+
+from .dummy import gen_dummy as dummy

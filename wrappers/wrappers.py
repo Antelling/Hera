@@ -26,6 +26,9 @@ class SklearnWrapper(object):
     def __init__(self, model, params=None):
         self.model = model
 
+    def __repr__(self):
+        return str(self.model)
+
     def create_models(self, data):
         models = []
         for i in range(0, 5):
@@ -54,10 +57,11 @@ class SklearnWrapper(object):
 
     def predict_for_single_point(self, person):
         new_point = []
-        model_to_use = self.trained_models[0 if person["gender"] is "male" else 1]
+        model_index = 0 if person["gender"] is "male" else 1
+        model_to_use = self.trained_models[model_index]
         for dimension in range(0, 5):
             new_point.append(model_to_use[dimension].predict([person["position"]]).tolist()[0])
-        return new_point, [1] * 5
+        return [new_point, [1] * 5]
 
 
 class KerasWrapper(object):
@@ -86,13 +90,13 @@ class KerasWrapper(object):
         position = person["position"]
         position = np.array([position])
         soulmate = model_to_use.predict(position)[0].tolist()
-        return soulmate
+        return [soulmate, [1] * 5]
 
 
 class GenericWrapper(object):
     """Accepts two functions, the model creation function, and the prediction function. Model creation will receive X
     and y, and should return and object that will be passed to predict_func. Predict_func will receive the model and the
-    person object it should predict, and should return a soulmate class"""
+    person object it should predict, and should return a soulmate schema"""
 
     def __init__(self, model_func, predict_func):
         self.model_func = model_func

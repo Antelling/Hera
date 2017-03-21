@@ -1,10 +1,15 @@
-import algs
+import data, preprocessing
 
-for r in algs.sk_linear():
-    print(r)
+couples = data.get.couples_raw()
+xy = data.get.couples_xy()
+people = data.get.people_xy()[0]
 
-for r in algs.sk_powerful():
-    print(r)
+normal = preprocessing.people.ScaleNormal()
+erf = preprocessing.people.ScaleErf()
 
-for r in algs.keras():
-    print(r)
+print("----: normal")
+print(normal.transform(people))
+
+print("----: erf")
+print(erf.transform(normal.transform(people)))
+

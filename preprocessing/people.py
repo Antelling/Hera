@@ -1,13 +1,15 @@
+from sklearn.preprocessing import StandardScaler
+
 class ScaleNormal(object):
     def transform(self, X):
-        from sklearn.preprocessing import StandardScaler
         scaler = StandardScaler()
-        return scaler.fit_transform(X)
+        X = scaler.fit_transform(X).tolist()
+        return X
 
 class ScaleErf(object):
     def transform(self, X):
         import scipy.special as special
-        return special.erf(X)
+        return special.erf(X).tolist()
 
 class ScaleJV(object):
     def transform(self, X):

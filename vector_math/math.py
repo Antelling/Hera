@@ -4,7 +4,7 @@ def get_closest(people, point):
     distances = []
     for person in people:
         person_position = people[person]["position"]
-        dist = euclidean_distances(person_position, point)
+        dist = euclidean_distances([person_position], [point])[0][0]
         distances.append([person, dist])
     distances.sort(key=lambda x: x[1])
     return distances
@@ -13,7 +13,6 @@ def get_closest(people, point):
 def scale_to_relative_importance(people, importance):
     for dimension_index, scale in enumerate(importance):
         for person in people:
-            print(type(people[person]["position"][dimension_index]))
             people[person]["position"][dimension_index] /= scale
             # we divide because that condenses the dimension, making differences more important
     return people

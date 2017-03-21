@@ -19,7 +19,6 @@ def people_raw():
         display: bool, if false, never ever display them. Acts kind of as a failsafe for certain people
         group: str/cat, boiling springs|carlisle|cv|big springs|internet..., their "region"
         position: list{int}, a list of their IPIP 5 dimensions"""
-
     if "people_raw" in cache:
         return cache["people_raw"]
     else:
@@ -29,7 +28,6 @@ def people_raw():
 
 def people_xy():
     """Return a (X,y) tuple where X is a list of IPIP 5 dimensions, and y is the name"""
-
     if "people_xy" in cache:
         return cache["people_xy"]
     else:
@@ -46,7 +44,6 @@ def couples_raw():
         orientation: str/cat, straight|gay|lesbian, if gay or lesbian, male or female contains a female or male, respectively
         still_dating: bool, are they still dating or have they broken up
     """
-
     if "couples_raw" in cache:
         return cache["couples_raw"]
     else:
@@ -56,10 +53,33 @@ def couples_raw():
 
 def couples_xy():
     """returns an X, y list where X is male positions and y is female positions"""
-
     if "couples_xy" in cache:
         return cache["couples_xy"]
     else:
         couples = couples_raw()
         cache["couples_xy"] = make.couples_xy(couples)
         return cache["couples_xy"]
+
+
+def couples_list():
+    """return list of people in relationships"""
+    if "couples_list" in cache:
+        return cache["couples_list"]
+    else:
+        l = []
+        for couple in couples_raw():
+            l.append(couple["male"])
+            l.append(couple["female"])
+        cache["couples_list"] = l
+        return l
+
+def couples_pairs():
+    if "couples_pairs" in cache:
+        return cache["couples_pairs"]
+    else:
+        pairs = {}
+        for couple in couples_raw():
+            pairs[couple["male"]] = couple["female"]
+            pairs[couple["female"]] = couple["male"]
+        cache["couples_pairs"] = pairs
+        return pairs

@@ -10,9 +10,8 @@ def gen_sklearn_linear():
 
     for degree in polynomial_degrees:
         for regressor in [LinearRegression(),
-                          Lasso(),
-                          Ridge(),
-                          TheilSenRegressor()]:
+                          Lasso(alpha=.01),
+                          Ridge(alpha=1000)]:
             regressor = make_pipeline(PolynomialFeatures(degree), regressor)
             regressor = SklearnWrapper(regressor)
             yield regressor
