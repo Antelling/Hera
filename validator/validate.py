@@ -3,13 +3,18 @@ from . import score
 import numpy as np
 
 
-def val(*, people_xy_pre, couples_raw_pre, couples_xy_pre, alg_gen, maps_post):
+def val(*, people_pre, couples_raw_pre, couples_xy_pre, alg_gen, maps_post):
     people_raw = data.get.people_raw()
-    people_xy = data.get.people_xy()
-    for processor in people_xy_pre:
-        people_xy[0] = processor.transform(people_xy[0])
+    for processor in people_pre:
+        people_raw = processor.transform(people_raw)
 
     couples_raw = data.get.couples_raw()
+
+    best = {
+        "alg": {},
+        "score": 9999,
+        "post": ""
+    }
 
     for alg in alg_gen():
         print("")
@@ -23,7 +28,7 @@ def val(*, people_xy_pre, couples_raw_pre, couples_xy_pre, alg_gen, maps_post):
 
             for processor in couples_raw_pre:
                 new_couples = processor.transform(new_couples)
-            couples_xy = data.make.couples_xy(new_couples)
+            couples_xy = data.make.couples_xy(new_couples, people_raw)
             for processor in couples_xy_pre:
                 couples_xy = processor.transform(couples_xy)
 
@@ -53,3 +58,11 @@ def val(*, people_xy_pre, couples_raw_pre, couples_xy_pre, alg_gen, maps_post):
                                   np.median(total_score_map[m])]
 
         print(total_score_map)
+
+        for m in total_score_map:
+            if total_score_map[m][1] < best["score"]:
+                best["score"] = total_score_map[m][1]
+                best["alg"] = alg
+                best["post"] = m
+                best["pre"] = [people_pre, couples_raw_pre, couples_xy_pre]
+    return best

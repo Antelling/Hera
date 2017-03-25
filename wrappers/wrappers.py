@@ -18,8 +18,6 @@ Note that the "soulmate" format is not just a 5 dimensional position, it is a tw
 
 import numpy as np
 from sklearn.base import clone
-from copy import deepcopy
-from keras.models import Sequential
 
 
 class SklearnWrapper(object):
@@ -32,7 +30,7 @@ class SklearnWrapper(object):
     def create_models(self, data):
         models = []
         for i in range(0, 5):
-            model_copy = clone(self.model) #we clone to prevent fitting-in-place from remembering past data
+            model_copy = clone(self.model)  # we clone to prevent fitting-in-place from remembering past data
             models.append(model_copy.fit(np.array(data["X"], dtype="float_"), np.array(data["y"][i], dtype="float_")))
         return models
 
@@ -72,10 +70,13 @@ class KerasWrapper(object):
             compile_params = {"loss": "mse", "optimizer": "adam"}
         self.compile_params = compile_params
 
+        from keras.models import Sequential
+        self.sequential = Sequential
+
     def fit(self, X, y):
         models = []
         for _ in range(0, 2):
-            model = Sequential(self.model_definition)
+            model = self.sequential(self.model_definition)
             model.compile(**self.compile_params)
             models.append(model)
         models[0].fit(X, y, nb_epoch=self.epochs, verbose=False)

@@ -1,0 +1,45 @@
+<!doctype html>
+<head>
+    <title>
+        BSHS Dating Site
+    </title>
+    <link href="/static/app.css" type="text/css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body>
+<form method="get" action="/results">
+    <input name="name" placeholder="View Another Result">
+    <input type="submit">
+</form>
+<br/>
+<button onclick="showSame()">Show same gender results</button>
+<button onclick="showDiff()">Show opposite gender results</button>
+<button onclick="showAll()">Show all results</button>
+<br>
+<br>
+<button onclick="toggleConfusing()">Show confusing table</button>
+<div id="container">
+    {{results|safe}}
+</div>
+<script>
+    $(".same").hide();
+    $(".your-place").parent().hide();
+    function showSame(){
+        $(".same").show();
+        $(".diff").hide();
+    }
+    function showDiff(){
+        $(".same").hide();
+        $(".diff").show();
+    }
+    function showAll(){
+        $(".same").show();
+        $(".diff").show();
+    }
+    function toggleConfusing(){
+        $(".your-place").parent().toggle();
+    }
+</script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="/static/chart.js"></script>
+</body>

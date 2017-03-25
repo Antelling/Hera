@@ -10,10 +10,10 @@
   {
     "married": false,
     "male": "Caleb Lawrence",
-    "length": 2,
+    "length": 3,
     "orientation": "straight",
     "female": "Avery Lamason",
-    "still_dating": true
+    "still_dating": false
   },
   {
     "married": false,
@@ -34,7 +34,7 @@
   {
     "married": false,
     "male": "Nicholas Adams",
-    "length": 12,
+    "length": 24,
     "orientation": "straight",
     "female": "Rachel Gobin",
     "still_dating": true
@@ -42,7 +42,7 @@
   {
     "married": false,
     "male": "Alex Palmer",
-    "length": 4,
+    "length": 5,
     "orientation": "straight",
     "female": "Steph Szabo",
     "still_dating": true
@@ -166,5 +166,20 @@
     "orientation": "gay",
     "female": "mmm lll",
     "still_dating": true
+  },
+
+  {
+    "married": false,
+    "male": "Kylor Figueroa",
+    "length": 6,
+    "female": "Avery Lamason",
+    "still_dating": false
+  },
+  {
+    "married": false,
+    "male": "Michael Brant",
+    "female": "Maddi Grimm",
+    "length": 1,
+    "still_dating": false
   }
 ]

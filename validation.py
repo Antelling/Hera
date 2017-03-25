@@ -1,18 +1,58 @@
-import validator, algs, preprocessing, postprocessing
+import validator, algs, preprocessing, postprocessing, sys
 
-data_pre = [preprocessing.people.ScaleNormal(), preprocessing.people.ScaleErf()]
-couples_raw_pre = [preprocessing.couples_raw.Mirror()]
-couples_xy_pre = [preprocessing.couples_xy.Sanitize(contamination=.075)]
+data_pre_options = [[],
+                    [preprocessing.people.Standard()],
+                    [preprocessing.people.Standard(), preprocessing.people.Erf()],
+                    [preprocessing.people.Flatten(), preprocessing.people.Standard()]]
+couples_raw_pre_options = [[], [preprocessing.couples_raw.Mirror()]]
+couples_xy_pre_options = [[preprocessing.couples_xy.Sanitize(contamination=.15)], ]
 
 maps_post = [postprocessing.Average(),
-             postprocessing.JVCouples()
+             postprocessing.MetricEqualizer(metric="distance"),
+             postprocessing.MetricEqualizer(metric="distance_median"),
+             postprocessing.MetricEqualizer(metric="zscore"),
+             postprocessing.MetricEqualizer(metric="zscore_median"),
              ]
 
-alg_gen = algs.sk_powerful
+things_to_test = sys.argv[1:]
 
-validator.val(
-    people_xy_pre=data_pre,
-    couples_raw_pre=couples_raw_pre,
-    couples_xy_pre=couples_xy_pre,
-    alg_gen=alg_gen,
-    maps_post=maps_post)
+best = {"score": 9999}
+
+for data_pre in data_pre_options:
+    for couples_raw_pre in couples_raw_pre_options:
+        for couples_xy_pre in couples_raw_pre_options:
+            if "pow" in things_to_test:
+                local = validator.val(
+                    people_pre=data_pre,
+                    couples_raw_pre=couples_raw_pre,
+                    couples_xy_pre=couples_xy_pre,
+                    alg_gen=algs.sk_powerful,
+                    maps_post=maps_post)
+
+                if local["score"] < best["score"]:
+                    best = local
+
+            if "lin" in things_to_test:
+                local = validator.val(
+                    people_pre=data_pre,
+                    couples_raw_pre=couples_raw_pre,
+                    couples_xy_pre=couples_xy_pre,
+                    alg_gen=algs.sk_linear,
+                    maps_post=maps_post)
+
+                if local["score"] < best["score"]:
+                    best = local
+
+            if "ker" in things_to_test:
+                local = validator.val(
+                    people_pre=data_pre,
+                    couples_raw_pre=couples_raw_pre,
+                    couples_xy_pre=couples_xy_pre,
+                    alg_gen=algs.keras,
+                    maps_post=maps_post)
+
+                if local["score"] < best["score"]:
+                    best = local
+
+print("")
+print(best)

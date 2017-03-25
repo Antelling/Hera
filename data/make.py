@@ -1,9 +1,10 @@
 from . import get
 
 
-def couples_xy(couples):
+def couples_xy(couples, people=None):
     """Takes a list of couples in raw schema and returns a sklearn style X, y tuple of starting and ending positions"""
-    people = get.people_raw()
+    if people is None:
+        people = get.people_raw()
     X, y = [], []
     for couple in couples:
         X.append(people[couple["male"]]["position"])

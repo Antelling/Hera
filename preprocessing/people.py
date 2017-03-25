@@ -1,22 +1,58 @@
 from sklearn.preprocessing import StandardScaler
+import data
+import numpy as np
 
-class ScaleNormal(object):
-    def transform(self, X):
+class PeopleBase(object):
+    def transform(self, people):
+        people_xy = data.make.people_xy(people)
+        people_xy[0] = self.transform_x(people_xy[0])
+        for i, person in enumerate(people):
+            people[person]["position"] = people_xy[0][i]
+        return people
+
+    def transform_x(self, X):
+        return X
+
+class Standard(PeopleBase):
+    def transform_x(self, X):
         scaler = StandardScaler()
         X = scaler.fit_transform(X).tolist()
         return X
 
-class ScaleErf(object):
-    def transform(self, X):
+
+class Erf(PeopleBase):
+    def transform_x(self, X):
         import scipy.special as special
         return special.erf(X).tolist()
 
-class ScaleJV(object):
-    def transform(self, X):
-        #TODO: make JV scaler
-        return X
 
-class ScalePercentile(object):
-    def transform(self, X):
-        #TODO: make percentile scaler
-        return X
+class Flatten(PeopleBase):
+    def transform_x(self, X):
+        X = np.array(X)
+        X = np.rot90(X, k=1)
+        X = list(map(self.flatten_dimension, X))
+        X = np.rot90(X, k=3)
+        return X.tolist()
+
+    def flatten_dimension(self, d):
+        n = len(d)
+        step = 100 / n
+        numbers = np.arange(0, 100, step)
+
+        #okay so we want to snap our d to numbers
+        #but we need to remember our original position
+        structured_d = []
+        for i, value in enumerate(d):
+            structured_d.append({"index": i, "value": value})
+
+        structured_d.sort(key=lambda x:x["value"])
+
+        for i, value in enumerate(structured_d):
+            structured_d[i]["flattened_value"] = numbers[i]
+
+        structured_d.sort(key=lambda x:x["index"])
+
+        d = []
+        for value in structured_d:
+            d.append(value["flattened_value"])
+        return d

@@ -1,0 +1,100 @@
+<!doctype html>
+<head>
+    <title>
+        BSHS Dating Site
+    </title>
+    <link href="/static/app.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div class="legible">
+    <h1>Explanation of Algorithm</h1>
+
+    <h3>Data Gathering</h3>
+
+    <p>
+        There are 6 datapoints for each person: their gender, and the 5 parts of their personality given by the 5
+        part personality test found <a href="http://personality-testing.info/tests/IPIP-BFFM/">here</a>. These
+        datapoints are used to construct 2 5-dimensional hyperspaces, one for each gender. In addition to the values for
+        each name, there is a list of people that are currently dating.
+    </p>
+
+    <h3>Meaning of Tables</h3>
+
+    <p>
+        The table that is visible by default is who the algorithm thinks you should data. The left number is where are
+        they are in your rankings. The greyed out right number is their score. Scores are useless on their own, and
+        should only be used to compare the degree of recommendations: for example, if your number one result has a score
+        of -60, and the number two result -59.5, it doesn't really matter which one of them you date. But if your number
+        one is -30, and the number two is -5, you should definitely date the first person.
+    </p>
+
+    <p>
+        If you click the "show confusing table" button, the "confusing" table will show up. It isn't actually confusing,
+        but people don't read instructions, so I hide it by default. That table shows where you are recommended to other
+        people, as the right number. So if the first person in the right table has a right number of 3, you are their
+        number 3 result.
+    </p>
+
+    <h4>Meaning of colors</h4>
+
+    <p>
+        The first third of all tables are colored green. These are typically good matches. The second third is black.
+        These are bad matches. The last third is red. These are terrible matches.
+    </p>
+
+    <p>
+        People in a relationship are colored yellow as a warning.
+    </p>
+
+    <h3>Explanation of Ranking Algorithms</h3>
+
+    <h4>Basic Explanation</h4>
+
+    <p>
+        You know how in math class you can draw a linear regression through points, and use that to predict where
+        a new X would be? I'm basically doing that, but with much more complicated regressions, and 5 dimensions instead
+        of 1.
+    </p>
+
+    <h4>Caveats</h4>
+
+    <p>
+        The biggest caveat is that I have only 17 couples in my dataset, representing around 7 "dynamics" - ways a
+        relationship can work, and some of those are filtered by my outlier detection. There are, of course, many more
+        then 7 ways a relationship can work. This means that, while the algorithm can give positives, it is not capable
+        of giving negatives. If someone is high on your list, excluding extenuating circumstances like you're related
+        or they're a freshmen or something, they are probably a good result. But if someone is low on your list, and you
+        think they should be higher because you're dating or something, that doesn't necessarily mean you are not
+        compatible, just that I don't have enough data.
+    </p>
+
+    <p>
+        The second caveat is that I don't try to do any kind of age filtering. So seniors sometimes get recommended to
+        freshmen. Don't date freshmen it's creepy.
+    </p>
+
+    <h4>Accuracy</h4>
+
+    <p>
+        I test each algorithm for accuracy using something called a leave one out validator. I loop over every
+        couple in my dataset, train a predictive model on every couple except the one I am currently testing, and then
+        see where each partner is recommended to each other. I can then compare algorithms by looking at the average
+        place where partners are recommended to each other.
+    </p>
+
+    <p>
+        A purely random algorithm has an accuracy of around 35. Recommending people based off of similarity has an
+        accuracy of around 28. My most accurate regression has an accuracy of around 21. A perfect algorithm would
+        probably have an accuracy of around 5 - not 0, because some people just should not be dating.
+    </p>
+
+    <p>
+        So, my algorithm is a little less then twice as accurate as random, and around 4 times worse then a perfect
+        algorithm would be. That's kind of terrible, but I have no way of fixing it without more data. So if you want
+        more accurate results, get me more data.
+    </p>
+
+    <br/>
+    <a href="/">Back to home page.</a>
+</div>
+</body>

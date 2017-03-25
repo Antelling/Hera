@@ -1,12 +1,5 @@
 import data
 
-
-class HybridCouples(object):
-    def transform(self, maps):
-        # TODO mono couples
-        return maps
-
-
 class JVCouples(object):
     def __init__(self, loss_function=None):
         if loss_function is None:
@@ -29,8 +22,6 @@ class JVCouples(object):
                 men.append(person)
             else:
                 women.append(person)
-        print(men)
-        print(women)
 
         # we need to make men and women the same length
         difference = len(men) - len(women)
@@ -63,7 +54,6 @@ class JVCouples(object):
         couples = {}
         for i, target in enumerate(pairs[0]):
             couples[men[i]] = women[target]
-            print(men[i] + " - " + women[target])
 
         return couples
 

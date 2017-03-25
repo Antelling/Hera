@@ -70,3 +70,15 @@ class MetricEqualizer(object):
         for name in names:
             names[name] = [np.mean(names[name]), np.median(names[name]), np.std(names[name])]
         return names
+
+
+class CoupleEqualizer(object):
+    def transform(self, maps):
+        maps["scoreable"]["CouplesNormalized"] = self.normalize_map(maps["scoreable"]["average"])
+        return maps
+
+    def normalize_map(self, m):
+        #we are going to form couples, record those results, then update our cost_matrix so those couples are never
+        #formed again. In this way, we create the optimum equalizer. Its slow af tho
+        #TODO
+        return m
