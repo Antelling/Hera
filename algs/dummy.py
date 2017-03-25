@@ -10,5 +10,5 @@ def random_rec(model, person):
 from sklearn.dummy import DummyRegressor
 
 def gen_dummy():
-    yield GenericWrapper(random_model, random_rec)
+    #yield GenericWrapper(random_model, random_rec)
     yield SklearnWrapper(DummyRegressor(strategy="mean"))

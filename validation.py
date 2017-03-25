@@ -5,7 +5,7 @@ data_pre_options = [[],
                     [preprocessing.people.Standard(), preprocessing.people.Erf()],
                     [preprocessing.people.Flatten(), preprocessing.people.Standard()]]
 couples_raw_pre_options = [[], [preprocessing.couples_raw.Mirror()]]
-couples_xy_pre_options = [[preprocessing.couples_xy.Sanitize(contamination=.15)], ]
+couples_xy_pre_options = [[preprocessing.couples_xy.Sanitize(contamination=.15)], [preprocessing.couples_xy.Cluster()]]
 
 maps_post = [postprocessing.Average(),
              postprocessing.MetricEqualizer(metric="distance"),
@@ -20,7 +20,7 @@ best = {"score": 9999}
 
 for data_pre in data_pre_options:
     for couples_raw_pre in couples_raw_pre_options:
-        for couples_xy_pre in couples_raw_pre_options:
+        for couples_xy_pre in couples_xy_pre_options:
             if "pow" in things_to_test:
                 local = validator.val(
                     people_pre=data_pre,
@@ -49,6 +49,17 @@ for data_pre in data_pre_options:
                     couples_raw_pre=couples_raw_pre,
                     couples_xy_pre=couples_xy_pre,
                     alg_gen=algs.keras,
+                    maps_post=maps_post)
+
+                if local["score"] < best["score"]:
+                    best = local
+
+            if "dum" in things_to_test:
+                local = validator.val(
+                    people_pre=data_pre,
+                    couples_raw_pre=couples_raw_pre,
+                    couples_xy_pre=couples_xy_pre,
+                    alg_gen=algs.dummy,
                     maps_post=maps_post)
 
                 if local["score"] < best["score"]:
