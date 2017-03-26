@@ -54,6 +54,7 @@ class JVCouples(object):
         couples = {}
         for i, target in enumerate(pairs[0]):
             couples[men[i]] = women[target]
+            couples[women[target]] = men[i]
 
         return couples
 

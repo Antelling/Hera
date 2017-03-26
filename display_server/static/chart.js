@@ -1,7 +1,7 @@
 $(function () {
     var values = [];
-    $(".your-place td:nth-child(3)").each(function (i, item) {
-        values.push(parseInt($(item).html()))
+    $(".best-matches td:nth-child(3)").each(function (i, item) {
+        values.push(Number($(item).html()))
     });
 
     var color = "steelblue";

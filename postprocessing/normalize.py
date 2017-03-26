@@ -80,5 +80,5 @@ class CoupleEqualizer(object):
     def normalize_map(self, m):
         #we are going to form couples, record those results, then update our cost_matrix so those couples are never
         #formed again. In this way, we create the optimum equalizer. Its slow af tho
-        #TODO
+        #TODO couples equalizer
         return m
