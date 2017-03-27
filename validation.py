@@ -1,4 +1,4 @@
-import validator, algs, preprocessing, postprocessing, sys
+import validator, algs, preprocessing, postprocessing, sys, colors
 
 data_pre_options = [[preprocessing.people.Standard(), preprocessing.people.Erf()]]
 couples_raw_pre_options = [[], [preprocessing.couples_raw.Mirror()]]
@@ -38,6 +38,8 @@ for data_pre in data_pre_options:
                     maps_post=maps_post)
 
                 if local["score"] < best["score"]:
+                    colors.purple(local)
+                    colors.green(local["score"])
                     best = local
 
             if "lin" in things_to_test:
@@ -49,6 +51,8 @@ for data_pre in data_pre_options:
                     maps_post=maps_post)
 
                 if local["score"] < best["score"]:
+                    colors.purple(local)
+                    colors.green(local["score"])
                     best = local
 
             if "ker" in things_to_test:
@@ -60,6 +64,8 @@ for data_pre in data_pre_options:
                     maps_post=maps_post)
 
                 if local["score"] < best["score"]:
+                    colors.purple(local)
+                    colors.green(local["score"])
                     best = local
 
             if "dum" in things_to_test:
@@ -71,6 +77,8 @@ for data_pre in data_pre_options:
                     maps_post=maps_post)
 
                 if local["score"] < best["score"]:
+                    colors.purple(local)
+                    colors.green(local["score"])
                     best = local
 
 print("")

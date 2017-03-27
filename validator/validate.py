@@ -61,8 +61,6 @@ def val(*, people_pre, couples_raw_pre, couples_xy_pre, alg_gen, maps_post):
                     best["alg"] = alg
                     best["post"] = m
                     best["pre"] = [people_pre, couples_raw_pre, couples_xy_pre]
-                    colors.purple(best)
-                    colors.green(best["score"])
         except Exception as e:
             print(colors.red(e))
 

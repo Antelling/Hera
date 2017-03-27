@@ -93,6 +93,9 @@ class KerasWrapper(object):
         soulmate = model_to_use.predict(position)[0].tolist()
         return [soulmate, [1] * 5]
 
+    def __repr__(self):
+        return str(self.model_definition[0])
+
 
 class GenericWrapper(object):
     """Accepts two functions, the model creation function, and the prediction function. Model creation will receive X
