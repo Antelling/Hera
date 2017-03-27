@@ -7,7 +7,7 @@ class ListBase(object):
 class OrderedRecs(ListBase):
     def __init__(self):
         self.name = "OrderedRecs"
-        self.map = "ZScoreMedianNormalized"
+        self.map = "main"
 
     def form_list(self, average_map):
         raw_recs = []

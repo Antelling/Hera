@@ -1,11 +1,13 @@
 import validator, algs, preprocessing, postprocessing, sys
 
-data_pre_options = [[],
-                    [preprocessing.people.Standard()],
-                    [preprocessing.people.Standard(), preprocessing.people.Erf()],
-                    [preprocessing.people.Flatten(), preprocessing.people.Standard()]]
-couples_raw_pre_options = [[], [preprocessing.couples_raw.Mirror()]]
-couples_xy_pre_options = [[preprocessing.couples_xy.Sanitize(contamination=.15)], [preprocessing.couples_xy.Cluster()]]
+data_pre_options = [[preprocessing.people.Standard(), preprocessing.people.Erf()]]
+couples_raw_pre_options = [[]]
+from sklearn.cluster import Birch, AffinityPropagation, KMeans
+couples_xy_pre_options = [[preprocessing.couples_xy.Cluster()],
+                          [preprocessing.couples_xy.Cluster(Birch())],
+                          [preprocessing.couples_xy.Cluster(AffinityPropagation())],
+                          [preprocessing.couples_xy.Cluster(KMeans())],
+                          ]
 
 maps_post = [postprocessing.Average(),
              postprocessing.MetricEqualizer(metric="distance"),

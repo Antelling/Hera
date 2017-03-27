@@ -14,7 +14,7 @@ class PosEqualizer(object):
 
 
 class MetricEqualizer(object):
-    def __init__(self, metric=None):
+    def __init__(self, metric=None, name=None):
         if metric is None:
             metric = "zscore"
         if metric == "zscore":
@@ -36,8 +36,11 @@ class MetricEqualizer(object):
             self.metric = lambda x, mean, median, std: x - median
             self.name = "DistanceMedianNormalized"
         else:
-            self.metric = metric[0]
-            self.name = metric[1]
+            self.metric = metric
+            self.name = "CustomMetric"
+
+        if name is not None:
+            self.name = name
 
     def transform(self, maps):
         map_to_use = "average" if "average" in maps["scoreable"] else "one-way"

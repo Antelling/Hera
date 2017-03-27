@@ -1,6 +1,6 @@
 $(function () {
     var values = [];
-    $(".best-matches td:nth-child(3)").each(function (i, item) {
+    $(".your-place td:nth-child(3)").each(function (i, item) {
         values.push(Number($(item).html()))
     });
 

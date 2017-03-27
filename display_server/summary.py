@@ -5,13 +5,11 @@ this_file = os.path.dirname(os.path.realpath(__file__))
 
 def load_maps():
     path = os.path.join(this_file, "static", "map.json")
-    print(path)
     return json.loads(open(path).read())
 
 
 def make_link(name):
     split_name = name.split(" ")
-    print(split_name)
     link = "<a href='/results?name=" + split_name[0] + "+" + split_name[1] + "'>" + name + "</a>"
     return link
 
@@ -92,10 +90,8 @@ def typo(name):
         scored_names.append([othername, score])
     scored_names.sort(key=lambda x: x[1])
     guess = scored_names[0][0].split(" ")
-    print(guess)
     out = "<br/>Did you mean: <a href='/results?name=" + guess[0] + "+" + guess[1] + "'>" + guess[0] + " " + guess[
         1] + "</a>"
-    print(out)
     return out
 
 
@@ -116,9 +112,8 @@ def levenshteinDistance(s1, s2):
 
 
 def summary(name):
-    """try:
+    try:
         output = analyze(name)
     except KeyError:
-        output = typo(name)"""
-    output = analyze(name)
+        output = typo(name)
     return output
