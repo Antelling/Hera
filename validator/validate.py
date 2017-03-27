@@ -1,4 +1,4 @@
-import data, copy, vector_math
+import data, copy, vector_math, colors
 from . import score
 import numpy as np
 
@@ -18,9 +18,6 @@ def val(*, people_pre, couples_raw_pre, couples_xy_pre, alg_gen, maps_post):
 
     for alg in alg_gen():
         try:
-            print("")
-            print(alg)
-
             total_score_map = {}
 
             for i, couple in enumerate(couples_raw):
@@ -58,15 +55,15 @@ def val(*, people_pre, couples_raw_pre, couples_xy_pre, alg_gen, maps_post):
                                       np.mean(total_score_map[m]),
                                       np.median(total_score_map[m])]
 
-            print(total_score_map)
-
             for m in total_score_map:
                 if total_score_map[m][1] < best["score"]:
                     best["score"] = total_score_map[m][1]
                     best["alg"] = alg
                     best["post"] = m
                     best["pre"] = [people_pre, couples_raw_pre, couples_xy_pre]
+                    colors.purple(best)
+                    colors.green(best["score"])
         except Exception as e:
-            print(e)
+            print(colors.red(e))
 
     return best

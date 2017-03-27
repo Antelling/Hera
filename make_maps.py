@@ -15,7 +15,8 @@ for p in data_pre:
 
 couples_raw = data.get.couples_raw()
 couples_raw_pre = []
-couples_xy_pre = [preprocessing.couples_xy.Cluster()]
+from sklearn.cluster import SpectralClustering
+couples_xy_pre = [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=12))]
 
 
 def make_xy(people, couples, raw_trans, xy_trans):

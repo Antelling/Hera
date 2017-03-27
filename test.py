@@ -15,7 +15,11 @@ for regressor in [[LinearRegression(), "linreg"], [TheilSenRegressor(), "theil-s
     model = make_pipeline(PolynomialFeatures(2), regressor[0])
     model.fit(X, y)
 
-    test_x = np.linspace(0, 9, 100)
+    print("")
+    print(regressor[1])
+    print(model.score(X, y))
+
+    test_x = np.linspace(-1, 10, 100)
     test_y = []
     for x in test_x:
         test_y.append(model.predict([[x]])[0])
