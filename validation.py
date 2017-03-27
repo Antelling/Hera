@@ -2,11 +2,13 @@ import validator, algs, preprocessing, postprocessing, sys
 
 data_pre_options = [[preprocessing.people.Standard(), preprocessing.people.Erf()]]
 couples_raw_pre_options = [[]]
-from sklearn.cluster import Birch, AffinityPropagation, KMeans
+from sklearn.cluster import Birch, AffinityPropagation, KMeans, SpectralClustering
 couples_xy_pre_options = [[preprocessing.couples_xy.Cluster()],
+                          [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=5))],
+                          [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=12))],
                           [preprocessing.couples_xy.Cluster(Birch())],
                           [preprocessing.couples_xy.Cluster(AffinityPropagation())],
-                          [preprocessing.couples_xy.Cluster(KMeans())],
+                          [preprocessing.couples_xy.Cluster(KMeans(n_clusters=8))],
                           ]
 
 maps_post = [postprocessing.Average(),

@@ -49,3 +49,6 @@ class Cluster(object):
             new_couples[0].append(groups[group][0:5])
             new_couples[1].append(groups[group][5:10])
         return new_couples
+
+    def __repr__(self):
+        return self.clusterer
