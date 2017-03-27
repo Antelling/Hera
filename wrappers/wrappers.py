@@ -59,7 +59,7 @@ class SklearnWrapper(object):
         model_to_use = self.trained_models[model_index]
         for dimension in range(0, 5):
             new_point.append(model_to_use[dimension].predict([person["position"]]).tolist()[0])
-        return [new_point, [1] * 5]
+        return [new_point, [1] * 5] #TODO: proper dimension scaling code
 
 
 class KerasWrapper(object):

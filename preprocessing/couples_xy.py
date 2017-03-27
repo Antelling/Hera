@@ -51,4 +51,4 @@ class Cluster(object):
         return new_couples
 
     def __repr__(self):
-        return self.clusterer
+        return str(self.clusterer)
