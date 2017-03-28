@@ -40,7 +40,10 @@ class JVCouples(object):
         for person in maps:
             sane_map[person] = {}
             for otherperson in maps[person]:
-                sane_map[person][otherperson[0]] = otherperson[1]
+                if data.make.is_okay(people[person]["grade"], people[otherperson[0]]["grade"]):
+                    sane_map[person][otherperson[0]] = otherperson[1]
+                else:
+                    sane_map[person][otherperson[0]] = 9999
 
         cost_matrix = []
         for man in men:

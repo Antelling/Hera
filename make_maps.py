@@ -3,9 +3,9 @@ from wrappers import SklearnWrapper
 
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.pipeline import make_pipeline
-from sklearn.linear_model import TheilSenRegressor
+from sklearn.linear_model import HuberRegressor
 
-alg = make_pipeline(PolynomialFeatures(1), TheilSenRegressor())
+alg = make_pipeline(PolynomialFeatures(1), HuberRegressor())
 model = SklearnWrapper(alg)
 
 people_raw = data.get.people_raw()
@@ -14,7 +14,7 @@ for p in data_pre:
     people_raw = p.transform(people_raw)
 
 couples_raw = data.get.couples_raw()
-couples_raw_pre = []
+couples_raw_pre = [preprocessing.couples_raw.Mirror()]
 from sklearn.cluster import SpectralClustering
 couples_xy_pre = [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=12))]
 

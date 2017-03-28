@@ -7,6 +7,7 @@ class Time_mod(object):
             mod = lambda x: math.log(x)
             self.mod = mod
 
+    #TODO: test this
     def transform(self, couples):
         new_couples = []
         for couple in couples:

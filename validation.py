@@ -1,19 +1,22 @@
 import validator, algs, preprocessing, postprocessing, sys, colors
 
 data_pre_options = [[preprocessing.people.Standard(), preprocessing.people.Erf()]]
-couples_raw_pre_options = [[], [preprocessing.couples_raw.Mirror()]]
+couples_raw_pre_options = [
+    [], [
+        preprocessing.couples_raw.Mirror()
+    ], [
+        pre
+    ]]
 from sklearn.cluster import SpectralClustering
 
-couples_xy_pre_options = [[preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=8))],
-                          [preprocessing.couples_xy.Sanitize(),
-                           preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=8))],
-                          [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=5))],
-                          [preprocessing.couples_xy.Sanitize(),
-                           preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=5))],
-                          [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=12))],
-                          [preprocessing.couples_xy.Sanitize(),
-                           preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=12))],
-                          ]
+couples_xy_pre_options = [
+    [
+        preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=12))
+    ], [
+        preprocessing.couples_xy.Sanitize(),
+        preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=12))
+    ]
+]
 
 maps_post = [postprocessing.Average(),
              postprocessing.MetricEqualizer(metric="distance"),

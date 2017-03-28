@@ -1,1 +1,2017 @@
-{"Nick Obrien": {"display": true, "gender": "male", "grade": 10, "group": "boiling springs", "position": [19, 57, 14, 57, 40]}, "Cameron Howard": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [78, 97, 4, 89, 40]}, "Adam Dieck": {"display": true, "gender": "male", "grade": 10, "group": "boiling springs", "position": [3, 52, 7, 57, 95]}, "Hannah Richardson": {"display": true, "gender": "female", "grade": 9, "group": "boiling springs", "position": [86, 38, 59, 69, 73]}, "Abby Ridenour": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [22, 48, 35, 76, 1]}, "Liam Mummert": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [13, 66, 76, 95, 70]}, "Abby Samella": {"display": true, "gender": "female", "grade": 9, "group": "boiling springs", "position": [27, 40, 80, 56, 63]}, "Zach Orris": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [65, 60, 80, 75, 90]}, "Peyton Smiley": {"display": true, "gender": "male", "grade": 12, "group": "boiling springs", "position": [96, 62, 83, 67, 70]}, "Nicholas Adams": {"display": true, "gender": "male", "grade": 11, "group": "carlisle", "position": [58, 95, 4, 15, 23]}, "Ben Cook": {"display": true, "gender": "male", "grade": 9, "group": "boiling springs", "position": [41, 78, 40, 96, 88]}, "Ryan Mahoney": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [50, 5, 51, 36, 46]}, "Mackenzie Morret": {"display": true, "gender": "female", "grade": 12, "group": "boiling springs", "position": [41, 26, 62, 76, 1]}, "Hailey Martin": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [88, 66, 62, 72, 46]}, "Adam Berk": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [95, 89, 89, 97, 66]}, "Melanie Searle": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [92, 93, 89, 87, 76]}, "Rachel Gobin": {"display": true, "gender": "female", "grade": 11, "group": "carlisle", "position": [45, 70, 51, 72, 40]}, "Brittany Graham": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [93, 66, 89, 36, 34]}, "Kaitlyn Byerly": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [63, 89, 22, 36, 3]}, "Andrew Gibelius": {"display": true, "gender": "male", "grade": 9, "group": "boiling springs", "position": [80, 70, 65, 74, 89]}, "Megan Landwehr": {"display": true, "gender": "female", "grade": 9, "group": "boiling springs", "position": [70, 40, 50, 50, 70]}, "Liam Aro": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [88, 89, 67, 2, 18]}, "Robert Goril": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [33, 22, 21, 52, 23]}, "Sydney Hemler": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [74, 62, 58, 79, 73]}, "Connor Burrowes": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [63, 74, 30, 48, 14]}, "Alex Pederson": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [78, 74, 40, 57, 80]}, "Avery Lamason": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [13, 13, 25, 46, 6]}, "Maddie Taylor": {"display": true, "gender": "female", "grade": 9, "group": "boiling springs", "position": [85, 16, 70, 67, 82]}, "Matthew Blanchard": {"display": true, "gender": "male", "grade": 10, "group": "boiling springs", "position": [92, 39, 45, 12, 76]}, "Hannah Lockhart": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [7, 48, 83, 87, 96]}, "Julia Fulton": {"display": true, "gender": "female", "grade": 9, "group": "boiling springs", "position": [91, 16, 64, 72, 81]}, "Evan Miller": {"display": true, "gender": "male", "grade": 10, "group": "boiling springs", "position": [7, 57, 5, 62, 46]}, "Ben Cole": {"display": true, "gender": "male", "grade": 12, "group": "boiling springs", "position": [85, 75, 90, 70, 75]}, "Brenden Mark": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [92, 89, 35, 57, 71]}, "Luke Ballentine": {"display": true, "gender": "male", "grade": 9, "group": "boiling springs", "position": [25, 89, 11, 52, 28]}, "Reilly Gettle": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [63, 81, 51, 98, 65]}, "Morgan Chamberlin": {"display": true, "gender": "male", "grade": 9, "group": "boiling springs", "position": [41, 81, 30, 89, 65]}, "Laura Ellwood": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [95, 87, 40, 18, 40]}, "Rebecca Ward-Diorio": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [67, 43, 62, 67, 40]}, "Abby Ference": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [88, 66, 17, 26, 93]}, "Maddi Grimm": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [16, 30, 56, 84, 65]}, "Eric Geesaman": {"display": true, "gender": "male", "grade": 9, "group": "boiling springs", "position": [45, 78, 67, 62, 18]}, "Kaytlin Black": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [96, 78, 45, 95, 59]}, "Nicholas Dell": {"display": true, "gender": "male", "grade": 10, "group": "boiling springs", "position": [6, 19, 1, 9, 18]}, "Savannah Vance": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [93, 3, 83, 3, 93]}, "Autumn Karper": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [96, 11, 56, 26, 28]}, "Ryan Neil": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [74, 62, 62, 12, 59]}, "Trevor Mastergeorge": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [67, 67, 21, 9, 52]}, "Dayne Greys": {"display": true, "gender": "male", "grade": 10, "group": "boiling springs", "position": [93, 74, 9, 52, 34]}, "Brady Swindler": {"display": true, "gender": "male", "grade": 12, "group": "boiling springs", "position": [45, 84, 7, 72, 59]}, "Jada Barber": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [9, 22, 77, 26, 0]}, "Matt Otto": {"display": true, "gender": "male", "grade": 9, "group": "boiling springs", "position": [19, 48, 0, 72, 65]}, "Lyndsey Turner": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [37, 43, 89, 80, 46]}, "Rachel McGinnis": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [81, 60, 50, 64, 73]}, "Sam Niles": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [81, 62, 51, 41, 40]}, "Drew Boley": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [70, 30, 30, 22, 6]}, "Alexander Torkeo": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [45, 7, 40, 36, 52]}, "Jessica Kole": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [1, 57, 62, 92, 23]}, "Lydia Vorodi": {"display": true, "gender": "female", "grade": 9, "group": "boiling springs", "position": [45, 50, 51, 59, 80]}, "Chris Castle": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [63, 9, 40, 52, 52]}, "Evan Thompson": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [29, 99, 2, 2, 1]}, "Devon Greenwood": {"display": true, "gender": "male", "grade": 12, "group": "boiling springs", "position": [50, 65, 75, 95, 90]}, "Elaina Clancy": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [74, 74, 89, 62, 34]}, "Joshua Freedman": {"display": true, "gender": "male", "grade": 13, "group": "internet", "position": [9, 70, 62, 67, 91]}, "Caitlyn Dague": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [50, 78, 45, 52, 40]}, "Caleb Deustch": {"display": true, "gender": "male", "grade": 12, "group": "boiling springs", "position": [100, 35, 84, 62, 90]}, "Gwen Scott": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [29, 2, 80, 15, 28]}, "Garret Asper": {"display": true, "gender": "male", "grade": 9, "group": "boiling springs", "position": [45, 52, 83, 80, 40]}, "Keenan McClain": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [88, 30, 45, 84, 80]}, "Jonathan Cook": {"display": true, "gender": "male", "grade": 12, "group": "boiling springs", "position": [1, 13, 0, 67, 8]}, "Ashlyn Booher": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [92, 66, 45, 46, 52]}, "Jack Still": {"display": true, "gender": "male", "grade": 10, "group": "boiling springs", "position": [11, 62, 80, 92, 80]}, "Josh Larkin": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [58, 66, 35, 52, 11]}, "Hannah Fronk": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [83, 52, 62, 52, 8]}, "Chelsea Bickle": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [95, 63, 51, 15, 34]}, "Riley McCardell": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [50, 52, 14, 31, 8]}, "Michael Brant": {"display": true, "gender": "male", "grade": 10, "group": "boiling springs", "position": [45, 95, 76, 18, 23]}, "Lauren Draper": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [22, 43, 17, 80, 14]}, "Sierra Harvey": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [46, 25, 52, 77, 38]}, "Levi Potteiger": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [33, 30, 4, 22, 46]}, "Ali Baker": {"display": true, "gender": "female", "grade": 9, "group": "boiling springs", "position": [58, 52, 2, 62, 52]}, "Logan Baker": {"display": true, "gender": "male", "grade": 12, "group": "boiling springs", "position": [16, 87, 51, 72, 76]}, "Callie Garcia": {"display": true, "gender": "female", "grade": 12, "group": "boiling springs", "position": [74, 43, 76, 12, 40]}, "Paige Bond": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [88, 95, 67, 52, 52]}, "Kylor Figueroa": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [67, 13, 21, 36, 0]}, "Blake Yingst": {"display": true, "gender": "male", "grade": 11, "group": "cv", "position": [70, 50, 65, 100, 100]}, "mmm lll": {"display": false, "gender": "male", "grade": 13, "group": "internet", "position": [95, 78, 87, 4, 88]}, "Noah Howie": {"display": true, "gender": "male", "grade": 12, "group": "boiling springs", "position": [90, 74, 62, 41, 76]}, "Kayla Lohman": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [33, 43, 56, 26, 14]}, "Samuel Pittenger": {"display": true, "gender": "male", "grade": 10, "group": "boiling springs", "position": [81, 97, 91, 62, 80]}, "Jacob Landwehr": {"display": true, "gender": "male", "grade": 12, "group": "boiling springs", "position": [65, 45, 50, 90, 75]}, "Liam Slaybaugh": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [88, 74, 35, 9, 59]}, "Katie Ridenour": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [54, 57, 45, 84, 11]}, "Erin Gilbert": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [98, 48, 95, 41, 46]}, "Olivia Wagner": {"display": true, "gender": "female", "grade": 10, "group": "big springs", "position": [93, 78, 35, 76, 6]}, "Patrik Bohn": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [41, 22, 93, 52, 91]}, "Kevin Ballentine": {"display": true, "gender": "male", "grade": 12, "group": "boiling springs", "position": [67, 96, 80, 62, 59]}, "Devon Taylor": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [67, 57, 62, 72, 40]}, "Emily Green": {"display": true, "gender": "female", "grade": 12, "group": "boiling springs", "position": [81, 57, 9, 15, 11]}, "Elias Hough": {"display": true, "gender": "male", "grade": 9, "group": "boiling springs", "position": [2, 39, 45, 4, 76]}, "Madison Francisco": {"display": true, "gender": "female", "grade": 12, "group": "boiling springs", "position": [29, 13, 56, 52, 46]}, "Ash Iwanowicz": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [50, 94, 1, 9, 14]}, "Lily Reighard": {"display": true, "gender": "female", "grade": 9, "group": "boiling springs", "position": [76, 27, 19, 44, 84]}, "Brianna Metzger": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [67, 48, 67, 76, 11]}, "Sam Wetzel": {"display": true, "gender": "male", "grade": 12, "group": "boiling springs", "position": [58, 66, 71, 15, 40]}, "Miranda Chaplinski": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [100, 60, 69, 69, 69]}, "Savannah Harvey": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [93, 81, 93, 84, 70]}, "Nicole Troutman": {"display": true, "gender": "female", "grade": 12, "group": "boiling springs", "position": [88, 52, 9, 36, 14]}, "Emily Ramond": {"display": true, "gender": "female", "grade": 11, "group": "carlisle", "position": [50, 70, 65, 95, 100]}, "Claire Chicchi": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [74, 34, 35, 26, 88]}, "Hunter Wilson": {"display": true, "gender": "male", "grade": 10, "group": "boiling springs", "position": [67, 87, 45, 46, 28]}, "Dalton Fink": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [22, 78, 56, 41, 4]}, "Trevor Eckrich": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [93, 91, 45, 62, 28]}, "Emily Lyons": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [78, 32, 56, 12, 40]}, "Gwyn Forster": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [33, 74, 76, 41, 2]}, "Ryan Fisher": {"display": true, "gender": "male", "grade": 12, "group": "boiling springs", "position": [54, 89, 91, 36, 95]}, "Ellie Blanchard": {"display": true, "gender": "female", "grade": 9, "group": "boiling springs", "position": [75, 60, 35, 80, 80]}, "Jordan Morret": {"display": true, "gender": "male", "grade": 10, "group": "boiling springs", "position": [90, 13, 45, 12, 65]}, "Neil Thomas": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [78, 74, 56, 26, 70]}, "Lily Ward-Diorio": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [25, 35, 70, 70, 90]}, "Alexander Pennington": {"display": true, "gender": "male", "grade": 9, "group": "boiling springs", "position": [33, 97, 3, 26, 6]}, "Owen Engle": {"display": true, "gender": "male", "grade": 10, "group": "boiling springs", "position": [45, 26, 5, 7, 76]}, "Camden Kronz-Salviano": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [90, 39, 35, 52, 18]}, "Jess Noll": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [54, 16, 25, 26, 52]}, "Garrett Myers": {"display": true, "gender": "male", "grade": 12, "group": "boiling springs", "position": [41, 81, 80, 46, 84]}, "Janel Hicks": {"display": true, "gender": "female", "grade": 12, "group": "boiling springs", "position": [96, 43, 83, 67, 18]}, "Carleen Jedlowski": {"display": true, "gender": "female", "grade": 12, "group": "boiling springs", "position": [63, 74, 76, 36, 52]}, "Caroline Klunk": {"display": true, "gender": "female", "grade": 9, "group": "boiling springs", "position": [9, 30, 53, 67, 81]}, "Anthony Dellinger": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [66, 33, 2, 9, 59]}, "Jacob Rob": {"display": true, "gender": "male", "grade": 12, "group": "boiling springs", "position": [86, 62, 80, 62, 95]}, "Steph Szabo": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [63, 52, 62, 22, 14]}, "Jessica Ryan": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [86, 19, 71, 26, 6]}, "Amara Halvorson": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [3, 22, 21, 52, 8]}, "Christy Barrick": {"display": true, "gender": "female", "grade": 11, "group": "cv", "position": [41, 39, 35, 1, 1]}, "Joe Lynch": {"display": true, "gender": "male", "grade": 9, "group": "boiling springs", "position": [78, 75, 38, 72, 72]}, "Jake Otto": {"display": true, "gender": "male", "grade": 12, "group": "boiling springs", "position": [45, 48, 14, 54, 95]}, "Emily Leinheiser": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [37, 89, 62, 54, 18]}, "Matt Cawley": {"display": true, "gender": "male", "grade": 12, "group": "boiling springs", "position": [2, 26, 9, 2, 28]}, "Noah Rohrbaugh": {"display": true, "gender": "male", "grade": 12, "group": "boiling springs", "position": [58, 84, 25, 41, 12]}, "Zach Martin": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [81, 84, 56, 52, 40]}, "Ben Papa": {"display": true, "gender": "male", "grade": 10, "group": "boiling springs", "position": [33, 57, 62, 93, 65]}, "Kenleigh Mowe": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [19, 3, 0, 5, 18]}, "Caleb Lawrence": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [3, 62, 5, 15, 0]}, "Jimmy Wolfe": {"display": true, "gender": "male", "grade": 12, "group": "boiling springs", "position": [67, 57, 4, 62, 11]}, "Jada Hambrook": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [81, 78, 62, 87, 23]}, "Marta Nguyen": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [70, 59, 17, 31, 8]}, "Madalyn Navarro": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [74, 22, 14, 62, 18]}, "Alex Palmer": {"display": true, "gender": "male", "grade": 10, "group": "boiling springs", "position": [45, 39, 2, 92, 3]}, "Abbie Erme": {"display": true, "gender": "female", "grade": 9, "group": "boiling springs", "position": [65, 40, 85, 30, 60]}, "Evan Gillwood": {"display": true, "gender": "male", "grade": 11, "group": "boiling springs", "position": [22, 30, 17, 22, 70]}, "Molly McNeal": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [81, 52, 76, 96, 76]}, "Laura Cole": {"display": true, "gender": "female", "grade": 10, "group": "boiling springs", "position": [33, 74, 0, 62, 84]}, "Miah Deustch": {"display": true, "gender": "female", "grade": 11, "group": "boiling springs", "position": [81, 52, 83, 89, 23]}, "John Davis": {"display": true, "gender": "male", "grade": 10, "group": "boiling springs", "position": [33, 5, 0, 57, 88]}}
+{
+  "Jacob Landwehr": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      65,
+      45,
+      50,
+      90,
+      75
+    ],
+    "gender": "male"
+  },
+  "Blake Yingst": {
+    "display": true,
+    "grade": 11,
+    "group": "cv",
+    "position": [
+      70,
+      50,
+      65,
+      100,
+      100
+    ],
+    "gender": "male"
+  },
+  "Alexander Pennington": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      33,
+      97,
+      3,
+      26,
+      6
+    ],
+    "gender": "male"
+  },
+  "Brenden Mark": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      92,
+      89,
+      35,
+      57,
+      71
+    ],
+    "gender": "male"
+  },
+  "Adam Berk": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      95,
+      89,
+      89,
+      97,
+      66
+    ],
+    "gender": "male"
+  },
+  "Evan Gillwood": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      22,
+      30,
+      17,
+      22,
+      70
+    ],
+    "gender": "male"
+  },
+  "Hannah Lockhart": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      7,
+      48,
+      83,
+      87,
+      96
+    ],
+    "gender": "female"
+  },
+  "Liam Mummert": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      13,
+      66,
+      76,
+      95,
+      70
+    ],
+    "gender": "male"
+  },
+  "Jada Hambrook": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      81,
+      78,
+      62,
+      87,
+      23
+    ],
+    "gender": "female"
+  },
+  "Ben Cook": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      41,
+      78,
+      40,
+      96,
+      88
+    ],
+    "gender": "male"
+  },
+  "Savannah Harvey": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      93,
+      81,
+      93,
+      84,
+      70
+    ],
+    "gender": "female"
+  },
+  "Caleb Deustch": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      100,
+      35,
+      84,
+      62,
+      90
+    ],
+    "gender": "male"
+  },
+  "Liam Slaybaugh": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      88,
+      74,
+      35,
+      9,
+      59
+    ],
+    "gender": "male"
+  },
+  "Jonathan Cook": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      1,
+      13,
+      0,
+      67,
+      8
+    ],
+    "gender": "male"
+  },
+  "Zach Martin": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      81,
+      84,
+      56,
+      52,
+      40
+    ],
+    "gender": "male"
+  },
+  "Alex Pederson": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      78,
+      74,
+      40,
+      57,
+      80
+    ],
+    "gender": "male"
+  },
+  "Katie Ridenour": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      54,
+      57,
+      45,
+      84,
+      11
+    ],
+    "gender": "female"
+  },
+  "Connor Burrowes": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      63,
+      74,
+      30,
+      48,
+      14
+    ],
+    "gender": "male"
+  },
+  "Caitlyn Dague": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      50,
+      78,
+      45,
+      52,
+      40
+    ],
+    "gender": "female"
+  },
+  "Jordan Morret": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      90,
+      13,
+      45,
+      12,
+      65
+    ],
+    "gender": "male"
+  },
+  "Zach Orris": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      65,
+      60,
+      80,
+      75,
+      90
+    ],
+    "gender": "male"
+  },
+  "Abby Ference": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      88,
+      66,
+      17,
+      26,
+      93
+    ],
+    "gender": "female"
+  },
+  "Brady Swindler": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      45,
+      84,
+      7,
+      72,
+      59
+    ],
+    "gender": "male"
+  },
+  "Matt Otto": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      19,
+      48,
+      0,
+      72,
+      65
+    ],
+    "gender": "male"
+  },
+  "Devon Taylor": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      67,
+      57,
+      62,
+      72,
+      40
+    ],
+    "gender": "female"
+  },
+  "Abby Samella": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      27,
+      40,
+      80,
+      56,
+      63
+    ],
+    "gender": "female"
+  },
+  "Garrett Myers": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      41,
+      81,
+      80,
+      46,
+      84
+    ],
+    "gender": "male"
+  },
+  "Jack Still": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      11,
+      62,
+      80,
+      92,
+      80
+    ],
+    "gender": "male"
+  },
+  "Slater Ward-Diorio": {
+    "grade": 12,
+    "display": true,
+    "gender": "male",
+    "position": [
+      81,
+      66,
+      89,
+      46,
+      80
+    ],
+    "group": "boiling springs"
+  },
+  "Miah Deustch": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      81,
+      52,
+      83,
+      89,
+      23
+    ],
+    "gender": "female"
+  },
+  "Ryan Mahoney": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      50,
+      5,
+      51,
+      36,
+      46
+    ],
+    "gender": "male"
+  },
+  "Autumn Karper": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      96,
+      11,
+      56,
+      26,
+      28
+    ],
+    "gender": "female"
+  },
+  "Sierra Harvey": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      46,
+      25,
+      52,
+      77,
+      38
+    ],
+    "gender": "female"
+  },
+  "Laura Cole": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      33,
+      74,
+      0,
+      62,
+      84
+    ],
+    "gender": "female"
+  },
+  "Nick Obrien": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      19,
+      57,
+      14,
+      57,
+      40
+    ],
+    "gender": "male"
+  },
+  "Noah Rohrbaugh": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      58,
+      84,
+      25,
+      41,
+      12
+    ],
+    "gender": "male"
+  },
+  "Emily Lyons": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      78,
+      32,
+      56,
+      12,
+      40
+    ],
+    "gender": "female"
+  },
+  "Emily Green": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      81,
+      57,
+      9,
+      15,
+      11
+    ],
+    "gender": "female"
+  },
+  "Lily Ward-Diorio": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      25,
+      35,
+      70,
+      70,
+      90
+    ],
+    "gender": "female"
+  },
+  "Molly McNeal": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      81,
+      52,
+      76,
+      96,
+      76
+    ],
+    "gender": "female"
+  },
+  "Hannah Fronk": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      83,
+      52,
+      62,
+      52,
+      8
+    ],
+    "gender": "female"
+  },
+  "Ali Baker": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      58,
+      52,
+      2,
+      62,
+      52
+    ],
+    "gender": "female"
+  },
+  "Rebecca Ward-Diorio": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      67,
+      43,
+      62,
+      67,
+      40
+    ],
+    "gender": "female"
+  },
+  "Julia Fulton": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      91,
+      16,
+      64,
+      72,
+      81
+    ],
+    "gender": "female"
+  },
+  "Laura Ellwood": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      95,
+      87,
+      40,
+      18,
+      40
+    ],
+    "gender": "female"
+  },
+  "Mackenzie Morret": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      41,
+      26,
+      62,
+      76,
+      1
+    ],
+    "gender": "female"
+  },
+  "Kylor Figueroa": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      67,
+      13,
+      21,
+      36,
+      0
+    ],
+    "gender": "male"
+  },
+  "Jess Noll": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      54,
+      16,
+      25,
+      26,
+      52
+    ],
+    "gender": "female"
+  },
+  "Alex Palmer": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      45,
+      39,
+      2,
+      92,
+      3
+    ],
+    "gender": "male"
+  },
+  "Melanie Searle": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      92,
+      93,
+      89,
+      87,
+      76
+    ],
+    "gender": "female"
+  },
+  "Ashlyn Booher": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      92,
+      66,
+      45,
+      46,
+      52
+    ],
+    "gender": "female"
+  },
+  "Megan Landwehr": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      70,
+      40,
+      50,
+      50,
+      70
+    ],
+    "gender": "female"
+  },
+  "Abbie Erme": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      65,
+      40,
+      85,
+      30,
+      60
+    ],
+    "gender": "female"
+  },
+  "Caitlyn Byerly": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      63,
+      89,
+      22,
+      36,
+      3
+    ],
+    "gender": "female"
+  },
+  "Sydney Hemler": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      74,
+      62,
+      58,
+      79,
+      73
+    ],
+    "gender": "female"
+  },
+  "Devon Greenwood": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      50,
+      65,
+      75,
+      95,
+      90
+    ],
+    "gender": "male"
+  },
+  "Patrik Bohn": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      41,
+      22,
+      93,
+      52,
+      91
+    ],
+    "gender": "male"
+  },
+  "Owen Engle": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      45,
+      26,
+      5,
+      7,
+      76
+    ],
+    "gender": "male"
+  },
+  "Ellie Blanchard": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      75,
+      60,
+      35,
+      80,
+      80
+    ],
+    "gender": "female"
+  },
+  "Evan Miller": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      7,
+      57,
+      5,
+      62,
+      46
+    ],
+    "gender": "male"
+  },
+  "Keenan McClain": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      88,
+      30,
+      45,
+      84,
+      80
+    ],
+    "gender": "male"
+  },
+  "Matt Cawley": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      2,
+      26,
+      9,
+      2,
+      28
+    ],
+    "gender": "male"
+  },
+  "Ash Iwanowicz": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      50,
+      94,
+      1,
+      9,
+      14
+    ],
+    "gender": "female"
+  },
+  "Kevin Ballentine": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      67,
+      96,
+      80,
+      62,
+      59
+    ],
+    "gender": "male"
+  },
+  "Marta Nguyen": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      70,
+      59,
+      17,
+      31,
+      8
+    ],
+    "gender": "female"
+  },
+  "Madalyn Navarro": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      74,
+      22,
+      14,
+      62,
+      18
+    ],
+    "gender": "female"
+  },
+  "Nicholas Adams": {
+    "display": true,
+    "grade": 11,
+    "group": "carlisle",
+    "position": [
+      58,
+      95,
+      4,
+      15,
+      23
+    ],
+    "gender": "male"
+  },
+  "Morgan Chamberlin": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      41,
+      81,
+      30,
+      89,
+      65
+    ],
+    "gender": "male"
+  },
+  "Dalton Fink": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      22,
+      78,
+      56,
+      41,
+      4
+    ],
+    "gender": "male"
+  },
+  "Michael Brant": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      45,
+      95,
+      76,
+      18,
+      23
+    ],
+    "gender": "male"
+  },
+  "Sam Niles": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      81,
+      62,
+      51,
+      41,
+      40
+    ],
+    "gender": "male"
+  },
+  "Sam Wetzel": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      58,
+      66,
+      71,
+      15,
+      40
+    ],
+    "gender": "male"
+  },
+  "Brittany Graham": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      93,
+      66,
+      89,
+      36,
+      34
+    ],
+    "gender": "female"
+  },
+  "Nicholas Dell": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      6,
+      19,
+      1,
+      9,
+      18
+    ],
+    "gender": "male"
+  },
+  "Steph Szabo": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      63,
+      52,
+      62,
+      22,
+      14
+    ],
+    "gender": "female"
+  },
+  "Avery Lamason": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      13,
+      13,
+      25,
+      46,
+      6
+    ],
+    "gender": "female"
+  },
+  "Amara Halvorson": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      3,
+      22,
+      21,
+      52,
+      8
+    ],
+    "gender": "female"
+  },
+  "Janel Hicks": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      96,
+      43,
+      83,
+      67,
+      18
+    ],
+    "gender": "female"
+  },
+  "Camden Kronz-Salviano": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      90,
+      39,
+      35,
+      52,
+      18
+    ],
+    "gender": "male"
+  },
+  "Caroline Klunk": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      9,
+      30,
+      53,
+      67,
+      81
+    ],
+    "gender": "female"
+  },
+  "Brianna Metzger": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      67,
+      48,
+      67,
+      76,
+      11
+    ],
+    "gender": "female"
+  },
+  "Joe Lynch": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      78,
+      75,
+      38,
+      72,
+      72
+    ],
+    "gender": "male"
+  },
+  "Carleen Jedlowski": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      63,
+      74,
+      76,
+      36,
+      52
+    ],
+    "gender": "female"
+  },
+  "Rachel Gobin": {
+    "display": true,
+    "grade": 11,
+    "group": "carlisle",
+    "position": [
+      45,
+      70,
+      51,
+      72,
+      40
+    ],
+    "gender": "female"
+  },
+  "Miranda Chaplinski": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      100,
+      60,
+      69,
+      69,
+      69
+    ],
+    "gender": "female"
+  },
+  "Maddi Grimm": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      16,
+      30,
+      56,
+      84,
+      65
+    ],
+    "gender": "female"
+  },
+  "Lily Reighard": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      76,
+      27,
+      19,
+      44,
+      84
+    ],
+    "gender": "female"
+  },
+  "Kayla Lohman": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      33,
+      43,
+      56,
+      26,
+      14
+    ],
+    "gender": "female"
+  },
+  "Matthew Blanchard": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      92,
+      39,
+      45,
+      12,
+      76
+    ],
+    "gender": "male"
+  },
+  "John Davis": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      33,
+      5,
+      0,
+      57,
+      88
+    ],
+    "gender": "male"
+  },
+  "Jake Otto": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      45,
+      48,
+      14,
+      54,
+      95
+    ],
+    "gender": "male"
+  },
+  "Trevor Eckrich": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      93,
+      91,
+      45,
+      62,
+      28
+    ],
+    "gender": "male"
+  },
+  "Chris Castle": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      63,
+      9,
+      40,
+      52,
+      52
+    ],
+    "gender": "male"
+  },
+  "Ryan Neil": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      74,
+      62,
+      62,
+      12,
+      59
+    ],
+    "gender": "male"
+  },
+  "Emily Leinheiser": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      37,
+      89,
+      62,
+      54,
+      18
+    ],
+    "gender": "female"
+  },
+  "Samuel Pittenger": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      81,
+      97,
+      91,
+      62,
+      80
+    ],
+    "gender": "male"
+  },
+  "Ryan Fisher": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      54,
+      89,
+      91,
+      36,
+      95
+    ],
+    "gender": "male"
+  },
+  "Evan Thompson": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      29,
+      99,
+      2,
+      2,
+      1
+    ],
+    "gender": "male"
+  },
+  "Andrew Gibelius": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      80,
+      70,
+      65,
+      74,
+      89
+    ],
+    "gender": "male"
+  },
+  "Joshua Freedman": {
+    "display": true,
+    "grade": 13,
+    "group": "internet",
+    "position": [
+      9,
+      70,
+      62,
+      67,
+      91
+    ],
+    "gender": "male"
+  },
+  "Rachel McGinnis": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      81,
+      60,
+      50,
+      64,
+      73
+    ],
+    "gender": "female"
+  },
+  "Gwen Scott": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      29,
+      2,
+      80,
+      15,
+      28
+    ],
+    "gender": "female"
+  },
+  "Christy Barrick": {
+    "display": true,
+    "grade": 11,
+    "group": "cv",
+    "position": [
+      41,
+      39,
+      35,
+      1,
+      1
+    ],
+    "gender": "female"
+  },
+  "Olivia Wagner": {
+    "display": true,
+    "grade": 10,
+    "group": "big springs",
+    "position": [
+      93,
+      78,
+      35,
+      76,
+      6
+    ],
+    "gender": "female"
+  },
+  "Paige Bond": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      88,
+      95,
+      67,
+      52,
+      52
+    ],
+    "gender": "female"
+  },
+  "Noah Howie": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      90,
+      74,
+      62,
+      41,
+      76
+    ],
+    "gender": "male"
+  },
+  "Gwyn Forster": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      33,
+      74,
+      76,
+      41,
+      2
+    ],
+    "gender": "female"
+  },
+  "Madison Francisco": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      29,
+      13,
+      56,
+      52,
+      46
+    ],
+    "gender": "female"
+  },
+  "Callie Garcia": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      74,
+      43,
+      76,
+      12,
+      40
+    ],
+    "gender": "female"
+  },
+  "Nicole Troutman": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      88,
+      52,
+      9,
+      36,
+      14
+    ],
+    "gender": "female"
+  },
+  "Hunter Wilson": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      67,
+      87,
+      45,
+      46,
+      28
+    ],
+    "gender": "male"
+  },
+  "Savannah Vance": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      93,
+      3,
+      83,
+      3,
+      93
+    ],
+    "gender": "female"
+  },
+  "Logan Baker": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      16,
+      87,
+      51,
+      72,
+      76
+    ],
+    "gender": "male"
+  },
+  "Abby Ridenour": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      22,
+      48,
+      35,
+      76,
+      1
+    ],
+    "gender": "female"
+  },
+  "Trevor Mastergeorge": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      67,
+      67,
+      21,
+      9,
+      52
+    ],
+    "gender": "male"
+  },
+  "Jessica Ryan": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      86,
+      19,
+      71,
+      26,
+      6
+    ],
+    "gender": "female"
+  },
+  "Claire Chicchi": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      74,
+      34,
+      35,
+      26,
+      88
+    ],
+    "gender": "female"
+  },
+  "Dayne Greys": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      93,
+      74,
+      9,
+      52,
+      34
+    ],
+    "gender": "male"
+  },
+  "Elaina Clancy": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      74,
+      74,
+      89,
+      62,
+      34
+    ],
+    "gender": "female"
+  },
+  "Garret Asper": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      45,
+      52,
+      83,
+      80,
+      40
+    ],
+    "gender": "male"
+  },
+  "Adam Dieck": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      3,
+      52,
+      7,
+      57,
+      95
+    ],
+    "gender": "male"
+  },
+  "Caleb Lawrence": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      3,
+      62,
+      5,
+      15,
+      0
+    ],
+    "gender": "male"
+  },
+  "Robert Goril": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      33,
+      22,
+      21,
+      52,
+      23
+    ],
+    "gender": "male"
+  },
+  "Lydia Vorodi": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      45,
+      50,
+      51,
+      59,
+      80
+    ],
+    "gender": "female"
+  },
+  "Jacob Rob": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      86,
+      62,
+      80,
+      62,
+      95
+    ],
+    "gender": "male"
+  },
+  "Luke Ballentine": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      25,
+      89,
+      11,
+      52,
+      28
+    ],
+    "gender": "male"
+  },
+  "Levi Potteiger": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      33,
+      30,
+      4,
+      22,
+      46
+    ],
+    "gender": "male"
+  },
+  "Erin Gilbert": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      98,
+      48,
+      95,
+      41,
+      46
+    ],
+    "gender": "female"
+  },
+  "Lauren Draper": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      22,
+      43,
+      17,
+      80,
+      14
+    ],
+    "gender": "female"
+  },
+  "Lyndsey Turner": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      37,
+      43,
+      89,
+      80,
+      46
+    ],
+    "gender": "female"
+  },
+  "Liam Aro": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      88,
+      89,
+      67,
+      2,
+      18
+    ],
+    "gender": "male"
+  },
+  "Hannah Richardson": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      86,
+      38,
+      59,
+      69,
+      73
+    ],
+    "gender": "female"
+  },
+  "Maddie Taylor": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      85,
+      16,
+      70,
+      67,
+      82
+    ],
+    "gender": "female"
+  },
+  "Hailey Martin": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      88,
+      66,
+      62,
+      72,
+      46
+    ],
+    "gender": "female"
+  },
+  "Jessica Kole": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      1,
+      57,
+      62,
+      92,
+      23
+    ],
+    "gender": "female"
+  },
+  "Chelsea Bickle": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      95,
+      63,
+      51,
+      15,
+      34
+    ],
+    "gender": "female"
+  },
+  "Emily Ramond": {
+    "display": true,
+    "grade": 11,
+    "group": "carlisle",
+    "position": [
+      50,
+      70,
+      65,
+      95,
+      100
+    ],
+    "gender": "female"
+  },
+  "Alexander Torkeo": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      45,
+      7,
+      40,
+      36,
+      52
+    ],
+    "gender": "male"
+  },
+  "Ben Cole": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      85,
+      75,
+      90,
+      70,
+      75
+    ],
+    "gender": "male"
+  },
+  "Elias Hough": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      2,
+      39,
+      45,
+      4,
+      76
+    ],
+    "gender": "male"
+  },
+  "Peyton Smiley": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      96,
+      62,
+      83,
+      67,
+      70
+    ],
+    "gender": "male"
+  },
+  "Kenleigh Mowe": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      19,
+      3,
+      0,
+      5,
+      18
+    ],
+    "gender": "female"
+  },
+  "Jimmy Wolfe": {
+    "display": true,
+    "grade": 12,
+    "group": "boiling springs",
+    "position": [
+      67,
+      57,
+      4,
+      62,
+      11
+    ],
+    "gender": "male"
+  },
+  "Cameron Howard": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      78,
+      97,
+      4,
+      89,
+      40
+    ],
+    "gender": "male"
+  },
+  "Jada Barber": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      9,
+      22,
+      77,
+      26,
+      0
+    ],
+    "gender": "female"
+  },
+  "Eric Geesaman": {
+    "display": true,
+    "grade": 9,
+    "group": "boiling springs",
+    "position": [
+      45,
+      78,
+      67,
+      62,
+      18
+    ],
+    "gender": "male"
+  },
+  "Neil Thomas": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      78,
+      74,
+      56,
+      26,
+      70
+    ],
+    "gender": "male"
+  },
+  "Anthony Dellinger": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      66,
+      33,
+      2,
+      9,
+      59
+    ],
+    "gender": "male"
+  },
+  "Kaytlin Black": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      96,
+      78,
+      45,
+      95,
+      59
+    ],
+    "gender": "female"
+  },
+  "Reilly Gettle": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      63,
+      81,
+      51,
+      98,
+      65
+    ],
+    "gender": "male"
+  },
+  "Riley McCardell": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      50,
+      52,
+      14,
+      31,
+      8
+    ],
+    "gender": "female"
+  },
+  "Josh Larkin": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      58,
+      66,
+      35,
+      52,
+      11
+    ],
+    "gender": "male"
+  },
+  "Ben Papa": {
+    "display": true,
+    "grade": 10,
+    "group": "boiling springs",
+    "position": [
+      33,
+      57,
+      62,
+      93,
+      65
+    ],
+    "gender": "male"
+  },
+  "mmm lll": {
+    "display": false,
+    "grade": 13,
+    "group": "internet",
+    "position": [
+      95,
+      78,
+      87,
+      4,
+      88
+    ],
+    "gender": "male"
+  },
+  "Drew Boley": {
+    "display": true,
+    "grade": 11,
+    "group": "boiling springs",
+    "position": [
+      70,
+      30,
+      30,
+      22,
+      6
+    ],
+    "gender": "male"
+  }
+}

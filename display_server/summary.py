@@ -31,9 +31,37 @@ def display(othername, index, l, people, name, people_in_relationships):
             color = "black"
         else:
             color = "red"
-    return '<tr class="' + " ".join(tr_class) + '"><td>' + str(index + 1) + '</td><td class="' + color + '">' + make_link(
+    return '<tr class="' + " ".join(tr_class) + '"><td>' + str(
+        index + 1) + '</td><td class="' + color + '">' + make_link(
         othername[0]) + '</td><td>' + str(
         round(othername[1], 2)) + "</td></tr>"
+
+
+#note that remove_creepy_age_gap and is_okay are implemented in data.make, but relative python imports are annoying,
+#so I'm violating DRY right here
+def remove_creepy_age_gap(name, dist_list, people_raw):
+    new_list = []
+    grade = people_raw[name]["grade"]
+    for otherperson in dist_list:
+        if is_okay(grade, people_raw[otherperson[0]]["grade"]):
+            new_list.append(otherperson)
+    return new_list
+
+
+def is_okay(grade1, grade2):
+    if grade1 == 9:
+        okay_list = [9, 10]
+    if grade1 == 10:
+        okay_list = [9, 10, 11, 12]
+    if grade1 == 11:
+        okay_list = [10, 11, 12]
+    if grade1 == 12:
+        okay_list = [10, 11, 12, 13]
+    if grade1 == 13:
+        okay_list = [12, 13]
+    if grade1 == 14:
+        okay_list = [14]
+    return grade2 in okay_list
 
 
 def make_block(maps, name):
@@ -57,6 +85,10 @@ def make_block(maps, name):
         message = "Not enough people, sorry"
     output += "<h2>" + message + "</h2>"
 
+    # we need to remove freshmen from seniors, etc
+    places = remove_creepy_age_gap(name, places, maps["people_raw"])
+    good_map = remove_creepy_age_gap(name, maps["map"][name], maps["people_raw"])
+
     output += "<div class='group'><p>Where you are ranked for other people: </p> "
     output += "<table class='your-place'>"
     for i, person in enumerate(places):
@@ -65,8 +97,8 @@ def make_block(maps, name):
 
     output += "<div class='group'><p>Best matches for you: </p>"
     output += "<table class='best-matches'>"
-    for i, othername in enumerate(maps["map"][name]):
-        output += display(othername, i, len(maps["map"][name]), maps["people_raw"], name, maps["people_in_relationships"])
+    for i, othername in enumerate(good_map):
+        output += display(othername, i, len(good_map), maps["people_raw"], name, maps["people_in_relationships"])
     output += "</table></div>"
 
     output += "</div>"

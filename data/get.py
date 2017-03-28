@@ -73,6 +73,7 @@ def couples_list():
         cache["couples_list"] = l
         return l
 
+
 def couples_pairs():
     if "couples_pairs" in cache:
         return cache["couples_pairs"]
@@ -83,3 +84,5 @@ def couples_pairs():
             pairs[couple["female"]] = couple["male"]
         cache["couples_pairs"] = pairs
         return pairs
+
+
