@@ -7,7 +7,6 @@ def val(*, people_pre, couples_raw_pre, couples_xy_pre, alg_gen, maps_post):
     people_raw = data.get.people_raw()
     for processor in people_pre:
         people_raw = processor.transform(people_raw)
-    people_backup = copy.deepcopy(people_raw)
 
     couples_raw = data.get.couples_raw()
 
@@ -22,7 +21,6 @@ def val(*, people_pre, couples_raw_pre, couples_xy_pre, alg_gen, maps_post):
 
         for i, couple in enumerate(couples_raw):
             new_couples = copy.deepcopy(couples_raw)
-            people_raw = copy.deepcopy(people_backup)
             del new_couples[i]
 
             for processor in couples_raw_pre:

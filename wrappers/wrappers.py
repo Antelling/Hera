@@ -99,7 +99,8 @@ class KerasWrapper(object):
         model_to_use = self.trained_models[0 if person["gender"] is "male" else 1]
         position = person["position"]
         position = np.array([position])
-        soulmate = model_to_use.predict(position)[0].tolist()
+        soulmate = model_to_use.predict(position).tolist()[0]
+        position = position.tolist()[0]
         if self.scale_importance:
             importance = vector_math.make_relative_importance(position, soulmate)
         else:
