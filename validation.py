@@ -1,5 +1,6 @@
 import validator, algs, preprocessing, postprocessing, sys, colors
 
+
 data_pre_options = [[preprocessing.people.Standard(), preprocessing.people.Erf()]]
 couples_raw_pre_options = [
     [],
@@ -7,8 +8,8 @@ couples_raw_pre_options = [
         preprocessing.couples_raw.Mirror()
     ],
     [preprocessing.couples_raw.Time_mod()],
-    [preprocessing.couples_raw.Time_mod(mod=lambda x:x*x)],
-    [preprocessing.couples_raw.Time_mod(mod=lambda x:x)],
+    [preprocessing.couples_raw.Time_mod(mod=lambda x: x * x)],
+    [preprocessing.couples_raw.Time_mod(mod=lambda x: x)],
     [
         preprocessing.couples_raw.Mirror(),
         preprocessing.couples_raw.Time_mod()

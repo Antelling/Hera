@@ -18,7 +18,7 @@ Note that the "soulmate" format is not just a 5 dimensional position, it is a tw
 
 import numpy as np
 from sklearn.base import clone
-import vector_math
+import vector_math, colors
 
 
 class SklearnWrapper(object):
@@ -53,6 +53,7 @@ class SklearnWrapper(object):
         self.trained_models = [male_models, female_models]
 
     def predict(self, people):
+        colors.green("predict")
         return list(map(self.predict_for_single_point, people))
 
     def predict_for_single_point(self, person):

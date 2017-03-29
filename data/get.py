@@ -4,7 +4,7 @@ of items, but only when those items are needed. If a certain function is never c
 never be loaded.
 """
 
-import json, os
+import json, os, copy
 from . import make
 
 file_path = os.path.dirname(os.path.realpath(__file__))
@@ -20,10 +20,10 @@ def people_raw():
         group: str/cat, boiling springs|carlisle|cv|big springs|internet..., their "region"
         position: list{int}, a list of their IPIP 5 dimensions"""
     if "people_raw" in cache:
-        return cache["people_raw"]
+        return copy.deepcopy(cache["people_raw"])
     else:
         cache["people_raw"] = json.loads(open(os.path.join(file_path, "people.json"), "r").read())
-        return cache["people_raw"]
+        return copy.deepcopy(cache["people_raw"])
 
 
 def people_xy():

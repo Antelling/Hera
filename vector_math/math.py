@@ -1,4 +1,5 @@
 import numpy as np
+import colors
 
 def get_closest(people, point):
     # we want to produce a sorted list of [name, distance] for every person
@@ -15,6 +16,10 @@ def get_closest(people, point):
 def scale_to_relative_importance(people, importance):
     for dimension_index, scale in enumerate(importance):
         for person in people:
+            if scale > 1000:
+                scale = 1000
+            if scale < 1:
+                scale = 1
             people[person]["position"][dimension_index] *= scale
     return people
 
@@ -30,7 +35,7 @@ def make_relative_importance(startPos, endPos):
     vector = make_vector(startPos, endPos)
     vector = list(map(lambda x:np.abs(x), vector))
     max = np.max(vector)
-    vector = list(map(lambda x:max/x, vector))
+    vector = list(map(lambda x:max/(x if x > .1 else .1), vector)) #to avoid huge explosions in importance
     return vector
 
 

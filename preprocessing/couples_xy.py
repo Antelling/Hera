@@ -22,9 +22,12 @@ class Sanitize(object):
         return new_couples
 
 
+def round_list(arr):
+    return list(map(lambda x:round(x, 2), arr))
+
 class Cluster(object):
-    #TODO: determine if pos/pos leads to the same classification as pos/vec
-    #TODO: see if including position leads to an increase in accuracy, or if only the vector should be used
+    # TODO: determine if pos/pos leads to the same classification as pos/vec
+    # TODO: see if including position leads to an increase in accuracy, or if only the vector should be used
     def __init__(self, clusterer=None):
         if clusterer is None:
             clusterer = SpectralClustering()
@@ -32,8 +35,7 @@ class Cluster(object):
 
     def transform(self, couples):
         # we again want to zip our lists, like in Sanitize
-        zipped_couples = [x + couples[1][i] for i, x in enumerate(couples[0])]
-
+        zipped_couples = [round_list(x) + round_list(couples[1][i]) for i, x in enumerate(couples[0])]
         clusterer = self.clusterer.fit(zipped_couples)
         groups = {}
         for i, label in enumerate(clusterer.labels_):
