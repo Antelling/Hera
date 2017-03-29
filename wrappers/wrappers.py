@@ -18,10 +18,12 @@ Note that the "soulmate" format is not just a 5 dimensional position, it is a tw
 
 import numpy as np
 from sklearn.base import clone
+import vector_math
 
 
 class SklearnWrapper(object):
-    def __init__(self, model, params=None):
+    def __init__(self, model, params=None, scale_importance=False):
+        self.scale_importance = scale_importance
         self.model = model
 
     def __repr__(self):
@@ -54,18 +56,24 @@ class SklearnWrapper(object):
         return list(map(self.predict_for_single_point, people))
 
     def predict_for_single_point(self, person):
-        new_point = []
+        soulmate = []
         model_index = 0 if person["gender"] is "male" else 1
         model_to_use = self.trained_models[model_index]
         for dimension in range(0, 5):
-            new_point.append(model_to_use[dimension].predict([person["position"]]).tolist()[0])
-        return [new_point, [1] * 5] #TODO: proper dimension scaling code
+            soulmate.append(model_to_use[dimension].predict([person["position"]]).tolist()[0])
+        if self.scale_importance:
+            importance = vector_math.make_relative_importance(person["position"], soulmate)
+        else:
+            importance =  [1] * 5
+        return [soulmate, importance]
 
 
 class KerasWrapper(object):
-    def __init__(self, model, epochs=1500, compile_params=None):
+    def __init__(self, model, epochs=1500, compile_params=None, scale_importance=False):
         self.model_definition = model
+        self.scale_importance = scale_importance
         self.epochs = epochs
+
         if compile_params is None:
             compile_params = {"loss": "mse", "optimizer": "adam"}
         self.compile_params = compile_params
@@ -91,10 +99,14 @@ class KerasWrapper(object):
         position = person["position"]
         position = np.array([position])
         soulmate = model_to_use.predict(position)[0].tolist()
-        return [soulmate, [1] * 5]
+        if self.scale_importance:
+            importance = vector_math.make_relative_importance(position, soulmate)
+        else:
+            importance =  [1] * 5
+        return [soulmate, importance]
 
     def __repr__(self):
-        return str(self.model_definition[0])
+        return str(self.model_definition)
 
 
 class GenericWrapper(object):

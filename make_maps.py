@@ -48,15 +48,16 @@ for person in people_raw:
 print("normal recs made, making recs for people in couples: ")
 import copy
 for i, couple in enumerate(couples_raw):
-    new_couples = copy.deepcopy(couples_raw)
-    del new_couples[i]
-    couples_xy = make_xy(people_raw, new_couples, couples_raw_pre, couples_xy_pre)
-    model.fit(*couples_xy)
-    print(str(i + 1) + "/" + str(len(couples_raw)))
-    for gender_key in ["male", "female"]:
-        person = couple[gender_key]
-        soulmate = model.predict_for_single_point(people_raw[person])
-        maps["scoreable"]["one-way"][person] = vector_math.get_rec(people_raw, soulmate)
+    if not couple["still_dating"]:
+        new_couples = copy.deepcopy(couples_raw)
+        del new_couples[i]
+        couples_xy = make_xy(people_raw, new_couples, couples_raw_pre, couples_xy_pre)
+        model.fit(*couples_xy)
+        print(str(i + 1) + "/" + str(len(couples_raw)))
+        for gender_key in ["male", "female"]:
+            person = couple[gender_key]
+            soulmate = model.predict_for_single_point(people_raw[person])
+            maps["scoreable"]["one-way"][person] = vector_math.get_rec(people_raw, soulmate)
 print("")
 print("done")
 

@@ -23,6 +23,8 @@ class Sanitize(object):
 
 
 class Cluster(object):
+    #TODO: determine if pos/pos leads to the same classification as pos/vec
+    #TODO: see if including position leads to an increase in accuracy, or if only the vector should be used
     def __init__(self, clusterer=None):
         if clusterer is None:
             clusterer = SpectralClustering()

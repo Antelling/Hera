@@ -2,7 +2,6 @@
 <head>
     <meta charset="utf-8">
     <title>Wibbly Wobbly</title>
-    <!--TODO: make wibbly wobbly graph work-->
 </head>
 <style>
 
@@ -26,67 +25,105 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="/static/map.js"></script>
 <script>
+    d3.json("/static/map.json", function (map) {
 
-    var width = window.innerWidth,
-            height = window.innerHeight;
-
-    var svg = d3.select("body").append("svg")
-            .attr("width", width)
-            .attr("height", height);
-
-    var force = d3.layout.force()
-            .gravity(0.05)
-            .distance(150)
-            .charge(-70)
-            .size([width, height]);
-
-    force
-            .nodes(json.nodes)
-            .links(json.links)
-            .start();
-
-    var link = svg.selectAll(".link")
-            .data(json.links)
-            .enter().append("line")
-            .attr("class", "link");
-
-    var node = svg.selectAll(".node")
-            .data(json.nodes)
-            .enter().append("g")
-            .attr("class", "node")
-            .call(force.drag);
-
-    node.append("image")
-            .attr("xlink:href", "/static/favicon.png")
-            .attr("x", -8)
-            .attr("y", -8)
-            .attr("width", 16)
-            .attr("height", 16);
-
-    node.append("text")
-            .attr("dx", 12)
-            .attr("dy", ".35em")
-            .text(function (d) {
-                return d.name
-            });
-
-    force.on("tick", function () {
-        link.attr("x1", function (d) {
-            return d.source.x;
-        })
-                .attr("y1", function (d) {
-                    return d.source.y;
+        map = map.map;
+        var json = {
+            "nodes": [],
+            "links": []
+        };
+//first we build the nodes
+//id is name, group doesn't matter
+        name_to_pos = {};
+        index = 0;
+        for (person in map) {
+            if (map.hasOwnProperty(person) && person.split("").reverse()[0] !== "2") {
+                json.nodes.push({"name": person, "group": 1});
+                name_to_pos[person] = index;
+                index++;
+            }
+        }
+        console.log("nodes made");
+//now we build the links
+        for (person in map) {
+            if (map.hasOwnProperty(person) && person.split("").reverse()[0] !== "2") {
+                links = map[person];
+                var value = 0;
+                links.forEach(function (link) {
+                    value++;
+                    if (value > 3) {
+                        return;
+                    }
+                    json.links.push({
+                        "source": name_to_pos[person],
+                        "target": name_to_pos[link[0]],
+                        "value": value
+                    })
                 })
-                .attr("x2", function (d) {
-                    return d.target.x;
-                })
-                .attr("y2", function (d) {
-                    return d.target.y;
+            }
+        }
+
+        var width = window.innerWidth,
+                height = window.innerHeight;
+
+        var svg = d3.select("body").append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+        var force = d3.layout.force()
+                .gravity(0.05)
+                .distance(100)
+                .charge(-70)
+                .size([width, height]);
+
+        force
+                .nodes(json.nodes)
+                .links(json.links)
+                .start();
+
+        var link = svg.selectAll(".link")
+                .data(json.links)
+                .enter().append("line")
+                .attr("class", "link");
+
+        var node = svg.selectAll(".node")
+                .data(json.nodes)
+                .enter().append("g")
+                .attr("class", "node")
+                .call(force.drag);
+
+        node.append("image")
+                .attr("xlink:href", "/static/favicon.png")
+                .attr("x", -8)
+                .attr("y", -8)
+                .attr("width", 16)
+                .attr("height", 16);
+
+        node.append("text")
+                .attr("dx", 12)
+                .attr("dy", ".35em")
+                .text(function (d) {
+                    return d.name
                 });
 
-        node.attr("transform", function (d) {
-            return "translate(" + d.x + "," + d.y + ")";
+        force.on("tick", function () {
+            link.attr("x1", function (d) {
+                return d.source.x;
+            })
+                    .attr("y1", function (d) {
+                        return d.source.y;
+                    })
+                    .attr("x2", function (d) {
+                        return d.target.x;
+                    })
+                    .attr("y2", function (d) {
+                        return d.target.y;
+                    });
+
+            node.attr("transform", function (d) {
+                return "translate(" + d.x + "," + d.y + ")";
+            });
         });
-    });
+    })
 
 </script>

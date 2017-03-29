@@ -1,19 +1,7 @@
 import numpy as np
 
-
-class StdEqualizer(object):
-    def transform(self, maps):
-        # todo std equalizer
-        return maps
-
-
-class PosEqualizer(object):
-    def transform(self, maps):
-        # todo pos equalizer
-        return maps
-
-
 class MetricEqualizer(object):
+    #TODO: add position as a metric, to emulate position equalizer
     def __init__(self, metric=None, name=None):
         if metric is None:
             metric = "zscore"
