@@ -7,7 +7,7 @@ class Time_mod(object):
             mod = lambda x: math.log(x)
             self.mod = mod
 
-    #TODO: test this
+    # TODO: test this
     def transform(self, couples):
         new_couples = []
         for couple in couples:
@@ -16,6 +16,9 @@ class Time_mod(object):
                 c = copy.copy(couple)
                 new_couples.append(c)
         return new_couples
+
+    def __repr__(self):
+        return "Time Mod: " + str(self.mod)
 
 
 class Mirror(object):
