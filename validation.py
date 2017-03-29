@@ -14,12 +14,12 @@ couples_raw_pre_options = [
 from sklearn.cluster import SpectralClustering
 
 couples_xy_pre_options = [
-    [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=11))],
-    [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=12))],
-    [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=13))],
+    [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=15))],
+    [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=20))],
+    [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=25))],
     [
         preprocessing.couples_xy.Sanitize(),
-        preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=12))
+        preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=20))
     ]
 ]
 

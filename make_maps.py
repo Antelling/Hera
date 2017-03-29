@@ -4,8 +4,9 @@ from wrappers import SklearnWrapper
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.pipeline import make_pipeline
 from sklearn.linear_model import HuberRegressor
+from sklearn.ensemble import GradientBoostingRegressor
 
-alg = make_pipeline(PolynomialFeatures(1), HuberRegressor())
+alg = GradientBoostingRegressor(loss="lad")
 model = SklearnWrapper(alg)
 
 people_raw = data.get.people_raw()
@@ -14,9 +15,9 @@ for p in data_pre:
     people_raw = p.transform(people_raw)
 
 couples_raw = data.get.couples_raw()
-couples_raw_pre = [preprocessing.couples_raw.Mirror()]
+couples_raw_pre = [preprocessing.couples_raw.Time_mod()]
 from sklearn.cluster import SpectralClustering
-couples_xy_pre = [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=12))]
+couples_xy_pre = [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=13))]
 
 
 def make_xy(people, couples, raw_trans, xy_trans):
@@ -51,7 +52,7 @@ for i, couple in enumerate(couples_raw):
     del new_couples[i]
     couples_xy = make_xy(people_raw, new_couples, couples_raw_pre, couples_xy_pre)
     model.fit(*couples_xy)
-    print(".", end="")
+    print(str(i + 1) + "/" + str(len(couples_raw)))
     for gender_key in ["male", "female"]:
         person = couple[gender_key]
         soulmate = model.predict_for_single_point(people_raw[person])
@@ -60,7 +61,7 @@ print("")
 print("done")
 
 maps_post = [postprocessing.Average(),
-             postprocessing.MetricEqualizer(metric="distance_median", name="main"),
+             postprocessing.MetricEqualizer(metric="zscore", name="main"),
              postprocessing.JVCouples(),
              postprocessing.OrderedRecs()]
 

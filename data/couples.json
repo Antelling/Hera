@@ -167,19 +167,28 @@
     "female": "mmm lll",
     "still_dating": true
   },
-
   {
     "married": false,
     "male": "Kylor Figueroa",
     "length": 6,
     "female": "Avery Lamason",
-    "still_dating": false
+    "still_dating": false,
+    "orientation": "straight"
   },
   {
     "married": false,
     "male": "Michael Brant",
     "female": "Maddi Grimm",
     "length": 1,
-    "still_dating": false
+    "still_dating": false,
+    "orientation": "straight"
+  },
+  {
+    "married": false,
+    "male": "Zachary Orris",
+    "female": "Fiona Carmichael",
+    "length": 3,
+    "still_dating": true,
+    "orientation": "straight"
   }
 ]
