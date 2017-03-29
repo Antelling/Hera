@@ -27,7 +27,7 @@ class SklearnWrapper(object):
         self.model = model
 
     def __repr__(self):
-        return str(self.model)
+        return str(self.model) + " scale_importance:" + str(self.scale_importance)
 
     def create_models(self, data):
         models = []
@@ -64,7 +64,7 @@ class SklearnWrapper(object):
         if self.scale_importance:
             importance = vector_math.make_relative_importance(person["position"], soulmate)
         else:
-            importance =  [1] * 5
+            importance = [1] * 5
         return [soulmate, importance]
 
 
@@ -102,11 +102,11 @@ class KerasWrapper(object):
         if self.scale_importance:
             importance = vector_math.make_relative_importance(position, soulmate)
         else:
-            importance =  [1] * 5
+            importance = [1] * 5
         return [soulmate, importance]
 
     def __repr__(self):
-        return str(self.model_definition)
+        return str(self.model_definition) + " scale_importance" + str(self.scale_importance)
 
 
 class GenericWrapper(object):

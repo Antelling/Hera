@@ -5,7 +5,7 @@ class Time_mod(object):
     def __init__(self, mod=None):
         if mod is None:
             mod = lambda x: math.log(x)
-            self.mod = mod
+        self.mod = mod
 
     def transform(self, couples):
         new_couples = []
