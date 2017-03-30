@@ -8,7 +8,6 @@ class Time_mod(object):
         self.mod = mod
 
     def transform(self, couples):
-        colors.green("time mod")
         new_couples = []
         for couple in couples:
             time = int(self.mod(couple["length"]))

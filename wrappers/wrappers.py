@@ -53,7 +53,6 @@ class SklearnWrapper(object):
         self.trained_models = [male_models, female_models]
 
     def predict(self, people):
-        colors.green("predict")
         return list(map(self.predict_for_single_point, people))
 
     def predict_for_single_point(self, person):

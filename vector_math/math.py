@@ -38,8 +38,17 @@ def make_relative_importance(startPos, endPos):
     vector = make_vector(startPos, endPos)
     vector = list(map(lambda x: np.abs(x), vector))
     max = np.max(vector)
-    vector = list(map(lambda x: max / (x if x > .1 else .1), vector))  # to avoid huge explosions in importance
-    return vector
+    new_vector = []
+    for dim in vector:
+        if dim < 1:
+            dim = 1
+        scale = max / dim
+        if scale < 1:
+            scale = 1
+        if scale > 5:
+            scale = 5
+        new_vector.append(scale)
+    return new_vector
 
 
 def make_vector(a, b):
