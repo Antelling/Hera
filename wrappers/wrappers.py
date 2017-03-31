@@ -47,7 +47,12 @@ class SklearnWrapper(object):
             male["X"].append(X[i])
             female["X"].append(y[i])
             for j in range(0, 5):
-                male["y"][j].append(y[i][j])
+                try:
+                    male["y"][j].append(y[i][j])
+                except IndexError:
+                    colors.red(y)
+                    colors.orange(y[i])
+                    colors.blue(j)
                 female["y"][j].append(X[i][j])
         male_models = self.create_models(male)
         female_models = self.create_models(female)

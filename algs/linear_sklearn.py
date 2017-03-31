@@ -13,7 +13,7 @@ def gen_sklearn_linear():
                           TheilSenRegressor(),
                           HuberRegressor(),
                           RANSACRegressor()]:
-            for s in [True, False]:
+            for s in [False]:
                 regressor = make_pipeline(PolynomialFeatures(degree), regressor)
                 regressor = SklearnWrapper(regressor, scale_importance=s)
                 yield regressor

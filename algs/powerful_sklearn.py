@@ -8,5 +8,5 @@ def gen_sklearn_powerful():
                       GradientBoostingRegressor(loss="ls"),
                       GradientBoostingRegressor(loss="lad"),
                       GradientBoostingRegressor(loss="quantile")]:
-        for s in [True, False]:
+        for s in [False]:
             yield SklearnWrapper(regressor, scale_importance=s)

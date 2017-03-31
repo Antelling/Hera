@@ -19,5 +19,5 @@ def gen_keras():
     ])
 
     for model in models:
-        for s in [True, False]:
+        for s in [False]:
             yield KerasWrapper(model, scale_importance=s)
