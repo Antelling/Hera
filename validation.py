@@ -1,25 +1,19 @@
 import validator, algs, preprocessing, postprocessing, sys, colors
 
-
 data_pre_options = [[preprocessing.people.Standard(), preprocessing.people.Erf()]]
 couples_raw_pre_options = [
     [],
-    [
-        preprocessing.couples_raw.Mirror()
-    ],
-    [preprocessing.couples_raw.Time_mod()],
-    [preprocessing.couples_raw.Time_mod(mod=lambda x: x * x)],
-    [preprocessing.couples_raw.Time_mod(mod=lambda x: x)],
-    [
-        preprocessing.couples_raw.Mirror(),
-        preprocessing.couples_raw.Time_mod()
-    ]]
+    [preprocessing.couples_raw.Mirror()],
+    [preprocessing.couples_raw.Mirror(), preprocessing.couples_raw.Time_mod()],
+    [preprocessing.couples_raw.Mirror(), preprocessing.couples_raw.Time_mod(mod=[lambda x: x * x, "squared"])],
+    [preprocessing.couples_raw.Time_mod(mod=[lambda x: x, "identity"])]
+]
 from sklearn.cluster import SpectralClustering
 
 couples_xy_pre_options = [
-    [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=13))],
+    [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=15))],
     [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=17))],
-    [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=22))],
+    [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=19))],
 ]
 
 maps_post = [postprocessing.Average(),
@@ -27,6 +21,8 @@ maps_post = [postprocessing.Average(),
              postprocessing.MetricEqualizer(metric="distance_median"),
              postprocessing.MetricEqualizer(metric="zscore"),
              postprocessing.MetricEqualizer(metric="zscore_median"),
+             postprocessing.MetricEqualizer(metric="percentage"),
+             postprocessing.MetricEqualizer(metric="percentage_median"),
              ]
 
 things_to_test = sys.argv[1:]

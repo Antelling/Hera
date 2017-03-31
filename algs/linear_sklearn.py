@@ -12,7 +12,7 @@ def gen_sklearn_linear():
         for regressor in [LinearRegression(),
                           TheilSenRegressor(),
                           HuberRegressor(),
-                          RANSACRegressor(min_samples=5)]:
+                          RANSACRegressor()]:
             for s in [True, False]:
                 regressor = make_pipeline(PolynomialFeatures(degree), regressor)
                 regressor = SklearnWrapper(regressor, scale_importance=s)

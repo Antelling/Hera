@@ -42,7 +42,7 @@ def make_relative_importance(startPos, endPos):
     for dim in vector:
         if dim < 1:
             dim = 1
-        scale = max / dim
+        scale = (max / dim)/2
         if scale < 1:
             scale = 1
         if scale > 5:

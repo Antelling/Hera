@@ -5,7 +5,11 @@ class Time_mod(object):
     def __init__(self, mod=None):
         if mod is None:
             mod = lambda x: math.log(x)
-        self.mod = mod
+            self.mod = mod
+            self.name = "log"
+        else:
+            self.mod = mod[0]
+            self.name = mod[1]
 
     def transform(self, couples):
         new_couples = []
@@ -17,7 +21,7 @@ class Time_mod(object):
         return new_couples
 
     def __repr__(self):
-        return "Time Mod: " + str(self.mod)
+        return self.name
 
 
 class Mirror(object):
