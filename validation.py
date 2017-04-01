@@ -11,9 +11,12 @@ couples_raw_pre_options = [
 from sklearn.cluster import SpectralClustering
 
 couples_xy_pre_options = [
+    [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=12))],
+    [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=13))],
+    [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=14))],
     [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=15))],
+    [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=16))],
     [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=17))],
-    [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=19))],
 ]
 
 maps_post = [postprocessing.Average(),

@@ -40,7 +40,6 @@ class SklearnWrapper(object):
         # okay we need to produce a male and female model
         # X and y are both lists of points
 
-        colors.blue("fitting")
         male = {"X": [], "y": [[], [], [], [], []]}
         female = {"X": [], "y": [[], [], [], [], []]}
         for i, x in enumerate(X):
@@ -57,7 +56,6 @@ class SklearnWrapper(object):
         male_models = self.create_models(male)
         female_models = self.create_models(female)
         self.trained_models = [male_models, female_models]
-        colors.green("done")
 
     def predict(self, people):
         return list(map(self.predict_for_single_point, people))

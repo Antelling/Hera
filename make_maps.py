@@ -6,7 +6,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.linear_model import HuberRegressor
 from sklearn.ensemble import GradientBoostingRegressor
 
-alg = GradientBoostingRegressor(loss="lad")
+alg = GradientBoostingRegressor(loss="quantile")
 model = SklearnWrapper(alg)
 
 people_raw = data.get.people_raw()
@@ -15,9 +15,9 @@ for p in data_pre:
     people_raw = p.transform(people_raw)
 
 couples_raw = data.get.couples_raw()
-couples_raw_pre = [preprocessing.couples_raw.Time_mod()]
+couples_raw_pre = [preprocessing.couples_raw.Mirror()]
 from sklearn.cluster import SpectralClustering
-couples_xy_pre = [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=13))]
+couples_xy_pre = [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=15))]
 
 
 def make_xy(people, couples, raw_trans, xy_trans):
@@ -63,8 +63,7 @@ print("done")
 
 maps_post = [postprocessing.Average(),
              postprocessing.MetricEqualizer(metric="zscore", name="main"),
-             postprocessing.JVCouples(),
-             postprocessing.OrderedRecs()]
+             postprocessing.JVCouples()]
 
 for processor in maps_post:
     maps = processor.transform(maps)
@@ -78,7 +77,6 @@ for couple in data.get.couples_raw():
 map_to_save = {
     "map": maps["scoreable"]["main"],
     "couples": maps["misc"]["JVCouples"],
-    "list": maps["misc"]["OrderedRecs"],
     "people_raw": people_raw,
     "people_in_relationships": people_in_relationships
 }
