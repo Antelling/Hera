@@ -63,6 +63,7 @@ print("done")
 
 maps_post = [postprocessing.Average(),
              postprocessing.MetricEqualizer(metric="zscore", name="main"),
+             postprocessing.LeastCompatible(),
              postprocessing.JVCouples()]
 
 for processor in maps_post:
@@ -78,6 +79,7 @@ map_to_save = {
     "map": maps["scoreable"]["main"],
     "couples": maps["misc"]["JVCouples"],
     "people_raw": people_raw,
+    "list": maps["misc"]["LeastCompatible"],
     "people_in_relationships": people_in_relationships
 }
 

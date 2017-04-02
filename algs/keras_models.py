@@ -14,6 +14,15 @@ def gen_keras():
     models.append([
         Dense(5, input_shape=(5,)),
         Dense(5),
+        Dense(5),
+        Dense(5),
+        Dense(5),
+        Dense(5),
+    ])
+
+    models.append([
+        Dense(5, input_shape=(5,)),
+        Dense(5),
         Dropout(.5),
         Dense(5)
     ])

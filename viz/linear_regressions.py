@@ -28,3 +28,5 @@ def show():
         pylab.plot(test_x, test_y, label=regressor[1])
     pylab.legend(loc="best")
     pylab.show()
+
+show()

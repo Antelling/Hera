@@ -1,6 +1,7 @@
 from sklearn.preprocessing import StandardScaler
 import data
 import numpy as np
+import random
 
 class PeopleBase(object):
     def transform(self, people):
@@ -41,9 +42,10 @@ class Flatten(PeopleBase):
 
         #okay so we want to snap our d to numbers
         #but we need to remember our original position
+        #and we need to fuzz the numbers to avoid bad correlations
         structured_d = []
         for i, value in enumerate(d):
-            structured_d.append({"index": i, "value": value})
+            structured_d.append({"index": i, "value": value + random.uniform(-.4, .4)})
 
         structured_d.sort(key=lambda x:x["value"])
 
