@@ -63,6 +63,5 @@ def val(*, people_pre, couples_raw_pre, couples_xy_pre, alg_gen, maps_post):
                     best["pre"] = [people_pre, couples_raw_pre, couples_xy_pre]
         except Exception as e:
             colors.red(e)
-            KeyboardInterrupt("roflmao")
 
     return best
