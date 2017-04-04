@@ -36,3 +36,20 @@ class LeastCompatible(ListBase):
             compat_list.append([person, np.mean(people_map[person])])
         compat_list.sort(key=lambda x:x[1])
         return compat_list
+
+class BadCouples(ListBase):
+    def __init__(self):
+        self.name = "BadCouples"
+        self.map = "main"
+
+    def form_list(self, average_map):
+        import data
+        import preprocessing
+        couples = data.get.couples_raw()
+        couples = preprocessing.couples_raw.Mirror().transform(couples)
+        from preprocessing.couples_raw import RANSAC
+        bad_couples = RANSAC(max_iter=200, good=False).transform(couples)
+        bad_couples = [str(couple["male"]) + " - " + str(couple["female"]) for couple in bad_couples]
+        return bad_couples
+
+

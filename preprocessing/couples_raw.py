@@ -40,9 +40,10 @@ class Mirror(object):
 
 
 class RANSAC(object):
-    def __init__(self, max_iter=3000, min_consensus=999999):
+    def __init__(self, max_iter=100, good=True, min_consensus=999999):
         self.max_iter = max_iter
         self.min_consensus=min_consensus
+        self.good = good
 
     def transform(self, couples):
         X, y = data.make.couples_xy(couples)
@@ -50,8 +51,11 @@ class RANSAC(object):
         from wrappers import SklearnWrapper
         from sklearn.preprocessing import PolynomialFeatures
         from sklearn.pipeline import make_pipeline
-        ran_results = self.ran(SklearnWrapper(make_pipeline(PolynomialFeatures(1), LinearRegression()), unidirectional=True), [X, y], couples)
-        return ran_results["good_couples"]
+        ran_results = self.ran(SklearnWrapper(make_pipeline(PolynomialFeatures(3), LinearRegression()), unidirectional=True), [X, y], couples)
+        if self.good:
+            return ran_results["good_couples"]
+        else:
+            return ran_results["bad_couples"]
 
     def ran(self, model, Xy, couples):
         threshold = self.mad(Xy[0])

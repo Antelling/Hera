@@ -1,8 +1,8 @@
 import validator, algs, preprocessing, postprocessing, sys, colors
 
 data_pre_options = [
-    [],
-    [preprocessing.people.Flatten()],
+    [preprocessing.people.Standard()],
+    [preprocessing.people.Flatten(), preprocessing.people.Standard()],
     [preprocessing.people.Standard(), preprocessing.people.Erf()]
 ]
 
@@ -22,9 +22,7 @@ couples_xy_pre_options = [
 maps_post = [
     postprocessing.Average(),
     postprocessing.MetricEqualizer(metric="distance"),
-    postprocessing.MetricEqualizer(metric="distance_median"),
-    postprocessing.MetricEqualizer(metric="zscore"),
-    postprocessing.MetricEqualizer(metric="zscore_median"),
+    postprocessing.MetricEqualizer(metric="zscore")
 ]
 
 things_to_test = sys.argv[1:]
@@ -79,6 +77,19 @@ for data_pre in data_pre_options:
                     couples_raw_pre=couples_raw_pre,
                     couples_xy_pre=couples_xy_pre,
                     alg_gen=algs.dummy(),
+                    maps_post=maps_post)
+
+                if local["score"] < best["score"]:
+                    colors.purple(local)
+                    colors.green(local["score"])
+                    best = local
+
+            if "nai" in things_to_test:
+                local = validator.val(
+                    people_pre=data_pre,
+                    couples_raw_pre=couples_raw_pre,
+                    couples_xy_pre=couples_xy_pre,
+                    alg_gen=algs.naive(),
                     maps_post=maps_post)
 
                 if local["score"] < best["score"]:

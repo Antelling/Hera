@@ -63,7 +63,7 @@ print("done")
 
 maps_post = [postprocessing.Average(),
              postprocessing.MetricEqualizer(metric="zscore", name="main"),
-             postprocessing.LeastCompatible(),
+             postprocessing.BadCouples(),
              postprocessing.JVCouples()]
 
 for processor in maps_post:
@@ -79,11 +79,11 @@ map_to_save = {
     "map": maps["scoreable"]["main"],
     "couples": maps["misc"]["JVCouples"],
     "people_raw": people_raw,
-    "list": maps["misc"]["LeastCompatible"],
+    "list": maps["misc"]["BadCouples"],
     "people_in_relationships": people_in_relationships
 }
 
 this_file = os.path.dirname(os.path.realpath(__file__))
 target = os.path.join(this_file, "display_server", "static", "map.json")
-data = json.dumps(map_to_save)
+data = json.dumps(map_to_save, indent=4)
 open(target, "w").write(data)

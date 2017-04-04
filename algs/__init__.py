@@ -6,3 +6,4 @@ from .powerful_sklearn import gen_sklearn_powerful as sk_powerful
 from .keras_models import gen_keras as keras
 
 from .dummy import gen_dummy as dummy
+from .naive import gen_naive as naive

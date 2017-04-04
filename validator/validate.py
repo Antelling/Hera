@@ -61,7 +61,7 @@ def val(*, people_pre, couples_raw_pre, couples_xy_pre, alg_gen, maps_post):
                     best["alg"] = alg
                     best["post"] = m
                     best["pre"] = [people_pre, couples_raw_pre, couples_xy_pre]
-        except IOError as e:
+        except Exception as e:
             colors.red(e)
 
     return best
