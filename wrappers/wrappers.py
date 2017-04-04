@@ -22,9 +22,10 @@ import vector_math, colors
 
 
 class SklearnWrapper(object):
-    def __init__(self, model, params=None, scale_importance=False):
+    def __init__(self, model, params=None, scale_importance=False, unidirectional=False):
         self.scale_importance = scale_importance
         self.model = model
+        self.unidirectional = unidirectional
 
     def __repr__(self):
         return str(self.model) + " scale_importance:" + str(self.scale_importance)
@@ -49,7 +50,10 @@ class SklearnWrapper(object):
                 male["y"][j].append(y[i][j])
                 female["y"][j].append(X[i][j])
         male_models = self.create_models(male)
-        female_models = self.create_models(female)
+        if not self.unidirectional:
+            female_models = self.create_models(female)
+        else:
+            female_models = 0
         self.trained_models = [male_models, female_models]
 
     def predict(self, people):
@@ -57,7 +61,9 @@ class SklearnWrapper(object):
 
     def predict_for_single_point(self, person):
         soulmate = []
-        model_index = 0 if person["gender"] is "male" else 1
+        model_index = 0 if self.unidirectional else 0 if person["gender"] is "male" else 1
+        if self.unidirectional:
+            person = {"position": person}
         model_to_use = self.trained_models[model_index]
         for dimension in range(0, 5):
             soulmate.append(model_to_use[dimension].predict([person["position"]]).tolist()[0])

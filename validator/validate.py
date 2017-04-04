@@ -16,7 +16,7 @@ def val(*, people_pre, couples_raw_pre, couples_xy_pre, alg_gen, maps_post):
         "post": ""
     }
 
-    for alg in alg_gen():
+    for alg in alg_gen:
         try:
             total_score_map = {}
 
@@ -61,7 +61,7 @@ def val(*, people_pre, couples_raw_pre, couples_xy_pre, alg_gen, maps_post):
                     best["alg"] = alg
                     best["post"] = m
                     best["pre"] = [people_pre, couples_raw_pre, couples_xy_pre]
-        except Exception as e:
+        except IOError as e:
             colors.red(e)
 
     return best

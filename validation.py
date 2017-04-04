@@ -1,6 +1,7 @@
 import validator, algs, preprocessing, postprocessing, sys, colors
 
 data_pre_options = [
+    [],
     [preprocessing.people.Flatten()],
     [preprocessing.people.Standard(), preprocessing.people.Erf()]
 ]
@@ -8,14 +9,14 @@ data_pre_options = [
 couples_raw_pre_options = [
     [preprocessing.couples_raw.Mirror()],
     [],
-    [preprocessing.couples_raw.Mirror(), preprocessing.couples_raw.Time_mod()]
 ]
 
-from sklearn.cluster import SpectralClustering
+from sklearn.cluster import SpectralClustering, AgglomerativeClustering, KMeans
 couples_xy_pre_options = [
-    [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=14))],
+    [],
     [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=15))],
-    [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=16))],
+    [preprocessing.couples_xy.Cluster(AgglomerativeClustering(n_clusters=15))],
+    [preprocessing.couples_xy.Cluster(KMeans(n_clusters=15))],
 ]
 
 maps_post = [
@@ -38,7 +39,7 @@ for data_pre in data_pre_options:
                     people_pre=data_pre,
                     couples_raw_pre=couples_raw_pre,
                     couples_xy_pre=couples_xy_pre,
-                    alg_gen=algs.sk_powerful,
+                    alg_gen=algs.sk_powerful(),
                     maps_post=maps_post)
 
                 if local["score"] < best["score"]:
@@ -51,7 +52,7 @@ for data_pre in data_pre_options:
                     people_pre=data_pre,
                     couples_raw_pre=couples_raw_pre,
                     couples_xy_pre=couples_xy_pre,
-                    alg_gen=algs.sk_linear,
+                    alg_gen=algs.sk_linear(),
                     maps_post=maps_post)
 
                 if local["score"] < best["score"]:
@@ -64,7 +65,7 @@ for data_pre in data_pre_options:
                     people_pre=data_pre,
                     couples_raw_pre=couples_raw_pre,
                     couples_xy_pre=couples_xy_pre,
-                    alg_gen=algs.keras,
+                    alg_gen=algs.keras(),
                     maps_post=maps_post)
 
                 if local["score"] < best["score"]:
@@ -77,7 +78,7 @@ for data_pre in data_pre_options:
                     people_pre=data_pre,
                     couples_raw_pre=couples_raw_pre,
                     couples_xy_pre=couples_xy_pre,
-                    alg_gen=algs.dummy,
+                    alg_gen=algs.dummy(),
                     maps_post=maps_post)
 
                 if local["score"] < best["score"]:

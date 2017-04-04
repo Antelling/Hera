@@ -10,15 +10,15 @@ def show():
     from sklearn.preprocessing import PolynomialFeatures
     from sklearn.pipeline import make_pipeline
     import numpy as np
-    from sklearn.linear_model import LinearRegression, TheilSenRegressor, HuberRegressor, RANSACRegressor
+    from sklearn.ensemble import GradientBoostingRegressor
 
     for regressor in [
-        [LinearRegression(), "linreg"],
-        [TheilSenRegressor(), "theil-sen"],
-        [HuberRegressor(), "huber"],
-        [RANSACRegressor(), "ransac"],
+        [GradientBoostingRegressor(loss="quantile"), "quantile"],
+        [GradientBoostingRegressor(loss="ls"), "ls"],
+        [GradientBoostingRegressor(loss="huber"), "huber"],
+        [GradientBoostingRegressor(loss="lad"), "lad"],
     ]:
-        model = make_pipeline(PolynomialFeatures(2), regressor[0])
+        model = regressor[0]
         model.fit(X, y)
 
         print("")

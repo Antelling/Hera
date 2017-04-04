@@ -29,7 +29,7 @@
     "length": 2,
     "orientation": "straight",
     "female": "Ash Iwanowicz",
-    "still_dating": false
+    "still_dating": true
   },
   {
     "married": false,
@@ -45,7 +45,7 @@
     "length": 5,
     "orientation": "straight",
     "female": "Steph Szabo",
-    "still_dating": true
+    "still_dating": false
   },
   {
     "married": false,
@@ -188,6 +188,14 @@
     "male": "Zachary Orris",
     "female": "Fiona Carmichael",
     "length": 3,
+    "still_dating": true,
+    "orientation": "straight"
+  },
+  {
+    "married": false,
+    "male": "Nicholas Dell",
+    "female": "Avery Lamason",
+    "length": 0.5,
     "still_dating": true,
     "orientation": "straight"
   }
