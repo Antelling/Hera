@@ -99,3 +99,9 @@ for data_pre in data_pre_options:
 
 print("")
 print(best)
+
+#current top algs:
+"""
+    Theil-Senn regressor, 3rd degree polynomial, Flatten Standard, Mirror, Kmeans 15, zscore - 28
+
+"""

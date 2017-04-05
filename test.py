@@ -13,7 +13,7 @@ import numpy as np
 
 
 class ANTSAC():
-    def __init__(self, evaporation=.9, alpha=1.3, min_inliers=99999, max_iter=75, threshold=None):
+    def __init__(self, evaporation=.9, alpha=1.4, min_inliers=99999, max_iter=75, threshold=None):
         self.evaporation = evaporation
         self.min_inliers = min_inliers
         self.max_iter = max_iter
@@ -26,7 +26,7 @@ class ANTSAC():
         return first_part * second_part
 
     def select_points(self, probability_list, points):
-        k = np.random.randint(0, len(points))
+        k = np.random.randint(5, 15)
 
         probability_list = copy.deepcopy(probability_list)
         probability_list = [p**self.alpha for p in probability_list]
@@ -52,7 +52,7 @@ class ANTSAC():
         X, y = list(zip(*points))
 
         if self.threshold is None:
-            self.threshold = self.MAD(y)
+            self.threshold = self.MAD(y) * 2
 
         inliers_acheived_so_far = []
 
@@ -104,7 +104,7 @@ class ANTSAC():
         return distances
 
 
-antsac = ANTSAC(max_iter=50)
+antsac = ANTSAC(max_iter=100)
 couples = data.get.couples_raw()
 couples = preprocessing.couples_raw.Mirror().transform(couples)
 print(antsac.transform(couples))
