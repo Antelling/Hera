@@ -27,8 +27,6 @@ class ANTSAC():
 
     def select_points(self, probability_list, points):
         k = np.random.randint(0, len(points))
-        # okay so because we are using tuples of lists, numpy considers this to be a 3d array
-        # which I guess it technically is, but we want to treat it as a 1D
 
         probability_list = copy.deepcopy(probability_list)
         probability_list = [p**self.alpha for p in probability_list]
