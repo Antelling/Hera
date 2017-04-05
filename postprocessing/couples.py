@@ -1,4 +1,5 @@
 import data
+import numpy as np
 
 class JVCouples(object):
     def __init__(self, loss_function=None):
@@ -11,7 +12,8 @@ class JVCouples(object):
         return maps
 
     def form_couples(self, maps):
-        from lapjv import lapjv
+        #from lapjv import lapjv
+        from sklearn.utils.linear_assignment_ import linear_assignment as lapjv
 
         people = data.get.people_raw()
 
@@ -52,12 +54,14 @@ class JVCouples(object):
                 costs.append(sane_map[man][woman])
             cost_matrix.append(costs)
 
-        pairs = lapjv(cost_matrix)
+        pairs = lapjv(np.array(cost_matrix))
+        print(pairs)
 
         couples = {}
-        for i, target in enumerate(pairs[0]):
-            couples[men[i]] = women[target]
-            couples[women[target]] = men[i]
+        for couple in enumerate(pairs):
+            couple = couple[1]
+            couples[men[couple[0]]] = women[couple[1]]
+            couples[women[couple[1]]] = men[couple[0]]
 
         return couples
 

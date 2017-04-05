@@ -4,6 +4,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.pipeline import make_pipeline
 import preprocessing
+import copy
 
 from sklearn.metrics.pairwise import euclidean_distances
 
@@ -12,11 +13,12 @@ import numpy as np
 
 
 class ANTSAC():
-    def __init__(self, evaporation=.9, min_inliers=99999, max_iter=75, threshold=None):
+    def __init__(self, evaporation=.9, alpha=1.3, min_inliers=99999, max_iter=75, threshold=None):
         self.evaporation = evaporation
         self.min_inliers = min_inliers
         self.max_iter = max_iter
         self.threshold = threshold
+        self.alpha = alpha
 
     def pheromone_delta(self, points, inliers_len, mean_previous_inliers, generations, residual, theta):
         first_part = (inliers_len / (len(points)) + (mean_previous_inliers / generations))
@@ -24,12 +26,14 @@ class ANTSAC():
         return first_part * second_part
 
     def select_points(self, probability_list, points):
-        k = len(points) - 10
+        k = np.random.randint(0, len(points))
         # okay so because we are using tuples of lists, numpy considers this to be a 3d array
         # which I guess it technically is, but we want to treat it as a 1D
 
-        prob_sum = np.sum(probability_list)
-        probability_list = [p/prob_sum for p in probability_list]
+        probability_list = copy.deepcopy(probability_list)
+        probability_list = [p**self.alpha for p in probability_list]
+        sum = np.sum(probability_list)
+        probability_list = [p/sum for p in probability_list]
 
         indexes = list(range(len(points)))
         indexes = np.random.choice(indexes, size=(k,), p=probability_list, replace=False)
@@ -39,7 +43,7 @@ class ANTSAC():
         return chosen_points, indexes
 
     def ANTSAC(self, points):
-        alg = wrappers.SklearnWrapper(LinearRegression(), unidirectional=True)
+        alg = wrappers.SklearnWrapper(make_pipeline(PolynomialFeatures(3), LinearRegression()), unidirectional=True)
 
         best = {"inliers": 0}
         pheromone_matrix = []
@@ -50,7 +54,7 @@ class ANTSAC():
         X, y = list(zip(*points))
 
         if self.threshold is None:
-            self.threshold = self.MAD(y) * 5
+            self.threshold = self.MAD(y)
 
         inliers_acheived_so_far = []
 
@@ -102,7 +106,7 @@ class ANTSAC():
         return distances
 
 
-antsac = ANTSAC(max_iter=500)
+antsac = ANTSAC(max_iter=50)
 couples = data.get.couples_raw()
 couples = preprocessing.couples_raw.Mirror().transform(couples)
 print(antsac.transform(couples))
