@@ -3,7 +3,7 @@ from sklearn.cluster import SpectralClustering
 import numpy as np
 
 
-class Sanitize(object):
+class _SanitizeBase(object):
     def __init__(self, contamination=.1):
         self.contamination = contamination
 
@@ -11,7 +11,11 @@ class Sanitize(object):
         iso = IsolationForest(contamination=self.contamination)
 
         # we want to turn the X, y format into a zipped list of starting and ending points
-        zipped_couples = [x + couples[1][i] for i, x in enumerate(couples[0])]
+        zipped_couples = self.zipper(couples)
+
+        #now make all dimensions have the same scale
+        from sklearn.preprocessing import StandardScaler
+        zipped_couples = StandardScaler().fit_transform(zipped_couples)
 
         iso.fit(zipped_couples)
         new_couples = [[], []]
@@ -20,6 +24,22 @@ class Sanitize(object):
                 new_couples[0].append(couples[0][i])
                 new_couples[1].append(couples[1][i])
         return new_couples
+
+    def zipper(self, couples):
+        pass
+
+
+class SanitizeStartEnd(_SanitizeBase):
+    def zipper(self, couples):
+        return [x + couples[1][i] for i, x in enumerate(couples[0])]
+
+class SanitizeStartVec(object):
+    def zipper(self, couples):
+        return [x + (np.array(couples[1][i]) - np.array(x)).tolist() for i, x in enumerate(couples[0])]
+
+class SanitizeVec(object):
+    def zipper(self, couples):
+        return [(np.array(couples[1][i]) - np.array(x)).tolist() for i, x in enumerate(couples[0])]
 
 
 def round_list(arr):

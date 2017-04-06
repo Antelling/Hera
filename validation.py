@@ -13,6 +13,9 @@ couples_raw_pre_options = [
 
 from sklearn.cluster import SpectralClustering, AgglomerativeClustering, KMeans
 couples_xy_pre_options = [
+    [preprocessing.couples_xy.SanitizeStartEnd()],
+    [preprocessing.couples_xy.SanitizeStartVec()],
+    [preprocessing.couples_xy.SanitizeVec()],
     [],
     [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=15))],
     [preprocessing.couples_xy.Cluster(AgglomerativeClustering(n_clusters=15))],
