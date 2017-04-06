@@ -15,7 +15,7 @@ def gen_keras():
         Dense(5, input_shape=(5,)),
         Dense(5),
     ])
-    
+
     for model in models:
         for s in [False]:
             yield KerasWrapper(model, scale_importance=s)

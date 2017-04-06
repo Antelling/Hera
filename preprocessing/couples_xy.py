@@ -33,11 +33,11 @@ class SanitizeStartEnd(_SanitizeBase):
     def zipper(self, couples):
         return [x + couples[1][i] for i, x in enumerate(couples[0])]
 
-class SanitizeStartVec(object):
+class SanitizeStartVec(_SanitizeBase):
     def zipper(self, couples):
         return [x + (np.array(couples[1][i]) - np.array(x)).tolist() for i, x in enumerate(couples[0])]
 
-class SanitizeVec(object):
+class SanitizeVec(_SanitizeBase):
     def zipper(self, couples):
         return [(np.array(couples[1][i]) - np.array(x)).tolist() for i, x in enumerate(couples[0])]
 
