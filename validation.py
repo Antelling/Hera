@@ -25,6 +25,7 @@ couples_xy_pre_options = [
 
 maps_post = [
     postprocessing.Average(),
+    postprocessing.CoupleEqualizer(),
     postprocessing.MetricEqualizer(metric="distance"),
     postprocessing.MetricEqualizer(metric="zscore")
 ]

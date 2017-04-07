@@ -2,11 +2,6 @@ import data
 import numpy as np
 
 class JVCouples(object):
-    def __init__(self, loss_function=None):
-        if loss_function is None:
-            loss_function = lambda x: x
-        self.loss = loss_function
-
     def transform(self, maps):
         maps["misc"]["JVCouples"] = self.form_couples(maps["scoreable"]["average"])
         return maps

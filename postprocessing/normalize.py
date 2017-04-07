@@ -1,7 +1,9 @@
 import numpy as np
+import data
+
 
 class MetricEqualizer(object):
-    #TODO: add position as a metric, to emulate position equalizer
+    # TODO: add position as a metric, to emulate position equalizer
     def __init__(self, metric=None, name=None):
         if metric is None:
             metric = "zscore"
@@ -64,12 +66,92 @@ class MetricEqualizer(object):
 
 
 class CoupleEqualizer(object):
+    def __init__(self, name="CouplesNormalized"):
+        self.name = name
+
     def transform(self, maps):
-        maps["scoreable"]["CouplesNormalized"] = self.normalize_map(maps["scoreable"]["average"])
+        maps["scoreable"][self.name] = self.form_map(maps["scoreable"]["average"])
         return maps
 
-    def normalize_map(self, m):
-        #we are going to form couples, record those results, then update our cost_matrix so those couples are never
-        #formed again. In this way, we create the optimum equalizer. Its slow af tho
-        #TODO couples equalizer
-        return m
+    def form_map(self, maps):
+        from sklearn.utils.linear_assignment_ import linear_assignment
+        people = data.get.people_raw()
+
+        men = []
+        women = []
+        for person in maps:
+            if people[person]["gender"] == "male":
+                men.append(person)
+            else:
+                women.append(person)
+
+        # we need to make men and women the same length
+        difference = len(men) - len(women)
+        if difference == 0:
+            removed = []
+        elif difference < 0:
+            # there are more women then men
+            women, removed = self.remove_people(maps, women, difference * -1)
+        else:
+            men, removed = self.remove_people(maps, men, difference)
+
+        sane_map = {}
+        for person in maps:
+            sane_map[person] = {}
+            for otherperson in maps[person]:
+                if data.make.is_okay(people[person]["grade"], people[otherperson[0]]["grade"]):
+                    sane_map[person][otherperson[0]] = otherperson[1]
+                else:
+                    sane_map[person][otherperson[0]] = 9999
+
+        finished_map = {}
+        for man in men:
+            finished_map[man] = []
+        for woman in women:
+            finished_map[woman] = []
+        for i in range(len(men)):
+            cost_matrix = []
+            for man in men:
+                costs = []
+                for woman in women:
+                    costs.append(sane_map[man][woman])
+                cost_matrix.append(costs)
+
+            pairs = linear_assignment(np.array(cost_matrix))
+
+            couples = {}
+            for couple in enumerate(pairs):
+                couple = couple[1]
+                male_name = men[couple[0]]
+                female_name = women[couple[1]]
+                sane_map[male_name][female_name] = 999999 + i
+                sane_map[female_name][male_name] = 999999 + i
+                finished_map[male_name].append([female_name, i])
+                finished_map[female_name].append([male_name, i])
+
+        print(removed)
+        for person in removed:
+            finished_map[person] = []
+            for otherperson in maps[person]:
+                finished_map[person].append([otherperson[0], otherperson[1] + 400])
+        #okay so now the removed people are all matched with someone
+        #we need to match everyone else with the removed people
+        for person in finished_map:
+            if person in removed:
+                continue
+            for removed_person in removed:
+                if removed_person == person:
+                    continue
+                finished_map[person].append([removed_person, 9999])
+
+
+        return finished_map
+
+    def remove_people(self, maps, people, n):
+        # we need to sort people to find who has the highest average place
+        # we already implemented this as the get_summary_stats method of MetricEqualizer, so let's just steal that
+        from .normalize import MetricEqualizer
+        stats_func = MetricEqualizer().get_summary_stats
+        people_stats = stats_func(maps)
+        people.sort(key=lambda name: people_stats[name][0])  # sort by mean
+        return people[0:len(people) - n], people[len(people) - n:]
