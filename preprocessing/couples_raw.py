@@ -61,7 +61,6 @@ class RANSAC(object):
         threshold = self.mad(Xy[0])
 
         best = {"consensus": 0}
-        colors.blue("starting...")
         for _ in range(self.max_iter):
             encoded = self.encode(*Xy)
             random.shuffle(encoded)
@@ -78,14 +77,11 @@ class RANSAC(object):
                     good_couples.append(couples[i])
                 else:
                     bad_couples.append(couples[i])
-            colors.blue(inliers)
             if inliers > best["consensus"]:
                 best["consensus"] = len(possible_inliers)
                 best["good_couples"] = good_couples
                 best["bad_couples"] = bad_couples
-                print(best["consensus"])
             if best["consensus"] > self.min_consensus:
-                colors.green("found")
                 break
 
         return best
@@ -113,3 +109,39 @@ class RANSAC(object):
         for i, pos in enumerate(arr1):
             distances.append(euclidean_distances([pos], [arr2[i]])[0][0])
         return distances
+
+
+class PositionFiltering(object):
+    """Assumes couples have been mirrored"""
+    def __init__(self, max=.6):
+        self.max = max
+
+    def transform(self, couples):
+        #we need to make a model and fetch our data
+        #we hard code the most accurate model
+        import data, preprocessing, wrappers, vector_math
+        people = data.get.people_raw()
+        people = preprocessing.people.Flatten().transform(people)
+        Xy = data.make.couples_xy(couples, people)
+
+        from sklearn.ensemble import GradientBoostingRegressor
+        model = wrappers.SklearnWrapper(GradientBoostingRegressor(loss="quantile"))
+        model.fit(*Xy)
+
+        good_couples = []
+
+        for couple in couples:
+            source = couple["male"]
+            target = couple["female"]
+
+            soulmate = model.predict_for_single_point(people[source])
+            rec_list = vector_math.get_rec(people, soulmate)
+            index = [othername[0] for othername in rec_list].index(target)
+
+            length = len(rec_list)
+            max = length * self.max
+
+            if index < max:
+                good_couples.append(couple)
+
+        return good_couples
