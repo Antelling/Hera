@@ -1,5 +1,6 @@
 import numpy as np
 import data
+import json
 
 
 class MetricEqualizer(object):
@@ -129,7 +130,6 @@ class CoupleEqualizer(object):
                 finished_map[male_name].append([female_name, i])
                 finished_map[female_name].append([male_name, i])
 
-        print(removed)
         for person in removed:
             finished_map[person] = []
             for otherperson in maps[person]:

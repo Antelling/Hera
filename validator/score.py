@@ -20,5 +20,5 @@ def score(maps, couple):
         distances = []
         for pair in [[couple["male"], couple["female"]], [couple["female"], couple["male"]]]:
             distances.append(find_pos(maps["scoreable"][scoreable][pair[0]], pair[1]))
-        score_map[scoreable] = distances
+        score_map[scoreable] = list(filter(lambda x: x is not None, distances))
     return score_map
