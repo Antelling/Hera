@@ -51,8 +51,6 @@ def val(*, people_pre, couples_raw_pre, couples_xy_pre, alg_gen, maps_post):
                     total_score_map[m] += score_map[m]
 
             for m in total_score_map:
-                print(m)
-                print(total_score_map[m])
                 total_score_map[m] = [np.percentile(total_score_map[m], 80),
                                       np.mean(total_score_map[m]),
                                       np.median(total_score_map[m])]
