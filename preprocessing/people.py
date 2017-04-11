@@ -58,3 +58,10 @@ class Flatten(PeopleBase):
         for value in structured_d:
             d.append(value["flattened_value"])
         return d
+
+class Decompose(PeopleBase):
+    def __init__(self, decomp):
+        self.decomp = decomp
+
+    def transform_x(self, X):
+        return self.decomp.fit_transform(X)

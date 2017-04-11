@@ -32,7 +32,7 @@ class SklearnWrapper(object):
 
     def create_models(self, data):
         models = []
-        for i in range(0, 5):
+        for i in range(0, len(data["X"][0])):
             model_copy = clone(self.model)  # we clone to prevent fitting-in-place from remembering past data
             models.append(model_copy.fit(np.array(data["X"], dtype="float_"), np.array(data["y"][i], dtype="float_")))
         return models
@@ -46,7 +46,7 @@ class SklearnWrapper(object):
         for i, x in enumerate(X):
             male["X"].append(X[i])
             female["X"].append(y[i])
-            for j in range(0, 5):
+            for j in range(0, len(X[i])):
                 male["y"][j].append(y[i][j])
                 female["y"][j].append(X[i][j])
         male_models = self.create_models(male)
@@ -65,12 +65,12 @@ class SklearnWrapper(object):
         if self.unidirectional:
             person = {"position": person}
         model_to_use = self.trained_models[model_index]
-        for dimension in range(0, 5):
+        for dimension in range(0, len(person["position"])):
             soulmate.append(model_to_use[dimension].predict([person["position"]]).tolist()[0])
         if self.scale_importance:
             importance = vector_math.make_relative_importance(person["position"], soulmate)
         else:
-            importance = [1] * 5
+            importance = [1] * len(person["position"])
         return [soulmate, importance]
 
 
@@ -109,7 +109,7 @@ class KerasWrapper(object):
         if self.scale_importance:
             importance = vector_math.make_relative_importance(position, soulmate)
         else:
-            importance = [1] * 5
+            importance = [1] * len(person["position"])
         return [soulmate, importance]
 
     def __repr__(self):

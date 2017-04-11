@@ -1,31 +1,33 @@
 import validator, algs, preprocessing, postprocessing, sys, colors
 
+
+from sklearn.manifold import TSNE
+
 data_pre_options = [
-    [preprocessing.people.Standard()],
+    [preprocessing.people.Decompose(TSNE(n_components=4))],
+    [preprocessing.people.Decompose(TSNE(n_components=3))],
     [preprocessing.people.Flatten(), preprocessing.people.Standard()],
     [preprocessing.people.Standard(), preprocessing.people.Erf()]
 ]
 
 couples_raw_pre_options = [
+    [preprocessing.couples_raw.Mirror()],
     [preprocessing.couples_raw.Mirror(), preprocessing.couples_raw.PositionFiltering(max=.66)],
     [preprocessing.couples_raw.Mirror(), preprocessing.couples_raw.PositionFiltering(max=.3)],
-    [preprocessing.couples_raw.Mirror()],
     [],
 ]
 
 from sklearn.cluster import SpectralClustering, AgglomerativeClustering, KMeans
 couples_xy_pre_options = [
-    [preprocessing.couples_xy.SanitizeStartVec()],
     [],
+    [preprocessing.couples_xy.SanitizeStartVec()],
     [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=15))],
-    [preprocessing.couples_xy.Cluster(AgglomerativeClustering(n_clusters=15))],
-    [preprocessing.couples_xy.Cluster(KMeans(n_clusters=15))],
     [preprocessing.couples_xy.SanitizeStartVec(), preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=15))],
 ]
 
 maps_post = [
     postprocessing.Average(),
-    postprocessing.CoupleEqualizer(),
+    postprocessing.CoupleEqualizerFast(),
     postprocessing.MetricEqualizer(metric="distance"),
     postprocessing.MetricEqualizer(metric="zscore")
 ]
@@ -104,9 +106,3 @@ for data_pre in data_pre_options:
 
 print("")
 print(best)
-
-#current top algs:
-"""
-    Theil-Senn regressor, 3rd degree polynomial, Flatten Standard, Mirror, Kmeans 15, zscore - 28
-
-"""

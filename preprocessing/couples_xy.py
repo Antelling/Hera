@@ -43,7 +43,7 @@ class SanitizeVec(_SanitizeBase):
 
 
 def round_list(arr):
-    return list(map(lambda x:round(x, 2), arr))
+    return list(map(lambda x:round(x, 6), arr))
 
 class Cluster(object):
     # TODO: determine if pos/pos leads to the same classification as pos/vec
@@ -54,6 +54,8 @@ class Cluster(object):
         self.clusterer = clusterer
 
     def transform(self, couples):
+        dimensions = len(couples[0][0])
+
         # we again want to zip our lists, like in Sanitize
         zipped_couples = [round_list(x) + round_list(couples[1][i]) for i, x in enumerate(couples[0])]
         clusterer = self.clusterer.fit(zipped_couples)
@@ -70,8 +72,8 @@ class Cluster(object):
         # now we want to unzip our lists
         new_couples = [[], []]
         for group in groups:
-            new_couples[0].append(groups[group][0:5])
-            new_couples[1].append(groups[group][5:10])
+            new_couples[0].append(groups[group][0:dimensions])
+            new_couples[1].append(groups[group][dimensions:])
         return new_couples
 
     def __repr__(self):

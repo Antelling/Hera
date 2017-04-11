@@ -1,5 +1,5 @@
 import numpy as np
-import data
+import data, colors
 import json
 
 
@@ -67,6 +67,60 @@ class MetricEqualizer(object):
 
 
 class CoupleEqualizer(object):
+    def __init__(self, name="CouplesNormalized"):
+        self.name = name
+
+    def transform(self, maps):
+        maps["scoreable"][self.name] = self.form_map(maps["scoreable"]["average"])
+        return maps
+
+    def form_map(self, maps):
+        colors.blue("starting...")
+        from sklearn.utils.linear_assignment_ import linear_assignment
+        people = data.get.people_raw()
+
+        people_list = []
+
+        sane_map = {}
+        for person in maps:
+            sane_map[person] = {}
+            for otherperson in maps[person]:
+                if data.make.is_okay(people[person]["grade"], people[otherperson[0]]["grade"]):
+                    sane_map[person][otherperson[0]] = otherperson[1]
+                else:
+                    sane_map[person][otherperson[0]] = 999999999
+
+        for person in maps:
+            people_list.append(person)
+
+        finished_map = {}
+        for person in people_list:
+            finished_map[person] = []
+        for i in range(len(people_list)):
+            cost_matrix = []
+            for person in people_list:
+                costs = []
+                for otherperson in people_list:
+                    costs.append(sane_map[person][otherperson])
+                cost_matrix.append(costs)
+
+            pairs = linear_assignment(np.array(cost_matrix))
+            print(str(i) + "/" + str(len(people_list)))
+
+            for couple in enumerate(pairs):
+                couple = couple[1]
+                male_name = people_list[couple[0]]
+                female_name = people_list[couple[1]]
+                sane_map[male_name][female_name] = 999999 + i
+                sane_map[female_name][male_name] = 999999 + i
+                finished_map[male_name].append([female_name, i])
+
+        colors.green("done")
+        return finished_map
+
+
+class CoupleEqualizerFast(object):
+    """ignores gay people, to be much faster"""
     def __init__(self, name="CouplesNormalized"):
         self.name = name
 

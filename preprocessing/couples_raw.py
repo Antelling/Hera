@@ -93,14 +93,15 @@ class RANSAC(object):
         return np.median(np.abs(arr - med))
 
     def encode(self, arr1, arr2):
+        self.pivot = len(arr1)
         return list(map(list.__add__, arr1, arr2))
 
     def decode(self, arr):
         arr1 = []
         arr2 = []
         for item in arr:
-            arr1.append(item[0:5])
-            arr2.append(item[5:])
+            arr1.append(item[0:self.pivot])
+            arr2.append(item[self.pivot:])
         return [arr1, arr2]
 
     def calc_residuals(self, arr1, arr2):
@@ -115,6 +116,9 @@ class PositionFiltering(object):
     """Assumes couples have been mirrored"""
     def __init__(self, max=.6):
         self.max = max
+
+    def __repr__(self):
+        return "PositionFiltering(max=" + str(self.max) + ")"
 
     def transform(self, couples):
         #we need to make a model and fetch our data
