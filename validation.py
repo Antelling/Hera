@@ -1,5 +1,9 @@
 import validator, algs, preprocessing, postprocessing, sys, colors
 
+def warn(*args, **kwargs):
+    pass
+import warnings
+warnings.warn = warn #shut up sklearn
 
 from sklearn.manifold import TSNE
 
@@ -16,6 +20,7 @@ couples_raw_pre_options = [
     [preprocessing.couples_raw.Mirror(), preprocessing.couples_raw.PositionFiltering(max=.3)],
     [],
 ]
+
 
 from sklearn.cluster import SpectralClustering, AgglomerativeClustering, KMeans
 couples_xy_pre_options = [
