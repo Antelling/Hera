@@ -8,8 +8,9 @@ def gen_sklearn_powerful():
 
     for regressor in [
         GradientBoostingRegressor(loss="quantile"),
+        GradientBoostingRegressor(),
         RandomForestRegressor(),
-        MLPRegressor(),
+        MLPRegressor(max_iter=500),
         SVR()
     ]:
         for s in [False]:

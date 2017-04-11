@@ -10,8 +10,9 @@ def gen_sklearn_linear():
 
     for degree in polynomial_degrees:
         for regressor in [LinearRegression(),
-                          TheilSenRegressor(),
-                          HuberRegressor()]:
+                          #TheilSenRegressor(),
+                          #HuberRegressor()
+                          ]:
             for s in [False]:
                 regressor = make_pipeline(PolynomialFeatures(degree), regressor)
                 regressor = SklearnWrapper(regressor, scale_importance=s)
