@@ -3,21 +3,21 @@ from wrappers import SklearnWrapper
 
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.pipeline import make_pipeline
-from sklearn.linear_model import HuberRegressor
+from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import GradientBoostingRegressor
 
-alg = GradientBoostingRegressor(loss="quantile")
+alg = make_pipeline(PolynomialFeatures(2), LinearRegression())
 model = SklearnWrapper(alg)
 
 people_raw = data.get.people_raw()
-data_pre = [preprocessing.people.Standard(), preprocessing.people.Erf()]
+data_pre = [preprocessing.people.Standard()]
 for p in data_pre:
     people_raw = p.transform(people_raw)
 
 couples_raw = data.get.couples_raw()
-couples_raw_pre = [preprocessing.couples_raw.Mirror()]
-from sklearn.cluster import SpectralClustering
-couples_xy_pre = [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=15))]
+couples_raw_pre = [preprocessing.couples_raw.Mirror(), preprocessing.couples_raw.PositionFiltering(max=.6)]
+from sklearn.cluster import AgglomerativeClustering
+couples_xy_pre = [preprocessing.couples_xy.Cluster(AgglomerativeClustering(n_clusters=15))]
 
 
 def make_xy(people, couples, raw_trans, xy_trans):
@@ -62,7 +62,7 @@ print("")
 print("done")
 
 maps_post = [postprocessing.Average(),
-             postprocessing.CoupleEqualizer(name="main"),
+             postprocessing.MetricEqualizer(metric="zscore", name="main"),
              #postprocessing.RedBadCouples(),
              postprocessing.JVCouples()]
 

@@ -17,6 +17,7 @@ data_pre_options = [
 couples_raw_pre_options = [
     [preprocessing.couples_raw.Mirror()],
     [preprocessing.couples_raw.Mirror(), preprocessing.couples_raw.PositionFiltering(max=.66)],
+    [preprocessing.couples_raw.Mirror(), preprocessing.couples_raw.PositionFiltering(max=.9)],
     [preprocessing.couples_raw.Mirror(), preprocessing.couples_raw.PositionFiltering(max=.3)],
     [],
 ]
@@ -32,7 +33,7 @@ couples_xy_pre_options = [
 
 maps_post = [
     postprocessing.Average(),
-    postprocessing.CoupleEqualizerFast(),
+    #postprocessing.CoupleEqualizerFast(),
     postprocessing.MetricEqualizer(metric="distance"),
     postprocessing.MetricEqualizer(metric="zscore")
 ]
