@@ -1,39 +1,30 @@
 import validator, algs, preprocessing, postprocessing, sys, colors
 
-def warn(*args, **kwargs):
-    pass
-import warnings
-warnings.warn = warn #shut up sklearn
 
-from sklearn.manifold import TSNE
+from sklearn.manifold import TSNE, LocallyLinearEmbedding, SpectralEmbedding, MDS, Isomap
 
 data_pre_options = [
-    [preprocessing.people.Decompose(TSNE(n_components=4))],
-    [preprocessing.people.Decompose(TSNE(n_components=3))],
-    [preprocessing.people.Flatten(), preprocessing.people.Standard()],
-    [preprocessing.people.Standard(), preprocessing.people.Erf()]
+    [preprocessing.people.Decompose(TSNE(n_components=4)), preprocessing.people.Standard()],
+    [preprocessing.people.Decompose(LocallyLinearEmbedding(n_components=4)), preprocessing.people.Standard()],
+    [preprocessing.people.Decompose(SpectralEmbedding(n_components=4)), preprocessing.people.Standard()],
+    [preprocessing.people.Decompose(MDS(n_components=4)), preprocessing.people.Standard()],
+    [preprocessing.people.Decompose(Isomap(n_components=4)), preprocessing.people.Standard()],
 ]
 
 couples_raw_pre_options = [
     [preprocessing.couples_raw.Mirror()],
-    [preprocessing.couples_raw.Mirror(), preprocessing.couples_raw.PositionFiltering(max=.66)],
-    [preprocessing.couples_raw.Mirror(), preprocessing.couples_raw.PositionFiltering(max=.9)],
-    [preprocessing.couples_raw.Mirror(), preprocessing.couples_raw.PositionFiltering(max=.3)],
-    [],
+    []
 ]
 
 
 from sklearn.cluster import SpectralClustering, AgglomerativeClustering, KMeans
 couples_xy_pre_options = [
     [],
-    [preprocessing.couples_xy.SanitizeStartVec()],
-    [preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=15))],
-    [preprocessing.couples_xy.SanitizeStartVec(), preprocessing.couples_xy.Cluster(SpectralClustering(n_clusters=15))],
 ]
 
 maps_post = [
     postprocessing.Average(),
-    #postprocessing.CoupleEqualizerFast(),
+    postprocessing.CoupleEqualizerFast(),
     postprocessing.MetricEqualizer(metric="distance"),
     postprocessing.MetricEqualizer(metric="zscore")
 ]
