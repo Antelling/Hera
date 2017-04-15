@@ -34,8 +34,11 @@ things_to_test = sys.argv[1:]
 best = {"score": 9999}
 
 for data_pre in data_pre_options:
+    colors.purple("1")
     for couples_raw_pre in couples_raw_pre_options:
+        colors.blue("2")
         for couples_xy_pre in couples_xy_pre_options:
+            colors.green("3")
             if "pow" in things_to_test:
                 local = validator.val(
                     people_pre=data_pre,
