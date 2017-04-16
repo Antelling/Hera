@@ -6,11 +6,10 @@ def gen_sklearn_linear():
 
     from sklearn.pipeline import make_pipeline
     from sklearn.preprocessing import PolynomialFeatures
-    from sklearn.linear_model import LinearRegression, TheilSenRegressor, HuberRegressor, RANSACRegressor
+    from sklearn.linear_model import LinearRegression, HuberRegressor
 
     for degree in polynomial_degrees:
         for regressor in [LinearRegression(),
-                          TheilSenRegressor(),
                           HuberRegressor()
                           ]:
             for s in [False]:

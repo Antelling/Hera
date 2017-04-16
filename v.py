@@ -1,1 +1,1 @@
-from viz import grid
+from viz import linear_regressions

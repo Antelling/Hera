@@ -3,21 +3,20 @@ from wrappers import SklearnWrapper
 
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.pipeline import make_pipeline
-from sklearn.linear_model import LinearRegression
-from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.linear_model import HuberRegressor
 
-alg = make_pipeline(PolynomialFeatures(2), LinearRegression())
+alg = make_pipeline(PolynomialFeatures(1), HuberRegressor())
 model = SklearnWrapper(alg)
 
 people_raw = data.get.people_raw()
-data_pre = [preprocessing.people.Standard()]
+from sklearn.manifold import TSNE
+data_pre = [preprocessing.people.Decompose(TSNE(4)), preprocessing.people.Standard()]
 for p in data_pre:
     people_raw = p.transform(people_raw)
 
 couples_raw = data.get.couples_raw()
-couples_raw_pre = [preprocessing.couples_raw.Mirror(), preprocessing.couples_raw.PositionFiltering(max=.6)]
-from sklearn.cluster import AgglomerativeClustering
-couples_xy_pre = [preprocessing.couples_xy.Cluster(AgglomerativeClustering(n_clusters=15))]
+couples_raw_pre = [preprocessing.couples_raw.Mirror()]
+couples_xy_pre = []
 
 
 def make_xy(people, couples, raw_trans, xy_trans):
@@ -62,7 +61,7 @@ print("")
 print("done")
 
 maps_post = [postprocessing.Average(),
-             postprocessing.MetricEqualizer(metric="zscore", name="main"),
+             postprocessing.MetricEqualizer(metric="distance", name="main"),
              #postprocessing.RedBadCouples(),
              postprocessing.JVCouples()]
 
