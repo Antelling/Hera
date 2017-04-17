@@ -124,12 +124,14 @@ class PositionFiltering(object):
         #we need to make a model and fetch our data
         #we hard code the most accurate model
         import data, preprocessing, wrappers, vector_math
+        from sklearn.manifold import TSNE
         people = data.get.people_raw()
+        people = preprocessing.people.Decompose(TSNE(4)).transform(people)
         people = preprocessing.people.Flatten().transform(people)
         Xy = data.make.couples_xy(couples, people)
 
-        from sklearn.ensemble import GradientBoostingRegressor
-        model = wrappers.SklearnWrapper(GradientBoostingRegressor(loss="quantile"))
+        from sklearn.linear_model import LinearRegression
+        model = wrappers.SklearnWrapper(LinearRegression)
         model.fit(*Xy)
 
         good_couples = []

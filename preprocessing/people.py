@@ -3,6 +3,7 @@ import data
 import numpy as np
 import random
 
+
 class PeopleBase(object):
     def transform(self, people):
         people_xy = data.make.people_xy(people)
@@ -13,6 +14,8 @@ class PeopleBase(object):
 
     def transform_x(self, X):
         return X
+
+
 
 class Standard(PeopleBase):
     def transform_x(self, X):
@@ -40,24 +43,25 @@ class Flatten(PeopleBase):
         step = 100 / n
         numbers = np.arange(0, 100, step)
 
-        #okay so we want to snap our d to numbers
-        #but we need to remember our original position
-        #and we need to fuzz the numbers to avoid bad correlations
+        # okay so we want to snap our d to numbers
+        # but we need to remember our original position
+        # and we need to fuzz the numbers to avoid bad correlations
         structured_d = []
         for i, value in enumerate(d):
             structured_d.append({"index": i, "value": value + random.uniform(-.4, .4)})
 
-        structured_d.sort(key=lambda x:x["value"])
+        structured_d.sort(key=lambda x: x["value"])
 
         for i, value in enumerate(structured_d):
             structured_d[i]["flattened_value"] = numbers[i]
 
-        structured_d.sort(key=lambda x:x["index"])
+        structured_d.sort(key=lambda x: x["index"])
 
         d = []
         for value in structured_d:
             d.append(value["flattened_value"])
         return d
+
 
 class Decompose(PeopleBase):
     def __init__(self, decomp):

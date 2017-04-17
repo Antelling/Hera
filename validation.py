@@ -1,23 +1,26 @@
 import validator, algs, preprocessing, postprocessing, sys, colors
 
-
-from sklearn.manifold import TSNE, LocallyLinearEmbedding, SpectralEmbedding, MDS, Isomap
+from sklearn.manifold import TSNE
 
 data_pre_options = [
-    [preprocessing.people.Decompose(TSNE(n_components=4)), preprocessing.people.Standard()],
-    [preprocessing.people.Decompose(LocallyLinearEmbedding(n_components=4)), preprocessing.people.Standard()],
-    [preprocessing.people.Decompose(SpectralEmbedding(n_components=4)), preprocessing.people.Standard()],
-    [preprocessing.people.Decompose(MDS(n_components=4)), preprocessing.people.Standard()],
-    [preprocessing.people.Decompose(Isomap(n_components=4)), preprocessing.people.Standard()],
+    [
+        preprocessing.people.Decompose(TSNE(n_components=4)),
+        preprocessing.people.Standard()],
+    [
+        preprocessing.people.Decompose(TSNE(n_components=4)),
+        preprocessing.people.Flatten(),
+        preprocessing.people.Standard()
+    ],
 ]
 
 couples_raw_pre_options = [
     [preprocessing.couples_raw.Mirror()],
-    []
+    [preprocessing.couples_raw.Mirror(), preprocessing.couples_raw.PositionFiltering(.7)],
+    [preprocessing.couples_raw.Mirror(), preprocessing.couples_raw.PositionFiltering(.4)],
 ]
 
-
 from sklearn.cluster import SpectralClustering, AgglomerativeClustering, KMeans
+
 couples_xy_pre_options = [
     [],
 ]
