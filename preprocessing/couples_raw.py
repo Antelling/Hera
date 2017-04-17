@@ -131,7 +131,7 @@ class PositionFiltering(object):
         Xy = data.make.couples_xy(couples, people)
 
         from sklearn.linear_model import HuberRegressor
-        model = wrappers.SklearnWrapper(HuberRegressor)
+        model = wrappers.SklearnWrapper(HuberRegressor())
         model.fit(*Xy)
 
         good_couples = []
