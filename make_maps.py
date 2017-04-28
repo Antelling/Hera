@@ -1,21 +1,18 @@
 import preprocessing, postprocessing, data, vector_math, os, json
 from wrappers import SklearnWrapper
 
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.pipeline import make_pipeline
-from sklearn.linear_model import HuberRegressor
+from sklearn.ensemble import GradientBoostingRegressor
 
-alg = make_pipeline(PolynomialFeatures(1), HuberRegressor())
-model = SklearnWrapper(alg)
+model = SklearnWrapper(GradientBoostingRegressor(loss="quantile"))
 
 people_raw = data.get.people_raw()
 from sklearn.manifold import TSNE
-data_pre = [preprocessing.people.Decompose(TSNE(4)), preprocessing.people.Standard()]
+data_pre = [preprocessing.people.Decompose(TSNE(4)), preprocessing.people.Flatten(), preprocessing.people.Standard()]
 for p in data_pre:
     people_raw = p.transform(people_raw)
 
 couples_raw = data.get.couples_raw()
-couples_raw_pre = [preprocessing.couples_raw.Mirror()]
+couples_raw_pre = [preprocessing.couples_raw.Mirror(), preprocessing.couples_raw.PositionFiltering(max=.7)]
 couples_xy_pre = []
 
 
@@ -61,7 +58,7 @@ print("")
 print("done")
 
 maps_post = [postprocessing.Average(),
-             postprocessing.MetricEqualizer(metric="distance", name="main"),
+             postprocessing.CoupleEqualizerFast(name="main"),
              #postprocessing.RedBadCouples(),
              postprocessing.JVCouples()]
 

@@ -77,7 +77,6 @@ class CoupleEqualizer(object):
     def form_map(self, maps):
         colors.blue("starting...")
         from sklearn.utils.linear_assignment_ import linear_assignment
-        people = data.get.people_raw()
 
         people_list = []
 
@@ -85,10 +84,7 @@ class CoupleEqualizer(object):
         for person in maps:
             sane_map[person] = {}
             for otherperson in maps[person]:
-                if data.make.is_okay(people[person]["grade"], people[otherperson[0]]["grade"]):
-                    sane_map[person][otherperson[0]] = otherperson[1]
-                else:
-                    sane_map[person][otherperson[0]] = 999999999
+                sane_map[person][otherperson[0]] = otherperson[1]
 
         for person in maps:
             people_list.append(person)
@@ -111,9 +107,8 @@ class CoupleEqualizer(object):
                 couple = couple[1]
                 male_name = people_list[couple[0]]
                 female_name = people_list[couple[1]]
-                sane_map[male_name][female_name] = 999999 + i
-                sane_map[female_name][male_name] = 999999 + i
-                finished_map[male_name].append([female_name, i])
+                finished_map[male_name].append([female_name, sane_map[male_name][female_name]])
+                sane_map[male_name][female_name] = 1000 + i
 
         colors.green("done")
         return finished_map
@@ -154,10 +149,7 @@ class CoupleEqualizerFast(object):
         for person in maps:
             sane_map[person] = {}
             for otherperson in maps[person]:
-                if data.make.is_okay(people[person]["grade"], people[otherperson[0]]["grade"]):
-                    sane_map[person][otherperson[0]] = otherperson[1]
-                else:
-                    sane_map[person][otherperson[0]] = 9999
+                sane_map[person][otherperson[0]] = otherperson[1]
 
         finished_map = {}
         for man in men:
@@ -174,7 +166,6 @@ class CoupleEqualizerFast(object):
 
             pairs = linear_assignment(np.array(cost_matrix))
 
-            couples = {}
             for couple in enumerate(pairs):
                 couple = couple[1]
                 male_name = men[couple[0]]
@@ -187,7 +178,7 @@ class CoupleEqualizerFast(object):
         for person in removed:
             finished_map[person] = []
             for otherperson in maps[person]:
-                finished_map[person].append([otherperson[0], otherperson[1] + 400])
+                finished_map[person].append([otherperson[0], otherperson[1] + 1000])
         #okay so now the removed people are all matched with someone
         #we need to match everyone else with the removed people
         for person in finished_map:

@@ -128,10 +128,11 @@ class PositionFiltering(object):
         people = data.get.people_raw()
         people = preprocessing.people.Decompose(TSNE(4)).transform(people)
         people = preprocessing.people.Flatten().transform(people)
+        people = preprocessing.people.Standard().transform(people)
         Xy = data.make.couples_xy(couples, people)
 
-        from sklearn.linear_model import HuberRegressor
-        model = wrappers.SklearnWrapper(HuberRegressor())
+        from sklearn.ensemble import GradientBoostingRegressor
+        model = wrappers.SklearnWrapper(GradientBoostingRegressor(loss="quantile"))
         model.fit(*Xy)
 
         good_couples = []
