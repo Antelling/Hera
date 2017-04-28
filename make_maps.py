@@ -58,7 +58,7 @@ print("")
 print("done")
 
 maps_post = [postprocessing.Average(),
-             postprocessing.CoupleEqualizerFast(name="main"),
+             postprocessing.CoupleEqualizer(name="main"),
              #postprocessing.RedBadCouples(),
              postprocessing.JVCouples()]
 
