@@ -2,7 +2,7 @@ from wrappers import SklearnWrapper
 
 
 def gen_sklearn_linear():
-    polynomial_degrees = [1, 4, 3]
+    polynomial_degrees = [1, 2, 3, 4]
 
     from sklearn.pipeline import make_pipeline
     from sklearn.preprocessing import PolynomialFeatures

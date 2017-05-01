@@ -3,12 +3,15 @@ from wrappers import SklearnWrapper
 
 def gen_sklearn_powerful():
     from sklearn.ensemble import GradientBoostingRegressor
+    from sklearn.svm import SVR
+    from sklearn.kernel_ridge import KernelRidge
+    from sklearn.neighbors import KNeighborsRegressor
 
     for regressor in [
         GradientBoostingRegressor(loss="quantile"),
-        GradientBoostingRegressor(loss="quantile", alpha=.7),
-        GradientBoostingRegressor(loss="quantile", alpha=.95),
-        GradientBoostingRegressor(loss="lad"),
+        SVR(C=5),
+        KernelRidge(kernel="laplacian"),
+        KNeighborsRegressor(n_neighbors=1)
     ]:
         for s in [False]:
             yield SklearnWrapper(regressor, scale_importance=s)

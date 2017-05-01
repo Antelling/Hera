@@ -1,1 +1,1 @@
-from viz import linear_regressions
+from viz import svm
