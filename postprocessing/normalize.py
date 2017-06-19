@@ -67,6 +67,7 @@ class MetricEqualizer(object):
 
 
 class CoupleEqualizer(object):
+    """Uses linear assignment between all genders to normalize recommendations"""
     def __init__(self, name="CouplesNormalized"):
         self.name = name
 
@@ -115,7 +116,7 @@ class CoupleEqualizer(object):
 
 
 class CoupleEqualizerFast(object):
-    """ignores gay people, to be much faster"""
+    """Uses linear assignment between opposite genders to normalize recommendations"""
     def __init__(self, name="CouplesNormalized"):
         self.name = name
 

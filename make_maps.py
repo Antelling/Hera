@@ -1,41 +1,25 @@
-import preprocessing, postprocessing, data, vector_math, os, json
-from wrappers import SklearnWrapper
-
-from sklearn.ensemble import GradientBoostingRegressor
-
-model = SklearnWrapper(GradientBoostingRegressor(loss="quantile"))
-
-people_raw = data.get.people_raw()
-from sklearn.manifold import TSNE
-data_pre = [preprocessing.people.Decompose(TSNE(4)), preprocessing.people.Flatten(), preprocessing.people.Standard()]
-for p in data_pre:
-    people_raw = p.transform(people_raw)
-
-couples_raw = data.get.couples_raw()
-couples_raw_pre = [preprocessing.couples_raw.Mirror(), preprocessing.couples_raw.PositionFiltering(max=.7)]
-couples_xy_pre = []
+import postprocessing, data, vector_math, os, json
+from sklearn.externals import joblib
 
 
-def make_xy(people, couples, raw_trans, xy_trans):
-    for p in raw_trans:
-        couples = p.transform(couples)
-    couples = data.make.couples_xy(couples, people)
-    for p in xy_trans:
-        couples = p.transform(couples)
-    return couples
+model = joblib.load("model.pkl")
 
+couples = data.get.couples_raw()
+people = data.get.people_raw()
+y = [people[couple["female"]]["position"] for couple in couples]
 
-couples_xy = make_xy(people_raw, couples_raw, couples_raw_pre, couples_xy_pre)
-model.fit(*couples_xy)
+model.fit(couples, y)
+
 
 maps = {
     "scoreable": {"one-way": {}},  # eg one-way, averaged, normalized
     "misc": {}  # eg mono-couples, pop-list
 }
 
-for person in people_raw:
-    soulmate = model.predict_for_single_point(people_raw[person])
-    maps["scoreable"]["one-way"][person] = vector_math.get_rec(people_raw, soulmate)
+for person in people:
+    soulmate = model.predict([people[person]["position"]])[0]
+    maps["scoreable"]["one-way"][person] = vector_math.get_rec(people, [soulmate, [1, 1, 1, 1, 1]])
+
 
 # okay so now we have a recommendation for every person
 # but if someone is in a relationship, they'll just get the person they are dating as like their first result
@@ -43,22 +27,22 @@ for person in people_raw:
 # and people get upset when I tell them to date their ex. So:
 print("normal recs made, making recs for people in couples: ")
 import copy
-for i, couple in enumerate(couples_raw):
+for i, couple in enumerate(couples):
     if not couple["still_dating"]:
-        new_couples = copy.deepcopy(couples_raw)
+        new_couples = copy.deepcopy(couples)
+        new_y = copy.deepcopy(y)
         del new_couples[i]
-        couples_xy = make_xy(people_raw, new_couples, couples_raw_pre, couples_xy_pre)
-        model.fit(*couples_xy)
-        print(str(i + 1) + "/" + str(len(couples_raw)))
+        del new_y[i]
+        model.fit(new_couples, new_y)
+        print(str(i + 1) + "/" + str(len(couple)))
         for gender_key in ["male", "female"]:
             person = couple[gender_key]
-            soulmate = model.predict_for_single_point(people_raw[person])
-            maps["scoreable"]["one-way"][person] = vector_math.get_rec(people_raw, soulmate)
+            soulmate = model.predict([people[person]["position"]])[0]
+            maps["scoreable"]["one-way"][person] = vector_math.get_rec(people, [soulmate, [1, 1, 1, 1, 1]])
 print("")
 print("done")
 
 maps_post = [postprocessing.Average(),
-             postprocessing.CoupleEqualizer(name="main"),
              #postprocessing.RedBadCouples(),
              postprocessing.JVCouples()]
 
@@ -72,9 +56,9 @@ for couple in data.get.couples_raw():
         people_in_relationships.append(couple["female"])
 
 map_to_save = {
-    "map": maps["scoreable"]["main"],
+    "map": maps["scoreable"]["average"],
     "couples": maps["misc"]["JVCouples"],
-    "people_raw": people_raw,
+    "people_raw": people,
     #"list": maps["misc"]["list"],
     "people_in_relationships": people_in_relationships
 }

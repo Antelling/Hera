@@ -7,7 +7,7 @@ class JVCouples(object):
         return maps
 
     def form_couples(self, maps):
-        #from lapjv import lapjv
+        """Create couple pairs to minimize global loss"""
         from sklearn.utils.linear_assignment_ import linear_assignment as lapjv
 
         people = data.get.people_raw()

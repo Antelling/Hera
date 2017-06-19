@@ -2,9 +2,20 @@ import math, copy, random
 import colors, data
 import numpy as np
 from sklearn.metrics.pairwise import euclidean_distances
+from abc import ABC
+from sklearn.base import BaseEstimator
 
 
-class Time_mod(object):
+class RawBase(ABC, BaseEstimator):
+    def transform(self, data):
+        if "couples_raw" in data:
+            data["couples_raw"] = self.raw_transform(data["couples_raw"])
+        return data
+    
+    def fit(self, *_):
+        return self
+
+class Time_mod(RawBase):
     def __init__(self, mod=None):
         if mod is None:
             mod = lambda x: math.log(x)
@@ -14,38 +25,46 @@ class Time_mod(object):
             self.mod = mod[0]
             self.name = mod[1]
 
-    def transform(self, couples):
+    def raw_transform(self, couples):
         new_couples = []
         for couple in couples:
-            time = int(self.mod(couple["length"]))
-            for _ in range(time):
-                c = copy.copy(couple)
-                new_couples.append(c)
+            try:
+                time = int(self.mod(couple["length"]))
+                for _ in range(time):
+                    c = copy.copy(couple)
+                    new_couples.append(c)
+            except KeyError:
+                pass
         return new_couples
 
     def __repr__(self):
         return self.name
 
 
-class Mirror(object):
-    def transform(self, couples):
+class Mirror(RawBase):
+    def raw_transform(self, couples):
+        if not "female" in couples[0]: #we are predicting, do not modify couples
+            return couples
         new_couples = copy.copy(couples)
         for couple in couples:
-            c = copy.copy(couple)
-            male = c["male"]
-            c["male"] = c["female"]
-            c["female"] = male
-            new_couples.append(c)
+            try:
+                c = copy.copy(couple)
+                male = c["male"]
+                c["male"] = c["female"]
+                c["female"] = male
+                new_couples.append(c)
+            except KeyError:
+                pass
         return new_couples
 
 
-class RANSAC(object):
+class RANSAC(RawBase):
     def __init__(self, max_iter=100, good=True, min_consensus=999999):
         self.max_iter = max_iter
         self.min_consensus=min_consensus
         self.good = good
 
-    def transform(self, couples):
+    def raw_transform(self, couples):
         X, y = data.make.couples_xy(couples)
         from sklearn.linear_model import LinearRegression
         from wrappers import SklearnWrapper
@@ -112,7 +131,8 @@ class RANSAC(object):
         return distances
 
 
-class PositionFiltering(object):
+
+class PositionFiltering(RawBase):
     """Assumes couples have been mirrored"""
     def __init__(self, max=.6):
         self.max = max
@@ -120,7 +140,7 @@ class PositionFiltering(object):
     def __repr__(self):
         return "PositionFiltering(max=" + str(self.max) + ")"
 
-    def transform(self, couples):
+    def raw_transform(self, couples):
         #we need to make a model and fetch our data
         #we hard code the most accurate model
         import data, preprocessing, wrappers, vector_math
@@ -141,7 +161,7 @@ class PositionFiltering(object):
             source = couple["male"]
             target = couple["female"]
 
-            soulmate = model.predict_for_single_point(people[source])
+            soulmate = model.predict_for_single_point(people[source]) #fixme
             rec_list = vector_math.get_rec(people, soulmate)
             index = [othername[0] for othername in rec_list].index(target)
 

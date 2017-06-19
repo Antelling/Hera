@@ -70,9 +70,9 @@
                 .attr("height", height);
 
         var force = d3.layout.force()
-                .gravity(0.05)
-                .distance(100)
-                .charge(-70)
+                .gravity(0.01)
+                .distance(3000)
+                .charge(-30)
                 .size([width, height]);
 
         force

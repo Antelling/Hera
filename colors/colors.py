@@ -2,7 +2,7 @@ c = {
     "purple": '\033[95m',
     "blue": '\033[94m',
     "green": '\033[92m',
-    "orange": '\033[93m',
+    "yellow": '\033[93m',
     "red": '\033[91m',
     "end": '\033[0m',
     "bold": '\033[1m',
@@ -22,12 +22,15 @@ def green(text):
     print(c["green"] + str(text) + c["end"])
 
 
-def orange(text):
-    print(c["orange"] + str(text) + c["end"])
+def yellow(text):
+    print(c["yellow"] + str(text) + c["end"])
 
 
 def purple(text):
     print(c["purple"] + str(text) + c["end"])
+
+def white(text):
+    print(str(text))
 
 
 def bold(text):
