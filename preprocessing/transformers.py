@@ -55,30 +55,38 @@ class GetPeoplesXy(TransformerBase):
 
 
 class FormData(TransformerBase):
+    def __init__(self, alg):
+        self.alg = alg
+
     def transform(self, couplesRaw):
         if type(couplesRaw[0]) == dict:
-            d = {"people": get.people_raw(), "couples_raw": couplesRaw}
-            for person in d["people"]:
-                d["people"][person]["y"] = copy.deepcopy(
-                    d["people"][person][
-                        "position"])  # add a y position, that will not change, for training the estimator.
-                # we have to do this since the actual y is None
+            d = {"people": get.people_decomposed(self.alg), "couples_raw": couplesRaw}
             return d
         else:
-            # we are passed a list of positions
+            # we are passed a list of positions, so we need to search through people to find original positions
+            people = get.people_decomposed(self.alg)
+            new_positions = []
+            for position in couplesRaw:
+                for person in people:
+                    if people[person]['y'] == position:
+                        new_positions.append(people[person]["position"])
+                        break
             d = {"people": {}, "couples_raw": []}
-            for i, position in enumerate(couplesRaw):
+            for i, position in enumerate(new_positions):
                 d["people"][str(i)] = {"position": position,
                                        'y': copy.deepcopy(position)}  # so we add a fake person to hold position
                 d["couples_raw"].append(
                     {'male': str(i)})  # and a fake relationship. The female position will be predicted.
             return d
 
+
 from sklearn.cluster import KMeans
+
 
 class Pass(TransformerBase):
     def __init__(self, contamination=None, clusterer=None):
-        self.contamination=contamination
+        self.contamination = contamination
         self.clusterer = KMeans()
+
     def transform(self, X):
         return X

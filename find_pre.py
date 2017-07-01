@@ -63,10 +63,11 @@ models = {
     "aut": SklearnWrapper(MultiOutputRegressor(AutoCurver(maxfev=100000)), accept_singleton=True)
 }
 
-from sklearn.cluster import SpectralClustering, MiniBatchKMeans, AffinityPropagation, AgglomerativeClustering, Birch
+from sklearn.cluster import SpectralClustering, MiniBatchKMeans, AgglomerativeClustering, Birch
+from sklearn.manifold import TSNE, LocallyLinearEmbedding, Isomap, MDS, SpectralEmbedding
+from sklearn.decomposition import PCA
 
 base_grid = {
-    "d__decomp__n_components": [2, 3, 4, 5],
     "standard": [pre.people.Standard(), None],
     "mirror": [pre.couples_raw.Mirror(), None],
     "cluster": [
@@ -81,7 +82,30 @@ base_grid = {
         pre.couples_xy.SanitizeStartEnd(),
         pre.transformers.Pass(),
     ],
-    "sanitize__contamination": [.01, .03, .05, .07, .1, .15, .2, .3, .4, .5]
+    "sanitize__contamination": [.01, .03, .05, .07, .1, .15, .2, .3, .4, .5],
+    "form_data__alg": [
+        None,
+
+        TSNE(n_components=3),
+        TSNE(n_components=4),
+
+        LocallyLinearEmbedding(n_components=3),
+        LocallyLinearEmbedding(n_components=4),
+
+        Isomap(n_components=3),
+        Isomap(n_components=4),
+
+        MDS(n_components=3),
+        MDS(n_components=4),
+
+        SpectralEmbedding(n_components=3),
+        SpectralEmbedding(n_components=4),
+
+        PCA(n_components=3),
+        PCA(n_components=4),
+    ],
+    "flatten": [pre.people.Flatten(), None],
+    "erf": [pre.people.Erf(), None]
 }
 
 param_grids = [
@@ -135,12 +159,14 @@ param_grids = [
 
 # region pipeline
 
+from sklearn.manifold import TSNE
 
 pipeline = Pipeline([
-    ("form_data", pre.transformers.FormData()),
-    ("d", pre.people.Decompose()),
+    ("form_data", pre.transformers.FormData(TSNE(n_components=4))),
     ("standard", pre.people.Standard()),
-    ("mirror", pre.couples_raw.Mirror()),  # opt, maybe
+    ("flatten", pre.people.Flatten()),
+    ("erf", pre.people.Erf()),
+    ("mirror", pre.couples_raw.Mirror()),  #TODO: check if females are being predicted correctly if this is None
     # ("adjust_time", pre.couples_raw.Time_mod()),  # opt
     # ("position_filter", pre.couples_raw.PositionFiltering()), #opt
     ("add_xy", pre.transformers.AddCouplesXy()),
@@ -150,12 +176,9 @@ pipeline = Pipeline([
     ("regressor", models["aut"])
 ])
 
-params = pipeline.get_params()
-for p in params:
-    print(colors.bold(p) + ": " + str(params[p]))
 # endregion
 
-best_score = -10000
+best_score = 10000
 best_cv = {}
 
 couples = data.get.couples_raw()
@@ -168,30 +191,35 @@ scores = {}
 for name, grid in param_grids:
     scores[name] = []
 
+from validator import val
+from postprocessing import MetricEqualizer, Average
+
 while True:
     for name, param_grid in param_grids:
+        colors.white("")
         param_grid = {**param_grid, **base_grid}
         try:
             rand_cv = RandomizedSearchCV(
                 pipeline,
                 param_distributions=param_grid,
-                n_iter=15,
+                n_iter=7,
                 scoring=dist_score,
                 cv=7,
                 return_train_score=False
             )
             rand_cv.fit(couples, y)
 
-            scores[name].append(-rand_cv.best_score_)
+            score = val([rand_cv.best_estimator_], [Average(), MetricEqualizer(metric="percentage")])["score"]
 
-            if rand_cv.best_score_ > best_score:
-                best_score = rand_cv.best_score_
+            scores[name].append(score)
+
+            if score < best_score:
+                best_score = score
                 best_cv = rand_cv
         except Exception as e:
             colors.red(e)
-            pass
 
-    joblib.dump(best_cv.best_estimator_, "model.pkl")
+    joblib.dump(best_cv.best_estimator_, "models/" + str(round(best_score, 4)) + "-model.pkl")
 
     colors.white("_________________________")
     for name in scores:

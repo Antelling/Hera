@@ -43,6 +43,7 @@ print("")
 print("done")
 
 maps_post = [postprocessing.Average(),
+             postprocessing.MetricEqualizer(metric="percentage", name="main"),
              #postprocessing.RedBadCouples(),
              postprocessing.JVCouples()]
 
@@ -56,7 +57,7 @@ for couple in data.get.couples_raw():
         people_in_relationships.append(couple["female"])
 
 map_to_save = {
-    "map": maps["scoreable"]["average"],
+    "map": maps["scoreable"]["main"],
     "couples": maps["misc"]["JVCouples"],
     "people_raw": people,
     #"list": maps["misc"]["list"],

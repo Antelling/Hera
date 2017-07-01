@@ -3,12 +3,10 @@ from . import score
 import numpy as np
 
 
-def val(*, people_pre, couples_raw_pre, couples_xy_pre, alg_gen, maps_post):
-    people_raw = data.get.people_raw()
-    for processor in people_pre:
-        people_raw = processor.transform(people_raw)
-
-    couples_raw = data.get.couples_raw()
+def val(algs, post):
+    people = data.get.people_raw()
+    couples = data.get.couples_raw()
+    y = [people[couple["female"]]["position"] for couple in couples]
 
     best = {
         "alg": {},
@@ -16,52 +14,51 @@ def val(*, people_pre, couples_raw_pre, couples_xy_pre, alg_gen, maps_post):
         "post": ""
     }
 
-    for alg in alg_gen:
-        try:
-            total_score_map = {}
+    for alg in algs:
+        total_score_map = {}
 
-            for i, couple in enumerate(couples_raw):
-                new_couples = copy.deepcopy(couples_raw)
-                del new_couples[i]
+        for i, couple in enumerate(couples):
+            new_couples = copy.deepcopy(couples)
+            new_y = copy.deepcopy(y)
+            del new_couples[i]
+            del new_y[i]
+            alg.fit(new_couples, new_y)
 
-                for processor in couples_raw_pre:
-                    new_couples = processor.transform(new_couples)
-                couples_xy = data.make.couples_xy(new_couples, people_raw)
-                for processor in couples_xy_pre:
-                    couples_xy = processor.transform(couples_xy)
+            maps = {
+                "scoreable": {"one-way": {}},  # eg one-way, averaged, normalized
+                "misc": {}  # eg mono-couples, pop-list
+            }
 
-                alg.fit(*couples_xy)
 
-                maps = {
-                    "scoreable": {"one-way": {}},  # eg one-way, averaged, normalized
-                    "misc": {}  # eg mono-couples, pop-list
-                }
+            for person in people:
+                soulmate = alg.predict([people[person]["position"]])[0]
+                maps["scoreable"]["one-way"][person] = vector_math.get_rec(people, [soulmate, [1, 1, 1, 1, 1]])
 
-                for person in people_raw:
-                    soulmate = alg.predict_for_single_point(people_raw[person])
-                    maps["scoreable"]["one-way"][person] = vector_math.get_rec(people_raw, soulmate)
 
-                for processor in maps_post:
-                    maps = processor.transform(maps)
+            import json
+            with open("dump.json", "w") as file:
+                file.write(json.dumps(maps))
 
-                score_map = score.score(maps, couple)
-                for m in score_map:
-                    if not m in total_score_map:
-                        total_score_map[m] = []
-                    total_score_map[m] += score_map[m]
+            for processor in post:
+                maps = processor.transform(maps)
 
-            for m in total_score_map:
-                total_score_map[m] = [np.percentile(total_score_map[m], 80),
-                                      np.mean(total_score_map[m]),
-                                      np.median(total_score_map[m])]
+            score_map = score.score(maps, couple)
+            for m in score_map:
+                if not m in total_score_map:
+                    total_score_map[m] = []
+                total_score_map[m] += score_map[m]
 
-            for m in total_score_map:
-                if total_score_map[m][1] < best["score"]:
-                    best["score"] = total_score_map[m][1]
-                    best["alg"] = alg
-                    best["post"] = m
-                    best["pre"] = [people_pre, couples_raw_pre, couples_xy_pre]
-        except Exception as e:
-            colors.red(e)
+        for m in total_score_map:
+            total_score_map[m] = [np.percentile(total_score_map[m], 80),
+                                  np.mean(total_score_map[m]),
+                                  np.median(total_score_map[m])]
+
+            colors.yellow(m + ": " + str(total_score_map[m]))
+
+        for m in total_score_map:
+            if total_score_map[m][1] < best["score"]:
+                best["score"] = total_score_map[m][1]
+                best["alg"] = alg
+                best["post"] = m
 
     return best

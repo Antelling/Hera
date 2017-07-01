@@ -78,7 +78,7 @@ def make_block(maps, name):
 
     output += "<h1>Results For: " + name + "</h1>"
 
-    output += "<h3>You should go to Prom with:</h3>"
+    output += "<h3>Top Result:</h3>"
     try:
         message = maps["couples"][name]
     except KeyError:

@@ -13,7 +13,7 @@ cache = {}
 
 
 def people_raw():
-    """Return a list of people in the following schema:
+    """Return a dict of people with names as keys in the following schema:
         gender: str/cat, male|female
         grade: int/cat, 9|10|11|12|13..., 13 is freshmen year of college
         display: bool, if false, never ever display them. Acts kind of as a failsafe for certain people
@@ -34,6 +34,25 @@ def people_xy():
         people = people_raw()
         cache["people_xy"] = make.people_xy(people)
         return cache["people_xy"]
+
+
+def people_decomposed(alg):
+    """Certain decomp algs do not provide a transform function, just fit transform.
+    So we have this hacky data generator wrapper thing. Additionally, store the original positions as "y"."""
+    if str(alg) in cache:
+        return cache[str(alg)]
+    else:
+        people = people_raw()
+        X_list, names = people_xy()
+        if alg is not None:
+            X_list = alg.fit_transform(X_list)
+        for i, name in enumerate(names):
+            people[name]["y"] = copy.deepcopy(people[name]["position"])
+            people[name]["position"] = X_list[i]
+        cache[str(alg)] = people
+        return people
+
+
 
 
 def couples_raw():
