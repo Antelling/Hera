@@ -1,49 +1,60 @@
 <!doctype html>
 <head>
-    <title>
-        BSHS Dating Site
-    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hera</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="/static/app.css" type="text/css" rel="stylesheet">
+
 </head>
 <body>
-<h1>BSHS Dating Site</h1>
-<h5>And also some other schools</h5>
-<marquee>
-    <marquee direction="down" width="250" height="200" behavior="alternate">
-        <marquee behavior="alternate" scrollamount="20">
-            <marquee behavior="alternate" scrollamount="12" direction="down">
-                20% MORE ACCURATE
-            </marquee>
-        </marquee>
-    </marquee>
-</marquee>
-<form method="get" action="/results">
-    <input name="name" placeholder="Firstname Lastname">
-    <input type="submit">
-</form>
-<br/>
 
-<p>
-    Not in the dataset? Take the <a href="https://www.surveymonkey.com/r/5Z6KGLT">survey</a> then wait like a day.
-</p>
+<div id="hero-image-container">
+    <div id="color-overlay" class="purple"></div>
+    <img src="http://www.angloitalianfollowus.com/wp-content/uploads/2014/06/the-baroque-buildings-and-sights-of-lecce-italy-15-1024x768.jpg">
+</div>
 
-<p>
-    Want to know how it works? <a href="/explanation">explanation</a>
-</p>
+<div class="center">
+    <div>
+        <h1>Hera</h1>
+        <h2>Fancy Dating Algorithms</h2>
+        <form method="get" action="/results">
+            <input name="name" id="name-input" placeholder="Firstname Lastname"><input type="submit" id="submit-button"
+                                                                                       value="Search Name">
+        </form>
+    </div>
+</div>
 
-<p>
-    Want a wibbly wobbly graph? <a href="/wibbly_wobbly">wibbly wobbly</a>
-</p>
+
+<div id="links">
+    <a href="https://www.surveymonkey.com/r/5Z6KGLT">
+        <p>
+            Not in the dataset? Take the survey.
+        </p>
+    </a>
+
+    <a href="/explanation">
+        <p>
+            Learn how it works.
+        </p></a>
+
+    <a href="/wibbly_wobbly">
+        <p>
+            View relationship graph.
+        </p>
+    </a>
+</div>
 
 
 <script>
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
         i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
         a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
+            m = s.getElementsByTagName(o)[0];
         a.async = 1;
         a.src = g;
         m.parentNode.insertBefore(a, m)
@@ -51,6 +62,5 @@
 
     ga('create', 'UA-96586317-1', 'auto');
     ga('send', 'pageview');
-
 </script>
 </body>

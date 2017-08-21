@@ -78,12 +78,13 @@ def make_block(maps, name):
 
     output += "<h1>Results For: " + name + "</h1>"
 
-    output += "<h3>Top Result:</h3>"
+    #Top results, bring back around homecoming?
+    """output += "<h3>Top Result:</h3>"
     try:
         message = maps["couples"][name]
     except KeyError:
         message = "Not enough people, sorry"
-    output += "<h2>" + message + "</h2>"
+    output += "<h2>" + message + "</h2>"""
 
     # we need to remove freshmen from seniors, etc
     places = remove_creepy_age_gap(name, places, maps["people_raw"])
@@ -101,7 +102,7 @@ def make_block(maps, name):
         output += display(othername, i, len(good_map), maps["people_raw"], name, maps["people_in_relationships"])
     output += "</table></div>"
 
-    output += "</div>"
+    output += "</div>" #close div class block
 
     return output
 

@@ -1,18 +1,117 @@
+
 body{
-    font-family: sans-serif;
+    font-family: "Lato", sans-serif;
     width: 100vw;
     overflow-x: hidden;
     overflow-y: auto;
-    margin-bottom: 0;
+    padding: 0;
+    margin: 0;
 }
 
+
+#hero-image-container{
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    z-index: -2;
+}
+
+#hero-image-container #color-overlay{
+    background: linear-gradient(rgba(200, 0, 200, .9), rgba(200, 9, 0, 0.4));
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+}
+
+#hero-image-container img{
+    min-height: 100vh;
+    min-width: 100vw;
+    padding: 0;
+    z-index: -2;
+}
+
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+}
+
+
 h1{
-    font-size: 3em;
+    font-size: 25vh;
+    line-height: 0;
+    color: white;
+    margin-bottom: calc(25vh / 2 + 5vh);
 }
 
 h2{
-    font-size: 2.5em;
+    font-size: 4.5vh;
     line-height: 0;
+    color: white;
+    margin-bottom: calc(4.5vh / 2 + 5vh);
+}
+
+#name-input{
+    margin: 0;
+    border: 0;
+    padding: 10px;
+    border-radius: .5vw 0 0 .5vw;
+    font-size: 1.3em;
+}
+
+#submit-button{
+    background-color: pink;
+    border-radius: 0 .5vw .5vw 0;
+    border: 0;
+    margin: 0;
+    padding: 10px;
+    font-size: 1.3em;
+}
+
+#links{
+    padding: 15px;
+    font-size: 1.3em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: white;
+    width: 85vw;
+    margin: 0 auto;
+}
+
+#links p{
+    width: 25vw;
+    border-radius: 1vw;
+    padding: 15px;
+    background-color: #ffcbd5;
+    background-image: linear-gradient(to bottom, pink, #ffaf91);
+    min-width: 300px;
+    border: 2px solid white;
+}
+
+#links p:hover{
+    border: 2px solid hotpink;
+}
+
+
+/*---------------------------------------------------------------------------------------------------------------*/
+
+#container{
+    margin: 5px;
+    padding: 5px;
+}
+
+#container h1{
+    color: black;
+    font-size: 2em;
+    margin-bottom: 20px;
+    margin-top: 40px;
 }
 
 .group{
@@ -50,11 +149,18 @@ table{
     max-width: 600px;
 }
 
-td a{
+a{
     text-decoration: none;
+}
+
+a:visited{
     color: inherit;
 }
-a:hover{
+
+td a{
+    color: inherit;
+}
+td a:hover{
     text-decoration: underline;
 }
 
