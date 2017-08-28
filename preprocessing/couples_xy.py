@@ -64,10 +64,11 @@ def round_list(arr):
 class Cluster(XyBase):
     # TODO: determine if pos/pos leads to the same classification as pos/vec
     # TODO: see if including position leads to an increase in accuracy, or if only the vector should be used
-    def __init__(self, clusterer=None):
+    def __init__(self, clusterer=None, replace=False):
         if clusterer is None:
             clusterer = SpectralClustering()
         self.clusterer = clusterer
+        self.replace = replace
 
     def xy_transform(self, couples):
         try:
@@ -91,11 +92,15 @@ class Cluster(XyBase):
             for group in groups:
                 new_couples[0].append(groups[group][0:dimensions])
                 new_couples[1].append(groups[group][dimensions:])
-            return new_couples
+
+            if self.replace:
+                return new_couples
+            else:
+                return [new_couples[0] + couples[0], new_couples[1] + couples[1]]
+
         except ValueError:
-            #we have a smaller number of samples than desired clusters
+            # we have a smaller number of samples than desired clusters
             return couples
 
     def __repr__(self):
         return str(self.clusterer)
-

@@ -84,7 +84,7 @@ from sklearn.cluster import KMeans
 
 
 class Pass(TransformerBase):
-    def __init__(self, contamination=None, clusterer=None):
+    def __init__(self, contamination=None, clusterer=None, replace=None):
         self.contamination = contamination
         self.clusterer = KMeans()
 

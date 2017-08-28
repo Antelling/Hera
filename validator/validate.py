@@ -35,10 +35,6 @@ def val(algs, post):
                 maps["scoreable"]["one-way"][person] = vector_math.get_rec(people, [soulmate, [1, 1, 1, 1, 1]])
 
 
-            import json
-            with open("dump.json", "w") as file:
-                file.write(json.dumps(maps))
-
             for processor in post:
                 maps = processor.transform(maps)
 

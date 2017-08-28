@@ -32,10 +32,10 @@ def purple(text):
 def white(text):
     print(str(text))
 
-
 def bold(text):
     return c["bold"] + str(text) + c["end"]
 
-
 def underline(text):
     return c["bold"] + str(text) + c["end"]
+
+
