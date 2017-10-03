@@ -208,7 +208,7 @@ while True:
             rand_cv = RandomizedSearchCV(
                 pipeline,
                 param_distributions=param_grid,
-                n_iter=1,
+                n_iter=7,
                 scoring=dist_score,
                 cv=7,
                 return_train_score=False
