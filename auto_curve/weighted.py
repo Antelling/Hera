@@ -109,7 +109,7 @@ function_lists = {
 
 
 
-class AutoCurver(BaseEstimator):
+class WeightedCurver(BaseEstimator):
     def __init__(self, max_params=8, maxfev=100000, certainty_scaler=1, function_type="common"):
         self.max_params = max_params
         self.function_type = function_type

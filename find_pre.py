@@ -3,7 +3,6 @@ from wrappers import SklearnWrapper
 import numpy as np
 
 # region setup
-from sklearn.model_selection import LeaveOneOut
 from sklearn.metrics.pairwise import euclidean_distances
 
 
@@ -34,7 +33,7 @@ from sklearn.kernel_ridge import KernelRidge
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.neural_network import MLPRegressor
 from sklearn.neighbors import KNeighborsRegressor
-from auto_curve import AutoCurver
+from auto_curve import SummedCurver, WeightedCurver
 # from sklearn.gaussian_process import GaussianProcessRegressor
 
 from sklearn.preprocessing import PolynomialFeatures
@@ -60,7 +59,8 @@ models = {
         ("regressor", MultiOutputRegressor(RANSACRegressor()))
     ]), accept_singleton=True),
 
-    "aut": SklearnWrapper(MultiOutputRegressor(AutoCurver(maxfev=100000)), accept_singleton=True)
+    "wei": SklearnWrapper(MultiOutputRegressor(WeightedCurver(maxfev=100000)), accept_singleton=True),
+    "sum": SklearnWrapper(MultiOutputRegressor(SummedCurver(maxfev=2000, method="dogbox")), accept_singleton=True),
 }
 
 from sklearn.cluster import SpectralClustering, MiniBatchKMeans, AgglomerativeClustering, Birch
@@ -149,13 +149,19 @@ param_grids = [
         'regressor__model__poly__degree': [1, 2, 3, 4],
         'regressor__model__regressor__estimator__min_samples': [2],
     }),
-    ("aut", {
-        'regressor': [models["aut"]],
+    ("wei", {
+        'regressor': [models["wei"]],
         "regressor__model__estimator__max_params": [5, 4, 3],
         "regressor__model__estimator__certainty_scaler": [.1, .25, .5, .75, 1, 1.2, 1.5, 1.75, 2, 2.5, 3, 4, 5]
+    }),
+    ("sum", {
+        'regressor': [models["sum"]]
     })
 ]
 
+param_grids = [("sum", {
+        'regressor': [models["sum"]]
+    })]
 # endregion
 
 # region pipeline
@@ -167,14 +173,14 @@ pipeline = Pipeline([
     ("standard", pre.people.Standard()),
     ("flatten", pre.people.Flatten()),
     ("erf", pre.people.Erf()),
-    ("mirror", pre.couples_raw.Mirror()),  #TODO: check if females are being predicted correctly if this is None
+    ("mirror", pre.couples_raw.Mirror()),  # TODO: check if females are being predicted correctly if this is None
     # ("adjust_time", pre.couples_raw.Time_mod()),  # opt
     # ("position_filter", pre.couples_raw.PositionFiltering()), #opt
     ("add_xy", pre.transformers.AddCouplesXy()),
     ("sanitize", pre.couples_xy.SanitizeStartEnd()),  # also start-end and vec, opt
-    ("cluster", pre.couples_xy.Cluster()),  # using spectral embedding, try other methods, opt
+    ("cluster", pre.couples_xy.Cluster()),
     ("get_xy", pre.transformers.GetXy()),
-    ("regressor", models["aut"])
+    ("regressor", models["sum"])
 ])
 
 # endregion
@@ -197,13 +203,12 @@ from postprocessing import MetricEqualizer, Average
 
 while True:
     for name, param_grid in param_grids:
-        colors.white("")
         param_grid = {**param_grid, **base_grid}
         try:
             rand_cv = RandomizedSearchCV(
                 pipeline,
                 param_distributions=param_grid,
-                n_iter=7,
+                n_iter=1,
                 scoring=dist_score,
                 cv=7,
                 return_train_score=False
@@ -211,13 +216,14 @@ while True:
             rand_cv.fit(couples, y)
 
             score = val([rand_cv.best_estimator_], [Average(), MetricEqualizer(metric="percentage")])["score"]
+            print(score)
 
             scores[name].append(score)
 
             if score < best_score:
                 best_score = score
                 best_cv = rand_cv
-        except Exception as e:
+        except SyntaxError as e:
             colors.red(e)
 
     joblib.dump(best_cv.best_estimator_, "models/" + str(round(best_score, 4)) + "-model.pkl")

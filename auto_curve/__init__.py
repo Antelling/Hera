@@ -1,2 +1,2 @@
-from .auto import AutoCurver
-from .auto import function_lists
+from .weighted import WeightedCurver
+from .summed import SummedCurver
