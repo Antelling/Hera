@@ -111,13 +111,13 @@ class SummedCurver(BaseEstimator, RegressorMixin):
 
         best_functions = []
         for row in rot:
-            best_score = 0
+            best_score = None
             best_fun = None
             for fun in linear, logistic, quartic, cubic, seminormal, logarithmic:
                 params = safe_curve_fit(fun, row, y, len(signature(fun).parameters) - 1, maxfev=self.maxfev,
                                         method=self.method)
                 s = score(params, fun, row, y)
-                if s > best_score:
+                if best_score is None or s > best_score:
                     best_score = s
                     best_fun = fun
             best_functions.append(best_fun)
