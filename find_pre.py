@@ -223,7 +223,7 @@ while True:
             if score < best_score:
                 best_score = score
                 best_cv = rand_cv
-        except SyntaxError as e:
+        except Exception as e:
             colors.red(e)
 
     joblib.dump(best_cv.best_estimator_, "models/" + str(round(best_score, 4)) + "-model.pkl")
