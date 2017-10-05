@@ -92,7 +92,6 @@ base_grid = {
         None, #I have to explicitly specify n_components for each because of this
 
         TSNE(n_components=3),
-        TSNE(n_components=4),
 
         LocallyLinearEmbedding(n_components=3),
         LocallyLinearEmbedding(n_components=4),
@@ -169,7 +168,7 @@ param_grids = [
 from sklearn.manifold import TSNE
 
 pipeline = Pipeline([
-    ("form_data", pre.transformers.FormData(TSNE(n_components=4))),
+    ("form_data", pre.transformers.FormData(TSNE(n_components=3))),
     ("standard", pre.people.Standard()),
     ("flatten", pre.people.Flatten()),
     ("erf", pre.people.Erf()),
@@ -223,7 +222,7 @@ while True:
             if score < best_score:
                 best_score = score
                 best_cv = rand_cv
-        except SyntaxError as e:
+        except Exception as e:
             colors.red(e)
 
     joblib.dump(best_cv.best_estimator_, "models/" + str(round(best_score, 4)) + "-model.pkl")
