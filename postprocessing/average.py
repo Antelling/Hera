@@ -1,8 +1,11 @@
 class Average(object):
     """Makes loss between people symmetric"""
 
+    def __init__(self, name="average"):
+        self.name = name
+
     def transform(self, maps):
-        maps["scoreable"]["average"] = self.average_map(maps["scoreable"]["one-way"])
+        maps["scoreable"][self.name] = self.average_map(maps["scoreable"]["one-way"])
         return maps
 
     def average_map(self, maps):

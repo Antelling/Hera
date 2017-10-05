@@ -24,7 +24,6 @@ def dist_score(estimator, X, y):
 # region models
 from sklearn.pipeline import Pipeline
 import preprocessing as pre
-from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.multioutput import MultiOutputRegressor
 
 from sklearn.covariance import EllipticEnvelope
@@ -33,7 +32,7 @@ from sklearn.ensemble import IsolationForest
 from sklearn.svm import SVR
 from sklearn.linear_model import LinearRegression, HuberRegressor, RANSACRegressor
 from sklearn.kernel_ridge import KernelRidge
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.neural_network import MLPRegressor
 from sklearn.neighbors import KNeighborsRegressor
 from auto_curve import SummedCurver, WeightedCurver
@@ -62,6 +61,8 @@ models = {
         ("regressor", MultiOutputRegressor(RANSACRegressor()))
     ]), accept_singleton=True),
 
+    "gpr": SklearnWrapper(MultiOutputRegressor(GaussianProcessRegressor()), accept_singleton=True),
+
     "wei": SklearnWrapper(MultiOutputRegressor(WeightedCurver(maxfev=100000)), accept_singleton=True),
     "sum": SklearnWrapper(MultiOutputRegressor(SummedCurver(maxfev=2000, method="dogbox")), accept_singleton=True),
 }
@@ -89,7 +90,7 @@ base_grid = {
     "sanitize__alg": [IsolationForest(), EllipticEnvelope()],
     "sanitize__contamination": [.01, .03, .05, .07, .1, .15, .2, .3, .4, .5],
     "form_data__alg": [
-        None, #I have to explicitly specify n_components for each because of this
+        None,  # I have to explicitly specify n_components for each because of this
 
         TSNE(n_components=3),
 
@@ -150,16 +151,20 @@ param_grids = [
     ("ran", {
         'regressor': [models["ran"]],
         'regressor__model__poly__degree': [1, 2, 3, 4],
-        'regressor__model__regressor__estimator__min_samples': [2],
+        'regressor__model__regressor__estimator__min_samples': [2, 3, 4],
+    }),
+    ("gpr", {
+        "regressor": [models["gpr"]],
+        "regressor__alpha": [1e-12, 1e-11, 1e-10, 1e-9, 1e-8]
     })
-    #("wei", {
+    # ("wei", {
     #    'regressor': [models["wei"]],
     #    "regressor__model__estimator__max_params": [5, 4, 3],
     #    "regressor__model__estimator__certainty_scaler": [.1, .25, .5, .75, 1, 1.2, 1.5, 1.75, 2, 2.5, 3, 4, 5]
-    #}),
-    #("sum", {
+    # }),
+    # ("sum", {
     #    'regressor': [models["sum"]]
-    #})
+    # })
 ]
 # endregion
 

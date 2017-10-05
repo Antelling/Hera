@@ -42,8 +42,8 @@ for i, couple in enumerate(couples):
 print("")
 print("done")
 
-maps_post = [postprocessing.Average(),
-             postprocessing.MetricEqualizer(metric="percentage", name="main"),
+maps_post = [postprocessing.Average(name="main"),
+             #.MetricEqualizer(metric="percentage", name="main"),
              #postprocessing.RedBadCouples(),
              postprocessing.JVCouples()]
 
