@@ -27,6 +27,9 @@ import preprocessing as pre
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.multioutput import MultiOutputRegressor
 
+from sklearn.covariance import EllipticEnvelope
+from sklearn.ensemble import IsolationForest
+
 from sklearn.svm import SVR
 from sklearn.linear_model import LinearRegression, HuberRegressor, RANSACRegressor
 from sklearn.kernel_ridge import KernelRidge
@@ -34,7 +37,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.neural_network import MLPRegressor
 from sklearn.neighbors import KNeighborsRegressor
 from auto_curve import SummedCurver, WeightedCurver
-# from sklearn.gaussian_process import GaussianProcessRegressor
+from sklearn.gaussian_process import GaussianProcessRegressor
 
 from sklearn.preprocessing import PolynomialFeatures
 
@@ -78,14 +81,15 @@ base_grid = {
         pre.transformers.Pass(),
     ],
     "cluster__clusterer__n_clusters": [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 24, 26],
-    "cluster__replace": [True],
+    "cluster__replace": [True, False],
     "sanitize": [
         pre.couples_xy.SanitizeStartEnd(),
         pre.transformers.Pass(),
     ],
+    "sanitize__alg": [IsolationForest(), EllipticEnvelope()],
     "sanitize__contamination": [.01, .03, .05, .07, .1, .15, .2, .3, .4, .5],
     "form_data__alg": [
-        None,
+        None, #I have to explicitly specify n_components for each because of this
 
         TSNE(n_components=3),
         TSNE(n_components=4),
@@ -149,19 +153,15 @@ param_grids = [
         'regressor__model__poly__degree': [1, 2, 3, 4],
         'regressor__model__regressor__estimator__min_samples': [2],
     }),
-    ("wei", {
-        'regressor': [models["wei"]],
-        "regressor__model__estimator__max_params": [5, 4, 3],
-        "regressor__model__estimator__certainty_scaler": [.1, .25, .5, .75, 1, 1.2, 1.5, 1.75, 2, 2.5, 3, 4, 5]
-    }),
-    ("sum", {
-        'regressor': [models["sum"]]
-    })
+    #("wei", {
+    #    'regressor': [models["wei"]],
+    #    "regressor__model__estimator__max_params": [5, 4, 3],
+    #    "regressor__model__estimator__certainty_scaler": [.1, .25, .5, .75, 1, 1.2, 1.5, 1.75, 2, 2.5, 3, 4, 5]
+    #}),
+    #("sum", {
+    #    'regressor': [models["sum"]]
+    #})
 ]
-
-param_grids = [("sum", {
-        'regressor': [models["sum"]]
-    })]
 # endregion
 
 # region pipeline

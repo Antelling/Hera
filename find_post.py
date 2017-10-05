@@ -2,6 +2,8 @@
 
 from sklearn.externals import joblib
 
+import os
+
 import colors
 
 model = joblib.load("model.pkl")
@@ -10,7 +12,8 @@ from postprocessing import CoupleEqualizerFast, MetricEqualizer, Average
 
 from validator import val
 
-while True:
+for model in os.listdir("models"):
+    model = joblib.load(os.path.join("models", model))
     local = val(
         algs=[model],
         post=[

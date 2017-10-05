@@ -17,11 +17,12 @@ class XyBase(ABC, BaseEstimator):
 
 
 class _SanitizeBase(XyBase):
-    def __init__(self, contamination=.1):
+    def __init__(self, contamination=.1, alg=IsolationForest()):
         self.contamination = contamination
+        self.alg = alg
 
     def xy_transform(self, couples):
-        iso = IsolationForest(contamination=self.contamination)
+        self.alg.set_params(contamination=self.contamination)
 
         # we want to turn the X, y format into a zipped list of starting and ending points
         zipped_couples = self.zipper(couples)
@@ -30,9 +31,9 @@ class _SanitizeBase(XyBase):
         from sklearn.preprocessing import StandardScaler
         zipped_couples = StandardScaler().fit_transform(zipped_couples)
 
-        iso.fit(zipped_couples)
+        self.alg.fit(zipped_couples)
         new_couples = [[], []]
-        for i, label in enumerate(iso.predict(zipped_couples)):
+        for i, label in enumerate(self.alg.predict(zipped_couples)):
             if label == 1:
                 new_couples[0].append(couples[0][i])
                 new_couples[1].append(couples[1][i])
