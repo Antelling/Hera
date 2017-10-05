@@ -81,7 +81,7 @@ base_grid = {
         pre.transformers.Pass(),
     ],
     "cluster__clusterer__n_clusters": [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 24, 26],
-    "cluster__replace": [True, False],
+    "cluster__replace": [True],
     "sanitize": [
         pre.couples_xy.SanitizeStartEnd(),
         pre.transformers.Pass(),
@@ -152,7 +152,7 @@ param_grids = [
         'regressor': [models["ran"]],
         'regressor__model__poly__degree': [1, 2, 3, 4],
         'regressor__model__regressor__estimator__min_samples': [2],
-    }),
+    })
     #("wei", {
     #    'regressor': [models["wei"]],
     #    "regressor__model__estimator__max_params": [5, 4, 3],
@@ -223,7 +223,7 @@ while True:
             if score < best_score:
                 best_score = score
                 best_cv = rand_cv
-        except Exception as e:
+        except SyntaxError as e:
             colors.red(e)
 
     joblib.dump(best_cv.best_estimator_, "models/" + str(round(best_score, 4)) + "-model.pkl")

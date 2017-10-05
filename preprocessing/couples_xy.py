@@ -19,11 +19,10 @@ class XyBase(ABC, BaseEstimator):
 class _SanitizeBase(XyBase):
     def __init__(self, contamination=.1, alg=IsolationForest()):
         self.contamination = contamination
+        alg = alg.set_params(contamination=contamination)
         self.alg = alg
 
     def xy_transform(self, couples):
-        self.alg.set_params(contamination=self.contamination)
-
         # we want to turn the X, y format into a zipped list of starting and ending points
         zipped_couples = self.zipper(couples)
 

@@ -79,11 +79,12 @@ class FormData(TransformerBase):
                     {'male': str(i)})  # and a fake relationship. The female position will be predicted.
             return d
 
+from sklearn.cluster import KMeans
 
 class Pass(TransformerBase):
     def __init__(self, contamination=None, clusterer=None, replace=None, alg=None):
-        #self.contamination = contamination
-        #self.clusterer = KMeans()
+        self.contamination = contamination
+        self.clusterer = KMeans()
         pass
 
     def transform(self, X):
