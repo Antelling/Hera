@@ -172,8 +172,14 @@ td:first-child{
     border-right: 1px solid black;
 }
 .best-matches td:nth-child(3){
-    color: rgb(200,200,200);
-    font-weight: 100;
+    color: white;
+}
+::selection{
+    background: black;
+}
+::-moz-selection{
+    background: black;
+    color: white;
 }
 
 svg{

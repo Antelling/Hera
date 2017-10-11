@@ -12,9 +12,6 @@ class Wrapper(ABC):
     def predict(self, X):
         return self._fitted.predict(np.array(X))
 
-    def predict_inverse(self, X):
-        return self._fitted_inverse.predict(np.array(X))
-
     @abstractmethod
     def fit(self, X, y): pass
 
@@ -30,16 +27,11 @@ class SklearnWrapper(Wrapper, BaseEstimator):
             y = X[1]
             X = X[0]
         model = clone(self.model)
-        inverse_model = clone(self.model)
 
         self._fitted = model.fit(X, y)
-        self._fitted_inverse = inverse_model.fit(y, X)
 
     def predict(self, X):
         return self._fitted.predict(np.array(X))
-
-    def predict_inverse(self, X):
-        return self._fitted_inverse.predict(np.array(X))
 
 
 class KerasWrapper(Wrapper):
@@ -63,7 +55,6 @@ class KerasWrapper(Wrapper):
         models[0].fit(X, y, epochs=self.epochs, verbose=False)
         models[1].fit(y, X, epochs=self.epochs, verbose=False)
         self.fitted = models[0]
-        self.fitted_inverse = models[1]
 
 
 class GenericWrapper(Wrapper):
@@ -77,16 +68,9 @@ class GenericWrapper(Wrapper):
 
     def fit(self, X, y):
         self.fitted = self.model_definition(X, y)
-        self.fitted_inverse = self.model_definition(y, X)
 
     def predict(self, people):
         return list(map(self.single_predict, people))
 
     def single_predict(self, person):
         return self.predict_func(self.fitted, person)
-
-    def predict_inverse(self, people):
-        return list(map(self.inverse_single_predict, people))
-
-    def inverse_single_predict(self, person):
-        return self.predict_func(self.fitted_inverse, person)

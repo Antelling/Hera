@@ -70,6 +70,23 @@ def couples_raw():
         return cache["couples_raw"]
 
 
+def genderswapped_couples_raw():
+    """gender swaps couples_raw"""
+    if "genderswapped_couples_raw" in cache:
+        return cache["genderswapped_couples_raw"]
+    else:
+        couples = couples_raw()
+        new_couples = []
+        for couple in couples:
+            c = copy.copy(couple)
+            male = copy.copy(c["male"])
+            c["male"] = copy.copy(c["female"])
+            c["female"] = male
+            new_couples.append(c)
+        cache["genderswapped_couples_raw"] = new_couples
+        return new_couples
+
+
 def couples_xy():
     """returns an X, y list where X is male positions and y is female positions"""
     if "couples_xy" in cache:

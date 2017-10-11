@@ -1,6 +1,7 @@
 # we test every normalization strategy
 
 from sklearn.externals import joblib
+from sklearn.base import BaseEstimator, RegressorMixin
 
 import os
 
@@ -11,6 +12,24 @@ model = joblib.load("model.pkl")
 from postprocessing import CoupleEqualizerFast, MetricEqualizer, Average
 
 from validator import val
+
+class SimModel(BaseEstimator, RegressorMixin):
+    def fit(self, X, y):
+        pass
+
+    def predict(self, X):
+        return X
+
+print("testing sim score")
+local = val(
+        algs=[SimModel()],
+        post=[
+            Average()
+        ]
+    )
+
+colors.purple(local)
+colors.green(local["score"])
 
 for model in os.listdir("models"):
     model = joblib.load(os.path.join("models", model))
