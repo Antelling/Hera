@@ -69,7 +69,7 @@ while True:
                 except Exception as e:
                     colors.red(e)
 
-            model_name = "m2f" if gender_swap == False else "f2m"
+            model_name = "m2f" if swap == False else "f2m"
             joblib.dump(best_cv.best_estimator_, "models/" + str(round(best_score, 2)) + model_name + ".pkl")
 
             colors.white("_________________________")
