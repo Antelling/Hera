@@ -1,1 +1,1 @@
-from viz import couples_2d
+from viz import couples_2d 
