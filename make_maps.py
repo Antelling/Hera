@@ -2,13 +2,24 @@ import postprocessing, data, vector_math, os, json
 from sklearn.externals import joblib
 
 
-model = joblib.load("model.pkl")
+models = os.listdir("models")
+female_models = [m for m in models if m[-5] == "m"] #xxf2m.pkl
+male_models = [m for m in models if m[-5] == "f"] #xxm2f.pkl
 
-couples = data.get.couples_raw()
+female_models.sort()
+male_models.sort()
+
+female_model = joblib.load(os.path.join("models", female_models[0]))
+male_model = joblib.load(os.path.join("models", male_models[0]))
+models = [male_model, female_model]
+
+#now we retrain our models on up-to-date couple info
+normal = data.get.couples_raw()
+swapped = data.get.genderswapped_couples_raw()
 people = data.get.people_raw()
-y = [people[couple["female"]]["position"] for couple in couples]
-
-model.fit(couples, y)
+for m_index, couple_data in (0, normal), (1, swapped):
+    y = [people[couple["female"]]["position"] for couple in couple_data]
+    models[m_index].fit(couple_data, y)
 
 
 maps = {
@@ -17,6 +28,7 @@ maps = {
 }
 
 for person in people:
+    model = models[0] if people[person]["gender"] == "male" else models[1]
     soulmate = model.predict([people[person]["position"]])[0]
     maps["scoreable"]["one-way"][person] = vector_math.get_rec(people, [soulmate, [1, 1, 1, 1, 1]])
 
@@ -27,16 +39,24 @@ for person in people:
 # and people get upset when I tell them to date their ex. So:
 print("normal recs made, making recs for people in couples: ")
 import copy
-for i, couple in enumerate(couples):
+for i, couple in enumerate(normal):
     if not couple["still_dating"]:
-        new_couples = copy.deepcopy(couples)
-        new_y = copy.deepcopy(y)
-        del new_couples[i]
-        del new_y[i]
-        model.fit(new_couples, new_y)
-        print(str(i + 1) + "/" + str(len(couple)))
+        new_normal = copy.deepcopy(normal)
+        new_swapped = copy.deepcopy(swapped)
+        new_normal_y = [people[couple["female"]]["position"] for couple in copy.deepcopy(new_normal)]
+        new_swapped_y = [people[couple["female"]]["position"] for couple in copy.deepcopy(new_swapped)]
+        del new_normal[i]
+        del new_swapped[i]
+        del new_normal_y[i]
+        del new_swapped_y[i]
+        models[0].fit(new_normal, new_normal_y)
+        models[1].fit(new_swapped, new_swapped_y)
+
+        print(str(i + 1) + "/" + str(len(normal)))
+
         for gender_key in ["male", "female"]:
             person = couple[gender_key]
+            model = models[0] if gender_key == "male" else models[1]
             soulmate = model.predict([people[person]["position"]])[0]
             maps["scoreable"]["one-way"][person] = vector_math.get_rec(people, [soulmate, [1, 1, 1, 1, 1]])
 print("")
