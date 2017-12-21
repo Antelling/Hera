@@ -58,7 +58,7 @@ while True:
                     )
                     rand_cv.fit(couples, y)
 
-                    score = val([rand_cv.best_estimator_], [Average(), MetricEqualizer(metric="percentage")])["score"]
+                    score = val([rand_cv.best_estimator_], [Average(), MetricEqualizer(metric="percentage")], swap)["score"]
                     print(score)
 
                     scores[name].append(score)

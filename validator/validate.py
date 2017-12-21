@@ -3,9 +3,9 @@ from . import score
 import numpy as np
 
 
-def val(algs, post):
+def val(algs, post, genderswap):
     people = data.get.people_raw()
-    couples = data.get.couples_raw()
+    couples = data.get.couples_raw() if genderswap == False else data.get.genderswapped_couples_raw()
     y = [people[couple["female"]]["position"] for couple in couples]
 
     best = {
@@ -48,8 +48,6 @@ def val(algs, post):
             total_score_map[m] = [np.percentile(total_score_map[m], 80),
                                   np.mean(total_score_map[m]),
                                   np.median(total_score_map[m])]
-
-            colors.yellow(m + ": " + str(total_score_map[m]))
 
         for m in total_score_map:
             if total_score_map[m][1] < best["score"]:
