@@ -10,9 +10,6 @@ import os, json
 from sklearn.externals import joblib
 from postprocessing import Average, MetricEqualizer
 
-from multiprocessing import Pool
-
-pool = Pool(processes=4)
 
 def gen_info(model):
     m = joblib.load(os.path.join("models", model))
@@ -38,7 +35,7 @@ def gen_info(model):
 models = os.listdir("models")
 models.sort()
 models = models[0:7]
-info = list(pool.map(gen_info, models))
+info = list(map(gen_info, models))
 
 """
 info = {}
