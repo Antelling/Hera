@@ -34,7 +34,6 @@ def gen_info(model):
 
 models = os.listdir("models")
 models.sort()
-models = models[0:7]
 info = list(map(gen_info, models))
 
 """
