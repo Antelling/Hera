@@ -1,17 +1,25 @@
 import postprocessing, data, vector_math, os, json
 from sklearn.externals import joblib
+import numpy as np
 
 
-models = os.listdir("models")
-female_models = [m for m in models if m[-5] == "m"] #xxf2m.pkl
-male_models = [m for m in models if m[-5] == "f"] #xxm2f.pkl
+info = json.loads(open("model_info.json").read())
 
-female_models.sort()
-male_models.sort()
+m2f = []
+f2m = []
 
-female_model = joblib.load(os.path.join("models", female_models[0]))
-male_model = joblib.load(os.path.join("models", male_models[0]))
+for model in info:
+    m2f.append((model["name"], np.mean(model["m2f"])))
+    f2m.append((model["name"], np.mean(model["f2m"])))
+
+m2f.sort(key=lambda x:x[1])
+f2m.sort(key=lambda x:x[1])
+
+
+female_model = joblib.load(os.path.join("models", f2m[0][0]))
+male_model = joblib.load(os.path.join("models", m2f[0][0]))
 models = [male_model, female_model]
+
 
 #now we retrain our models on up-to-date couple info
 normal = data.get.couples_raw()

@@ -8,7 +8,7 @@ def show():
     clusterer = clusterer.fit(X)
     print(clusterer.labels_)
 
-    from sklearn.decomposition import PCA, ProjectedGradientNMF, TruncatedSVD
+    from sklearn.decomposition import PCA, TruncatedSVD
     from sklearn.manifold import Isomap, LocallyLinearEmbedding, SpectralEmbedding, MDS, TSNE
     X_transformed = SpectralEmbedding(n_components=3).fit_transform(X)
 

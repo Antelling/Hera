@@ -1,3 +1,3 @@
 __author__ = '18DellingerA'
 
-from .validate import val
+from .validate import val, penalty_val

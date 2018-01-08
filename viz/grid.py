@@ -8,7 +8,7 @@ clusterer = Clusterer(n_clusters=16)
 clusterer = clusterer.fit(X)
 print(clusterer.labels_)
 
-from sklearn.decomposition import PCA, ProjectedGradientNMF, TruncatedSVD
+from sklearn.decomposition import PCA, TruncatedSVD
 from sklearn.manifold import Isomap, LocallyLinearEmbedding, SpectralEmbedding, MDS, TSNE
 X_transformed = SpectralEmbedding(n_components=2).fit_transform(X)
 
@@ -47,7 +47,7 @@ print(solutions)
 new_X = [[]] * len(X_transformed)
 for solution in solutions:
     new_X[solution[0]] = grid[solution[1]][0]
-X_transformed = new_X
+#X_transformed = new_X
 print(X_transformed)
 
 plt_x = []

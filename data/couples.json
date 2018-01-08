@@ -58,7 +58,7 @@
   {
     "married": false,
     "male": "Jack Still",
-    "length": 8,
+    "length": 24,
     "orientation": "straight",
     "female": "Lyndsey Turner",
     "still_dating": true
@@ -66,7 +66,7 @@
   {
     "married": false,
     "male": "Sam Niles",
-    "length": 5,
+    "length": 24,
     "orientation": "straight",
     "female": "Rebecca Ward-Diorio",
     "still_dating": true
@@ -74,7 +74,7 @@
   {
     "married": false,
     "male": "Caleb Deustch",
-    "length": 4,
+    "length": 8,
     "orientation": "straight",
     "female": "Miranda Chaplinski",
     "still_dating": true
@@ -122,7 +122,7 @@
   {
     "married": false,
     "male": "Drew Boley",
-    "length": 5,
+    "length": 24,
     "orientation": "straight",
     "female": "Jada Hambrook",
     "still_dating": true
@@ -130,7 +130,7 @@
   {
     "married": false,
     "male": "Peyton Smiley",
-    "length": 16,
+    "length": 24,
     "orientation": "straight",
     "female": "Callie Garcia",
     "still_dating": true
@@ -162,7 +162,7 @@
   {
     "married": false,
     "male": "Joshua Freedman",
-    "length": 12,
+    "length": 24,
     "orientation": "gay",
     "female": "Michael Liu",
     "still_dating": true
@@ -187,7 +187,7 @@
     "married": false,
     "male": "Zachary Orris",
     "female": "Fiona Carmichael",
-    "length": 3,
+    "length": 24,
     "still_dating": true,
     "orientation": "straight"
   },
@@ -195,7 +195,7 @@
     "married": false,
     "male": "Nicholas Dell",
     "female": "Avery Lamason",
-    "length": 0.5,
+    "length": 1,
     "still_dating": false,
     "orientation": "straight"
   },
@@ -203,12 +203,12 @@
     "married": false,
     "male": "Adam Dieck",
     "female": "Erin Gilbert",
-    "length": 2,
+    "length": 12,
     "still_dating": true,
     "orientation": "straight"
   },
   {
-    "maried": false,
+    "married": false,
     "male": "Evan Gillwood",
     "female": "Megan Landwehr",
     "length": 8,
