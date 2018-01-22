@@ -53,7 +53,7 @@ def gen_info(model):
     scores = []
     for _ in range(5):
         print("*", end="")
-        scores.append(validator.penalty_val(m, X, y, couples, [Average(), MetricEqualizer(metric="percentage")])["score"])
+        scores.append(validator.penalty_val(m, X, y, couples, [MetricEqualizer(metric="percentage")])["score"])
     model_info[model] = scores
 
     print(model_info)
