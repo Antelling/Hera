@@ -50,7 +50,7 @@
                 var value = 0;
                 links.forEach(function (link) {
                     value++;
-                    if (value > 3) {
+                    if (value > 2) {
                         return;
                     }
                     json.links.push({
@@ -70,9 +70,9 @@
                 .attr("height", height);
 
         var force = d3.layout.force()
-                .gravity(0.01)
-                .distance(30)
-                .charge(-30)
+                .gravity(0.05)
+                .distance(300)
+                .charge(-300)
                 .size([width, height]);
 
         force

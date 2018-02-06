@@ -116,4 +116,4 @@ def penalty_val(alg, X, y, couples, post):
             best["alg"] = alg
             best["post"] = m
 
-    return best
+    return best, total_score_map

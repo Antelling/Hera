@@ -3,7 +3,7 @@
 import validator, data, random
 import os, json
 from sklearn.externals import joblib
-from postprocessing import Average, MetricEqualizer
+from postprocessing import CoupleEqualizerFast, MetricEqualizer
 
 
 def gen_penalty(months):
@@ -50,20 +50,25 @@ def gen_info(model):
     model_info["name"] = model
 
     print("")
-    scores = []
+    tests = []
     for _ in range(5):
         print("*", end="")
-        scores.append(validator.penalty_val(m, X, y, couples, [MetricEqualizer(metric="percentage")])["score"])
-    model_info[model] = scores
+        tests.append(validator.penalty_val(m, X, y, couples, [
+            MetricEqualizer(metric="percentage"),
+            CoupleEqualizerFast(),
+            MetricEqualizer(metric="zscore")
+        ]))
+    model_info[model] = tests
 
     print(model_info)
-    with open(os.path.join("penalty_model_info", model + ".json"), "w") as f:
-        f.write(json.dumps(model_info))
+    #with open(os.path.join("penalty_model_info", model + ".detailed.json"), "w") as f:
+    #    f.write(json.dumps(model_info))
 
     return model_info
 
 models = os.listdir("penalty_models")
 models.sort()
+models = ["35.83.pkl"]
 info = list(map(gen_info, models))
 
 with open("penalty_model_info.json", "w") as f:

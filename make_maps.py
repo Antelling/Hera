@@ -15,6 +15,8 @@ for model in info:
 m2f.sort(key=lambda x:x[1])
 f2m.sort(key=lambda x:x[1])
 
+print(f2m[0][1])
+print(m2f[0][1])
 
 female_model = joblib.load(os.path.join("models", f2m[0][0]))
 male_model = joblib.load(os.path.join("models", m2f[0][0]))
