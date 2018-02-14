@@ -189,3 +189,7 @@ svg{
     width: 100vw;
     shape-rendering: crispEdges;
 }
+
+.black{
+    color: black;
+}
