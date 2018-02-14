@@ -53,7 +53,7 @@
     "length": 24,
     "orientation": "straight",
     "female": "Brittany Graham",
-    "still_dating": true
+    "still_dating": false
   },
   {
     "married": false,
@@ -77,7 +77,7 @@
     "length": 8,
     "orientation": "straight",
     "female": "Miranda Chaplinski",
-    "still_dating": true
+    "still_dating": false
   },
   {
     "married": false,
@@ -85,7 +85,7 @@
     "length": 4,
     "orientation": "straight",
     "female": "Sydney Hemler",
-    "still_dating": true
+    "still_dating": false
   },
   {
     "married": false,
@@ -133,7 +133,7 @@
     "length": 24,
     "orientation": "straight",
     "female": "Callie Garcia",
-    "still_dating": true
+    "still_dating": false
   },
   {
     "married": false,
@@ -141,7 +141,7 @@
     "length": 2,
     "orientation": "straight",
     "female": "Kayla Lohman",
-    "still_dating": true
+    "still_dating": false
   },
   {
     "married": false,

@@ -78,13 +78,13 @@ def make_block(maps, name):
 
     output += "<h1>Results For: " + name + "</h1>"
 
-    #Top results, bring back around homecoming?
-    """output += "<h3>Top Result:</h3>"
+    #Top results, remove after prom?
+    output += "<h3>You should go to prom with:</h3>"
     try:
         message = maps["couples"][name]
     except KeyError:
-        message = "Not enough people, sorry"
-    output += "<h2>" + message + "</h2>"""
+        message = "No one lol"
+    output += "<h2 class=black>" + message + "</h2>"
 
     # we need to remove freshmen from seniors, etc
     places = remove_creepy_age_gap(name, places, maps["people_raw"])
