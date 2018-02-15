@@ -88,9 +88,9 @@ for file in os.listdir("penalty_model_info"):
 #then sort them, take the top n, train them on random data, and add it to our list
 top_n = []
 info.sort(key=lambda x:x[1])
+best_model = joblib.load(os.path.join("penalty_models", info[0][0]))
 for index in range(n):
-    model = joblib.load(os.path.join("penalty_models", info[index][0]))
-    top_n.append(model)
+    top_n.append(copy.deepcopy(best_model))
 
 model = GhettoEnsemble(top_n, tmean)
 
