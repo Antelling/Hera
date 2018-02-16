@@ -114,7 +114,7 @@ for i, couple in enumerate(couples):
     new_couples = copy.deepcopy(couples)
     top_n = copy.deepcopy(top_n)
     del new_couples[i]
-    
+
     top_n = [model.fit(*gen_training_data(new_couples)) for model in top_n]
 
     alg = GhettoEnsemble(top_n, tmean)
