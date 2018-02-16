@@ -41,7 +41,7 @@ def gen_training_data(couples):
     return X, y
 
 
-X, y = gen_training_data(couples)
+
 
 def gen_info(model):
     m = joblib.load(os.path.join("penalty_models", model))
@@ -52,6 +52,7 @@ def gen_info(model):
     print("")
     tests = []
     for _ in range(5):
+        X, y = gen_training_data(couples)
         print("*", end="")
         tests.append(validator.penalty_val(m, X, y, couples, [
             MetricEqualizer(metric="percentage"),
@@ -61,14 +62,13 @@ def gen_info(model):
     model_info[model] = tests
 
     print(model_info)
-    #with open(os.path.join("penalty_model_info", model + ".detailed.json"), "w") as f:
-    #    f.write(json.dumps(model_info))
+    with open(os.path.join("detailed_penalty_model_info", model + ".json"), "w") as f:
+        f.write(json.dumps(model_info))
 
     return model_info
 
 models = os.listdir("penalty_models")
 models.sort()
-models = ["35.83.pkl"]
 info = list(map(gen_info, models))
 
 with open("penalty_model_info.json", "w") as f:
