@@ -53,12 +53,12 @@ def gen_info(model):
     tests = []
     for _ in range(5):
         X, y = gen_training_data(couples)
-        print("*", end="")
         tests.append(validator.penalty_val(m, X, y, couples, [
             MetricEqualizer(metric="percentage"),
             CoupleEqualizerFast(),
             MetricEqualizer(metric="zscore")
         ]))
+        print(tests[-1], end="", flush=True)
     model_info[model] = tests
 
     print(model_info)
