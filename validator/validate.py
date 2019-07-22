@@ -113,7 +113,7 @@ def penalty_val(alg, X, y, couples, post):
     for m in total_score_map:
         if total_score_map[m][1] < best["score"]:
             best["score"] = total_score_map[m][1]
-            best["alg"] = alg
+            best["alg"] = str(alg)
             best["post"] = m
 
     return best, total_score_map

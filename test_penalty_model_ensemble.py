@@ -13,6 +13,11 @@ from sklearn.base import BaseEstimator
 from scipy.stats import hmean, tmean
 from postprocessing import MetricEqualizer, CoupleEqualizerFast
 
+# f(a, b, c, d, e) -> f, g, h, i, j
+#*f(a, b, c, d, e, f, g, h, i, j) -> 3
+
+#f(person1, person2) != f(person2, person1)
+
 
 n = 5
 
